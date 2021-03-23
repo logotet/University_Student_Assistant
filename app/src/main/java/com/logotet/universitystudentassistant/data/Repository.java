@@ -12,6 +12,10 @@ public class Repository {
     }
 
     public void createAccount(String email, String password, Context context){
-        firebaseAuthService.signIn(email, password, context);
+        firebaseAuthService.createAccount(email, password, context);
+    }
+
+    public void signIn(String email, String password, Context context){
+        firebaseAuthService.signIntoAccount(email, password, context);
     }
 }

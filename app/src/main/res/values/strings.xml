@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MyShopPal</string>
 
+    <string name="universities">Universities</string>
+    <string name="timetable">Timetable</string>
 
     <string name="content_description">image</string>
     <string name="title_login">LOGIN</string>
@@ -17,7 +19,6 @@
     <string name="hint_first_name">First name</string>
     <string name="et_hint_confirm_password">Confirm Password</string>
 
-    <string name="i_agree_to_the_terms_and_condition">I Agree To The <u> Terms &amp; Condition </u></string>
     <string name="btn_lbl_register">Register</string>
 
     <string name="already_have_an_account">Already have an account?</string>
@@ -41,10 +42,6 @@
     <string name="err_msg_enter_mobile">Please enter a valid mobile number</string>
     <string name="msg_profile_update_success">Profile was updated successfully</string>
 
-    <string name="title_activity_dashboard">MainActivity</string>
-    <string name="title_products">Products</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_orders">Orders</string>
     <string name="please_click_back_again_to_exit">Please click back again to exit</string>
     <string name="settings">Settings</string>
 
@@ -53,5 +50,9 @@
     <string name="lbl_addresses">Addresses</string>
     <string name="btn_lbl_logout">Logout</string>
     <string name="empty_space">\" \"</string>
+    <string name="title_activity_university">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>

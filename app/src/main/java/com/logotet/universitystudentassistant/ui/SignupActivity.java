@@ -8,25 +8,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.logotet.universitystudentassistant.R;
+import com.logotet.universitystudentassistant.data.Repository;
 import com.logotet.universitystudentassistant.databinding.ActivitySignupBinding;
+import com.logotet.universitystudentassistant.utils.AppConstants;
 
 public class SignupActivity extends BaseActivity {
 
     private ActivitySignupBinding binding;
     private String email;
     private String password;
+    private Repository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
+        repository = new Repository();
+
+        email = AppConstants.DUMMY_EMAIL;
+        password = AppConstants.DUMMY_PASSWORD;
 
         binding.btnRegister.setOnClickListener(view ->
         {
 //            if (validateRegisterDetails()) {
 //                startActivity(new Intent(SignupActivity.this, MainActivity.class));
 //            }
-            
+            repository.createAccount(email, password, this);
         });
     }
 
