@@ -3,23 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_dashboard">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.logotet.universitystudentassistant.ui.Fragments.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.logotet.universitystudentassistant.ui.Fragments.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity.SearchUniversityFragment"
+        android:label="@string/title_search_universities"
+        tools:layout="@layout/fragment_search_universities" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.logotet.universitystudentassistant.ui.Fragments.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.logotet.universitystudentassistant.ui.Fragments.MyUniversities.MyUniversitiesFragment"
+        android:label="@string/title_my_universities"
+        tools:layout="@layout/fragment_my_universities" />
 </navigation>

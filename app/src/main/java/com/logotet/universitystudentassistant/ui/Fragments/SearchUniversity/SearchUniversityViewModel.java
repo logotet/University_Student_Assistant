@@ -1,14 +1,14 @@
-package com.logotet.universitystudentassistant.ui.Fragments.dashboard;
+package com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class SearchUniversityViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public SearchUniversityViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is dashboard fragment");
     }

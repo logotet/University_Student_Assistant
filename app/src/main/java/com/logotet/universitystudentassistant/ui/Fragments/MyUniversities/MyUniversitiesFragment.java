@@ -1,4 +1,4 @@
-package com.logotet.universitystudentassistant.ui.Fragments.home;
+package com.logotet.universitystudentassistant.ui.Fragments.MyUniversities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,17 +12,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.logotet.universitystudentassistant.R;
 
-public class HomeFragment extends Fragment {
+public class MyUniversitiesFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private MyUniversitiesViewModel myUniversitiesViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        myUniversitiesViewModel =
+                new ViewModelProvider(this).get(MyUniversitiesViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_my_universities, container, false);
+        final TextView textView = root.findViewById(R.id.text_notifications);
+        myUniversitiesViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

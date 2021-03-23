@@ -1,4 +1,4 @@
-package com.logotet.universitystudentassistant.ui.Fragments.dashboard;
+package com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,17 +12,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.logotet.universitystudentassistant.R;
 
-public class DashboardFragment extends Fragment {
+public class SearchUniversityFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private SearchUniversityViewModel searchUniversityViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        searchUniversityViewModel =
+                new ViewModelProvider(this).get(SearchUniversityViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_search_universities, container, false);
         final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        searchUniversityViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

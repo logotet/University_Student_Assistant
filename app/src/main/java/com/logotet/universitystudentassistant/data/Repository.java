@@ -2,7 +2,7 @@ package com.logotet.universitystudentassistant.data;
 
 import android.content.Context;
 
-import com.logotet.universitystudentassistant.data.remote.firabase.FirebaseAuthService;
+import com.logotet.universitystudentassistant.data.remote.firebase.FirebaseAuthService;
 
 public class Repository {
     FirebaseAuthService firebaseAuthService;

@@ -1,4 +1,4 @@
-package com.logotet.universitystudentassistant.data.remote.firabase;
+package com.logotet.universitystudentassistant.data.remote.firebase;
 
 
 import android.app.Activity;
