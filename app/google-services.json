@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "690318410512",
+    "project_id": "university-student-assistant",
+    "storage_bucket": "university-student-assistant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690318410512:android:8c3abe869cd946ba581b95",
+        "android_client_info": {
+          "package_name": "com.logotet.universitystudentassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690318410512-tfjh8sica2vl5brb3jd04cq449igslcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMI5uuro95U7Cd5Jukfuuzf6bFbL6RTkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690318410512-tfjh8sica2vl5brb3jd04cq449igslcu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
