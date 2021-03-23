@@ -9,10 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.logotet.universitystudentassistant.R;
+import com.logotet.universitystudentassistant.adapters.UniversityAdapter;
+import com.logotet.universitystudentassistant.data.models.UniversityEntity;
 import com.logotet.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
+
+import java.util.List;
 
 public class SearchUniversityFragment extends Fragment {
 
@@ -33,7 +39,17 @@ public class SearchUniversityFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         searchUniversityViewModel =
                 new ViewModelProvider(this).get(SearchUniversityViewModel.class);
+
+        UniversityAdapter adapter = new UniversityAdapter();
+        binding.recViewUniversities.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recViewUniversities.setAdapter(adapter);
+
         searchUniversityViewModel.getUniversitiesList().observe(getViewLifecycleOwner(),
-                universityEntities -> binding.textDashboard.setText(universityEntities.get(3).getName()));
+                new Observer<List<UniversityEntity>>() {
+                    @Override
+                    public void onChanged(List<UniversityEntity> universityEntities) {
+                        adapter.updateData(universityEntities);
+                    }
+                });
     }
 }
