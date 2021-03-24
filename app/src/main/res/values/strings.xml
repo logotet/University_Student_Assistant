@@ -52,7 +52,8 @@
     <string name="empty_space">\" \"</string>
     <string name="title_activity_university">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_search_universities">Universities</string>
+    <string name="title_search_universities">University Data</string>
     <string name="title_my_universities">My Universities</string>
+    <string name="search_title">Search for univesities...</string>
 
 </resources>

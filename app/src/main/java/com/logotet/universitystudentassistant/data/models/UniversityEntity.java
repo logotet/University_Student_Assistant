@@ -14,4 +14,5 @@ public class UniversityEntity {
     public void setName(String name) {
         this.name = name;
     }
+        
 }

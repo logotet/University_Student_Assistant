@@ -14,7 +14,7 @@ public class DummyRemoteDataProvider {
         entityList.add(universityEntity);
         universityEntity = new UniversityEntity("Stanford");
         entityList.add(universityEntity);
-        universityEntity = new UniversityEntity("Brows");
+        universityEntity = new UniversityEntity("Brown");
         entityList.add(universityEntity);
         universityEntity = new UniversityEntity("UCLA");
         entityList.add(universityEntity);
