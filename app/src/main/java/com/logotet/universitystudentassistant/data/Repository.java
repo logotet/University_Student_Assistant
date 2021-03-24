@@ -49,10 +49,14 @@ public class Repository {
     }
 
     //Room local database
+    //User
     public void insertUserToRoomDb(User user){
         roomDb.userDao().insertUser(user);
     }
 
-
+    //University
+    public void insertUniversityToRoomDb(UniversityEntity universityEntity){
+        roomDb.universityDao().insertUniversity(universityEntity);
+    }
 
 }

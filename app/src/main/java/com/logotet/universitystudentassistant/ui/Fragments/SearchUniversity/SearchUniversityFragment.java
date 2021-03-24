@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,12 +28,13 @@ import com.logotet.universitystudentassistant.databinding.FragmentSearchUniversi
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SearchUniversityFragment extends Fragment {
+public class SearchUniversityFragment extends Fragment implements UniversityAdapter.UniversityHolder.OnItemPressedListener {
 
     private FragmentSearchUniversitiesBinding binding;
     private SearchUniversityViewModel searchUniversityViewModel;
     private UniversityAdapter adapter;
     private List<UniversityEntity> universities;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +57,7 @@ public class SearchUniversityFragment extends Fragment {
         searchUniversityViewModel =
                 new ViewModelProvider(this).get(SearchUniversityViewModel.class);
 
-        adapter = new UniversityAdapter();
+        adapter = new UniversityAdapter(this);
         binding.recViewUniversities.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewUniversities.setAdapter(adapter);
 
@@ -105,5 +107,11 @@ public class SearchUniversityFragment extends Fragment {
         return universityEntities.stream()
                 .filter(entity -> entity.getName().toLowerCase().startsWith(query.toLowerCase()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void onFavButtonClicked(UniversityEntity entity) {
+        searchUniversityViewModel.insertUniversity(entity);
+        Toast.makeText(getContext(), "The university was added to your favourites.", Toast.LENGTH_LONG).show();
     }
 }

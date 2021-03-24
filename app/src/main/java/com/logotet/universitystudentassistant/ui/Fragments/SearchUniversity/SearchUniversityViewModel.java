@@ -34,5 +34,9 @@ public class SearchUniversityViewModel extends AndroidViewModel {
         return universities;
     }
 
+    public void insertUniversity(UniversityEntity entity){
+        repository.insertUniversityToRoomDb(entity);
+    }
+
 
 }
