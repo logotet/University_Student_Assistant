@@ -9,16 +9,12 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-import com.logotet.universitystudentassistant.data.models.User;
+import com.logotet.universitystudentassistant.data.entities.User;
 import com.logotet.universitystudentassistant.ui.LoginActivity;
-import com.logotet.universitystudentassistant.utils.AppConstants;
 
 public class FirebaseAuthService {
     private FirebaseAuth auth;
@@ -29,16 +25,30 @@ public class FirebaseAuthService {
         firestoreService = new FirestoreService();
     }
 
-    public void createAccount(String email, String password, Context context) {
+    public void createAccount(String email, String password, Activity activity, User user) {
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener( activity, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        //TODO: add user model with the entity values
-                        FirebaseUser firebaseUser = auth.getCurrentUser();
-//                        firestoreService.uploadUserDetails(firebaseUser);
+                        if(task.isSuccessful()) {
+                            //TODO: there is a bug not registering every user and not uploading user details to firestore
+                            FirebaseUser firebaseUser = task.getResult().getUser();
+                            user.setId(firebaseUser.getUid());
+                            firestoreService.uploadUserDetails(user);
+                            Toast.makeText(activity, "Account created successfully",
+                                    Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(activity, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(activity, "Authentication failed: " + e.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

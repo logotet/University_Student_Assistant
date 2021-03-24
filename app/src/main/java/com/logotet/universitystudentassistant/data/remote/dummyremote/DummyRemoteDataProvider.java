@@ -1,6 +1,6 @@
 package com.logotet.universitystudentassistant.data.remote.dummyremote;
 
-import com.logotet.universitystudentassistant.data.models.UniversityEntity;
+import com.logotet.universitystudentassistant.data.entities.UniversityEntity;
 
 import java.util.ArrayList;
 import java.util.List;

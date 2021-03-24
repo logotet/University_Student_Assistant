@@ -3,18 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_dashboard">
-
+    app:startDestination="@+id/navigation_search_universities">
 
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_search_universities"
         android:name="com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity.SearchUniversityFragment"
         android:label="@string/title_search_universities"
         tools:layout="@layout/fragment_search_universities" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_my_universities"
         android:name="com.logotet.universitystudentassistant.ui.Fragments.MyUniversities.MyUniversitiesFragment"
         android:label="@string/title_my_universities"
         tools:layout="@layout/fragment_my_universities" />

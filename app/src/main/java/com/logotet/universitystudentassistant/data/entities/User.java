@@ -1,25 +1,29 @@
-package com.logotet.universitystudentassistant.data.models;
+package com.logotet.universitystudentassistant.data.entities;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "user_table")
 public class User {
+    @PrimaryKey(autoGenerate = false)
+    @NonNull
     private String id;
     private String firstName ;
     private String lastName;
     private String email;
-    private String image;
+    private String password;
 
 
     public User() {
     }
 
-    public User(String id, String firstName, String lastName, String email, String image) {
+    public User(String id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.image = image;
+        this.password = password;
     }
 
     public String getId() {
@@ -54,11 +58,13 @@ public class User {
         this.email = email;
     }
 
-    public String getImage() {
-        return image;
+    public String getPassword() {
+        return password;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+
 }

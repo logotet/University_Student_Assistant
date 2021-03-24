@@ -23,7 +23,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        repository = new Repository();
+        repository = new Repository(this);
         email = AppConstants.DUMMY_EMAIL;
         password = AppConstants.DUMMY_PASSWORD;
 

@@ -2,8 +2,6 @@ package com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,7 +12,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -24,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.logotet.universitystudentassistant.R;
 import com.logotet.universitystudentassistant.adapters.UniversityAdapter;
-import com.logotet.universitystudentassistant.data.models.UniversityEntity;
+import com.logotet.universitystudentassistant.data.entities.UniversityEntity;
 import com.logotet.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
 
 import java.util.List;

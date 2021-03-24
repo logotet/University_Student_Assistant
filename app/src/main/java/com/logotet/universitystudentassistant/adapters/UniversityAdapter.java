@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.logotet.universitystudentassistant.R;
-import com.logotet.universitystudentassistant.data.models.UniversityEntity;
+import com.logotet.universitystudentassistant.data.entities.UniversityEntity;
 
 import java.util.ArrayList;
 import java.util.List;

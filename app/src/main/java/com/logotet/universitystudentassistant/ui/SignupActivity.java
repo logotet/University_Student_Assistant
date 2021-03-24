@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.logotet.universitystudentassistant.R;
 import com.logotet.universitystudentassistant.data.Repository;
+import com.logotet.universitystudentassistant.data.entities.User;
 import com.logotet.universitystudentassistant.databinding.ActivitySignupBinding;
-import com.logotet.universitystudentassistant.utils.AppConstants;
 
 public class SignupActivity extends BaseActivity {
 
@@ -25,17 +24,25 @@ public class SignupActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_signup);
-        repository = new Repository();
+        repository = new Repository(this);
 
-        email = AppConstants.DUMMY_EMAIL;
-        password = AppConstants.DUMMY_PASSWORD;
 
         binding.btnRegister.setOnClickListener(view ->
         {
 //            if (validateRegisterDetails()) {
-//                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                email = binding.edtEmail.getText().toString();
+                password = binding.edtPassword.getText().toString();
+                User user = new User("dummy_id",
+                        binding.edtFirstName.getText().toString().trim(),
+                        binding.edtLastName.getText().toString().trim(),
+                        email,
+                        password
+                );
+                repository.createAccount(email, password, this, user);
+                repository.insertUserToRoomDb(user);
+                startActivity(new Intent(SignupActivity.this, MainActivity.class));
 //            }
-            repository.createAccount(email, password, this);
+
         });
     }
 
@@ -63,7 +70,6 @@ public class SignupActivity extends BaseActivity {
             showErrorSnackBar(getResources().getString(R.string.err_msg_enter_confirm_password), true);
             return false;
         }
-
 
         if (!binding.edtPassword.getText().toString().trim().equals(binding.edtConfirmPassword.getText().toString()
                 .trim())) {
