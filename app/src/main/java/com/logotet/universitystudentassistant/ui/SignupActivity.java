@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.logotet.universitystudentassistant.R;
 import com.logotet.universitystudentassistant.data.Repository;
 import com.logotet.universitystudentassistant.databinding.ActivitySignupBinding;
@@ -18,6 +19,7 @@ public class SignupActivity extends BaseActivity {
     private String email;
     private String password;
     private Repository repository;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

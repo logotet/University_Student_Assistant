@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,9 +21,13 @@ import com.logotet.universitystudentassistant.ui.LoginActivity;
 import com.logotet.universitystudentassistant.utils.AppConstants;
 
 public class FirebaseAuthService {
-    private FirebaseAuth auth = FirebaseAuth.getInstance();
-    private FirebaseFirestore firestoreDb = FirebaseFirestore.getInstance();
+    private FirebaseAuth auth;
+    private FirestoreService firestoreService;
 
+    public FirebaseAuthService() {
+        auth = FirebaseAuth.getInstance();
+        firestoreService = new FirestoreService();
+    }
 
     public void createAccount(String email, String password, Context context) {
         auth.createUserWithEmailAndPassword(email, password)
@@ -31,36 +36,19 @@ public class FirebaseAuthService {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //TODO: add user model with the entity values
                         FirebaseUser firebaseUser = auth.getCurrentUser();
-                        User user = new User();
-//                        registerUser(user);
+//                        firestoreService.uploadUserDetails(firebaseUser);
                     }
                 });
     }
 
 
-    private void registerUser(User user) {
-        if (user != null) {
-            firestoreDb.collection(AppConstants.USERS)
-                    .document(user.getId())
-                    .set(user, SetOptions.merge())
-                    .addOnSuccessListener(aVoid -> {
-
-                            }
-                    )
-                    .addOnFailureListener(e -> {
-
-                            }
-                    );
-        }
-    }
-
-    public void signIntoAccount(String email, String password, Context context){
+    public void signIntoAccount(String email, String password, Context context) {
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) context, task -> {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         Toast.makeText(context, firebaseUser.getEmail(), Toast.LENGTH_LONG).show();
-                        if(context instanceof LoginActivity){
+                        if (context instanceof LoginActivity) {
                             ((LoginActivity) context).goToMain();
                         }
                     }
@@ -72,4 +60,6 @@ public class FirebaseAuthService {
                     }
                 });
     }
+
+
 }
