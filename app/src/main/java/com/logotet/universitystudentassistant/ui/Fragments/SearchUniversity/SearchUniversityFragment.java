@@ -24,6 +24,7 @@ import com.logotet.universitystudentassistant.R;
 import com.logotet.universitystudentassistant.adapters.UniversityAdapter;
 import com.logotet.universitystudentassistant.data.entities.UniversityEntity;
 import com.logotet.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
+import com.logotet.universitystudentassistant.utils.AppConstants;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,7 +58,7 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         searchUniversityViewModel =
                 new ViewModelProvider(this).get(SearchUniversityViewModel.class);
 
-        adapter = new UniversityAdapter(this);
+        adapter = new UniversityAdapter(this, AppConstants.FRAGMENT_SEARCH_UNIVERSITIES);
         binding.recViewUniversities.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewUniversities.setAdapter(adapter);
 

@@ -3,6 +3,8 @@ package com.logotet.universitystudentassistant.data;
 import android.app.Activity;
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.google.firebase.auth.FirebaseUser;
 import com.logotet.universitystudentassistant.data.entities.UniversityEntity;
 import com.logotet.universitystudentassistant.data.entities.User;
@@ -57,6 +59,15 @@ public class Repository {
     //University
     public void insertUniversityToRoomDb(UniversityEntity universityEntity){
         roomDb.universityDao().insertUniversity(universityEntity);
+    }
+
+    public LiveData<List<UniversityEntity>> getAllUniversities(){
+       return roomDb.universityDao().getAll();
+    }
+
+    public void deleteUniversity(UniversityEntity entity){
+        String name = entity.getName();
+        roomDb.universityDao().deleteUniversityByName(name);
     }
 
 }

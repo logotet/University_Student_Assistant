@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40">
+
+    <path
+        android:fillColor="#FFC49C"
+        android:pathData="M 3.5 8.5 H 38.5 V 32.5 H 3.5 V 8.5 Z" />
+    <path
+        android:fillColor="#A16A4A"
+        android:pathData="M38,9v23H4V9H38 M39,8H3v25h36V8L39,8z" />
+    <path
+        android:fillColor="#FFC49C"
+        android:pathData="M2.5,35.5V34c0-0.827,0.673-1.5,1.5-1.5h34c0.827,0,1.5,0.673,1.5,1.5v1.5H2.5z" />
+    <path
+        android:fillColor="#A16A4A"
+        android:pathData="M38,33c0.551,0,1,0.449,1,1v1H3v-1c0-0.551,0.449-1,1-1H38 M38,32H4c-1.105,0-2,0.895-2,2v2h38v-2 C40,32.895,39.105,32,38,32L38,32z" />
+    <path
+        android:fillColor="#5E9C76"
+        android:pathData="M 6 11 H 36 V 32 H 6 V 11 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 15 32 L 9 32 L 9 29 L 15 29 L 16.5 30.5 Z" />
+    <path
+        android:fillColor="#8BB7F0"
+        android:pathData="M10.5,24.5c-5.514,0-10-4.486-10-10s4.486-10,10-10s10,4.486,10,10S16.014,24.5,10.5,24.5z" />
+    <path
+        android:fillColor="#4E7AB5"
+        android:pathData="M10.5,5c5.238,0,9.5,4.262,9.5,9.5c0,5.238-4.262,9.5-9.5,9.5S1,19.738,1,14.5 C1,9.262,5.262,5,10.5,5 M10.5,4C4.701,4,0,8.701,0,14.5C0,20.299,4.701,25,10.5,25S21,20.299,21,14.5C21,8.701,16.299,4,10.5,4 L10.5,4z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 10.5 7 C 14.6421356237 7 18 10.3578643763 18 14.5 C 18 18.6421356237 14.6421356237 22 10.5 22 C 6.35786437627 22 3 18.6421356237 3 14.5 C 3 10.3578643763 6.35786437627 7 10.5 7 Z" />
+    <path
+        android:fillColor="#36404D"
+        android:pathData="M 10.5 13.5 C 11.0522847498 13.5 11.5 13.9477152502 11.5 14.5 C 11.5 15.0522847498 11.0522847498 15.5 10.5 15.5 C 9.94771525017 15.5 9.5 15.0522847498 9.5 14.5 C 9.5 13.9477152502 9.94771525017 13.5 10.5 13.5 Z" />
+    <path
+        android:strokeColor="#36404D"
+        android:strokeWidth="1"
+        android:strokeMiterLimit="10"
+        android:pathData="M 13.5 18.25 L 10.5 14.5 L 12.75 8.5 " />
+</vector>

@@ -2,13 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_search_universities"
-        android:icon="@drawable/ic_university"
-        android:title="@string/title_search_universities"/>
+        android:id="@+id/navigation_my_universities"
+        android:icon="@drawable/my_uni__bottom_selector"
+        android:title="@string/title_my_universities"/>
 
     <item
-        android:id="@+id/navigation_my_universities"
-        android:icon="@drawable/ic_graduation_cap"
-        android:title="@string/title_my_universities"/>
+        android:id="@+id/navigation_search_universities"
+        android:icon="@drawable/search_uni_selector"
+        android:title="@string/title_search_universities"/>
+
+
 
 </menu>
