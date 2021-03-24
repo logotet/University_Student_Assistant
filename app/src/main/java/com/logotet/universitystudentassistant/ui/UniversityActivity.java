@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.logotet.universitystudentassistant.R;
 import com.logotet.universitystudentassistant.databinding.ActivityUniversityBinding;
+import com.logotet.universitystudentassistant.utils.ViewHelper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -34,23 +35,11 @@ public class UniversityActivity extends AppCompatActivity {
                  R.id.navigation_search_universities, R.id.navigation_my_universities)
                 .build();
 
-        setUpToolbar();
+        ViewHelper.setUpToolbar(this, binding.toolbarSearchUniversitiesActivity);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
-
-    private void setUpToolbar() {
-        setSupportActionBar(binding.toolbarSearchUniversitiesActivity);
-        ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setTitle("");
-        supportActionBar.setDisplayHomeAsUpEnabled(true);
-        supportActionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back);
-        binding.toolbarSearchUniversitiesActivity.setNavigationOnClickListener(item -> {
-            onBackPressed();
-        });
-    }
-
 
 }

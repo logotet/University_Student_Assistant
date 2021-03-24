@@ -55,5 +55,7 @@
     <string name="title_search_universities">University Data</string>
     <string name="title_my_universities">My Universities</string>
     <string name="search_title">Search for univesities...</string>
+    <string name="profile">Profile</string>
+    <string name="favourite_universities">Add your favourite universities here!</string>
 
 </resources>

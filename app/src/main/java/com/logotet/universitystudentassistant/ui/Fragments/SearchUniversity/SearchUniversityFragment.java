@@ -113,6 +113,6 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
         searchUniversityViewModel.insertUniversity(entity);
-        Toast.makeText(getContext(), "The university was added to your favourites.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), entity.getName() +" was added to your favourites.", Toast.LENGTH_SHORT).show();
     }
 }

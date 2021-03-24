@@ -45,11 +45,13 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
         binding.recViewUniversities.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewUniversities.setAdapter(adapter);
 
+
         myUniversitiesViewModel.getUniversities().observe(getViewLifecycleOwner(), new Observer<List<UniversityEntity>>() {
             @Override
             public void onChanged(List<UniversityEntity> universityEntities) {
                 universities = universityEntities;
                 adapter.updateData(universities);
+                toggleTextInfoVisibility();
             }
         });
     }
@@ -57,5 +59,16 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
         myUniversitiesViewModel.deleteUniversity(entity);
+    }
+
+    private void toggleTextInfoVisibility() {
+        if (universities != null && universities.size() > 0) {
+            binding.txtFavouriteUniversities.setVisibility(View.GONE);
+            binding.recViewUniversities.setVisibility(View.VISIBLE);
+        } else {
+            binding.txtFavouriteUniversities.setVisibility(View.VISIBLE);
+            binding.recViewUniversities.setVisibility(View.GONE);
+
+        }
     }
 }
