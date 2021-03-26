@@ -34,6 +34,17 @@
 
     <string name="please_wait">Please Wait&#8230;</string>
 
+    <string-array name="my_header_title">
+        <item></item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+    </string-array>
+
     <string name="title_complete_profile">COMPLETE PROFILE</string>
     <string name="et_hint_mobile_number">Mobile Number</string>
     <string name="rb_lbl_male">MALE</string>
@@ -57,5 +68,12 @@
     <string name="search_title">Search for univesities...</string>
     <string name="profile">Profile</string>
     <string name="favourite_universities">Add your favourite universities here!</string>
+    <string name="brn_cancel">Cancel</string>
+    <string name="btn_save">Save</string>
+    <string name="hint_subject_name">Subject</string>
+    <string name="hint_location">Location</string>
+    <string name="hint_day_of_week">Day of the Week</string>
+    <string name="hint_start_time">From</string>
+    <string name="hint_end_time">Until</string>
 
 </resources>
