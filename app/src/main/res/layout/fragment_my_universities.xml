@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.Fragments.MyUniversities.MyUniversitiesFragment">
+        tools:context=".ui.fragments.MyUniversities.MyUniversitiesFragment">
 
         <TextView
             android:id="@+id/txt_favourite_universities"

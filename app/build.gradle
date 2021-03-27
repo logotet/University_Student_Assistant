@@ -49,6 +49,9 @@ dependencies {
 
     implementation 'com.jackandphantom.android:androidlikebutton:1.2.0'
 
+    //CSV reader
+    implementation group: 'com.opencsv', name: 'opencsv', version: '3.7'
+
     //Week View
     implementation 'com.github.islandparadise14:mintable:1.5.1'
 
