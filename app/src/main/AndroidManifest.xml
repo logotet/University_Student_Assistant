@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.project.universitystudentassistant">
+    package="com.logotet.universitystudentassistant">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,23 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityStudentAssistant"
         tools:replace="android:theme">
-        <activity android:name="com.project.universitystudentassistant.ui.activities.SplashActivity"/>
+        <activity android:name=".ui.SplashActivity" />
 
-        <activity android:name="com.project.universitystudentassistant.ui.activities.TimetableActivity"/>
+        <activity android:name=".ui.TimetableActivity" />
 
-        <activity android:name="com.project.universitystudentassistant.ui.activities.ProfileActivity" />
+        <activity android:name=".ui.ProfileActivity" />
         <activity
-            android:name="com.project.universitystudentassistant.ui.activities.UniversityActivity"
+            android:name=".ui.UniversityActivity"
             android:label="@string/title_activity_university" />
-        <activity android:name="com.project.universitystudentassistant.ui.activities.SignupActivity" />
-        <activity android:name="com.project.universitystudentassistant.ui.activities.LoginActivity" >
+        <activity android:name=".ui.SignupActivity" />
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.project.universitystudentassistant.ui.activities.MainActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>
