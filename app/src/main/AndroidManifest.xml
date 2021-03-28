@@ -13,8 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityStudentAssistant"
         tools:replace="android:theme">
-        <activity android:name=".ui.SplashActivity" />
+        <activity android:name=".ui.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.TimetableActivity" />
 
         <activity android:name=".ui.ProfileActivity" />
@@ -22,13 +27,8 @@
             android:name=".ui.UniversityActivity"
             android:label="@string/title_activity_university" />
         <activity android:name=".ui.SignupActivity" />
-        <activity android:name=".ui.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ui.LoginActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.MainActivity" />
     </application>
 

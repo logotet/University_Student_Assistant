@@ -6,7 +6,9 @@ import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.logotet.universitystudentassistant.R;
@@ -36,12 +38,25 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         repository = new Repository(this);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         readData();
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            }
+        }, 2000);
 
     }
 
     private void readData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
         InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table);
         BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(inputStream, StandardCharsets.UTF_8)
@@ -56,12 +71,12 @@ public class SplashActivity extends AppCompatActivity {
                 entityPrep.setAddress(tokens[1]);
                 entityPrep.setCity(tokens[2]);
                 entityPrep.setState(tokens[3]);
-                entityPrep.setWebPage(tokens[tokens.length - 2]);
+                entityPrep.setWebPage(tokens[tokens.length - 1]);
                 Log.i("Entity", entityPrep.getName() + " "
                         + entityPrep.getAddress() + ", "
                         + entityPrep.getCity() + " "
                         + entityPrep.getState() + " "
-                        + entityPrep.getWebPage());
+                        + "web page " + entityPrep.getWebPage());
                 repository.insertPrepUniversity(entityPrep);
             }
 
@@ -69,5 +84,7 @@ public class SplashActivity extends AppCompatActivity {
             Log.wtf("Splash Activity", "Error reading file!!! " + line, e);
             e.printStackTrace();
         }
+            }
+        });
     }
 }
