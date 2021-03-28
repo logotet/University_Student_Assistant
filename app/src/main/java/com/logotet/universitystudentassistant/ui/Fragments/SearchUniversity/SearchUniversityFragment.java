@@ -2,7 +2,10 @@ package com.logotet.universitystudentassistant.ui.Fragments.SearchUniversity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -116,5 +119,26 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     public void onFavButtonClicked(UniversityEntity entity) {
         searchUniversityViewModel.insertUniversity(entity);
         Toast.makeText(getContext(), entity.getName() +" was added to your favourites.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onWebPageClicked(UniversityEntity entity) {
+        try {
+            String url = "http://" + entity.getWebPage();
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        }catch (Exception e){
+            Log.e("error", e.getMessage());
+        }
+    }
+
+    @Override
+    public void onAddressClicked(UniversityEntity entity) {
+        String location = "geo:0,0?q="+entity.getAddress()+", "+entity.getCity()+", " + entity.getState();
+        Uri gmmIntentUri = Uri.parse(location);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 }

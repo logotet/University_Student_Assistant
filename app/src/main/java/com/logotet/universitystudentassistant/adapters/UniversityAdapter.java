@@ -72,20 +72,14 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             webPage = itemView.findViewById(R.id.txt_web_address);
             imageButton = itemView.findViewById(R.id.img_favourite);
             toggleFavButton(imageButton, tag);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            itemView.setOnClickListener(view -> {
 //                    TODO: button should stay pressed
-                    imageButton.setPressed(true);
-                    Toast.makeText(itemView.getContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
-                }
+                imageButton.setPressed(true);
+                Toast.makeText(itemView.getContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
             });
-            imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onFavButtonClicked(universityEntity);
-                }
-            });
+            imageButton.setOnClickListener(view -> listener.onFavButtonClicked(universityEntity));
+            webPage.setOnClickListener(view -> { listener.onWebPageClicked(universityEntity); });
+            address.setOnClickListener(view -> listener.onAddressClicked(universityEntity));
         }
 
         public void toggleFavButton(ImageButton button, String tag){
@@ -100,6 +94,8 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
 
         public interface OnItemPressedListener {
             void onFavButtonClicked(UniversityEntity entity);
+            void onWebPageClicked(UniversityEntity entity);
+            void onAddressClicked(UniversityEntity entity);
         }
 
 

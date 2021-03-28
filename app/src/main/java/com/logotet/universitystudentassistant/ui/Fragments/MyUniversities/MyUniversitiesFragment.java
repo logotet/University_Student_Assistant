@@ -1,6 +1,9 @@
 package com.logotet.universitystudentassistant.ui.Fragments.MyUniversities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +62,28 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
         myUniversitiesViewModel.deleteUniversity(entity);
+    }
+
+    @Override
+    public void onWebPageClicked(UniversityEntity entity) {
+        //TODO: extract this logic to avoid duplication
+        try {
+            String url = "http://" + entity.getWebPage();
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        }catch (Exception e){
+            Log.e("error", e.getMessage());
+        }
+    }
+
+    @Override
+    public void onAddressClicked(UniversityEntity entity) {
+        String location = "geo:0,0?q="+entity.getAddress()+", "+entity.getCity()+", " + entity.getState();
+        Uri gmmIntentUri = Uri.parse(location);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     private void toggleTextInfoVisibility() {
