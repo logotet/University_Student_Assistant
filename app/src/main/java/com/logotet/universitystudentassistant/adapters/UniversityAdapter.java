@@ -46,6 +46,9 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
     public void onBindViewHolder(@NonNull UniversityHolder holder, int position) {
         UniversityEntity universityEntity = universityEntityList.get(position);
         holder.name.setText(universityEntity.getName());
+        holder.location.setText(String.format("%s, %s", universityEntity.getCity(), universityEntity.getState()));
+        holder.address.setText(universityEntity.getAddress());
+        holder.webPage.setText(universityEntity.getWebPage());
         holder.setUniversity(universityEntity);
     }
 
@@ -56,7 +59,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
 
     public static class UniversityHolder extends RecyclerView.ViewHolder {
         private UniversityEntity universityEntity;
-        private TextView name;
+        private TextView name, location, address, webPage;
         private ImageButton imageButton;
         private String tag = "";
 
@@ -64,6 +67,9 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             super(itemView);
             this.tag = tag;
             name = itemView.findViewById(R.id.txt_uni_name);
+            location = itemView.findViewById(R.id.txt_location);
+            address = itemView.findViewById(R.id.txt_address);
+            webPage = itemView.findViewById(R.id.txt_web_address);
             imageButton = itemView.findViewById(R.id.img_favourite);
             toggleFavButton(imageButton, tag);
             itemView.setOnClickListener(new View.OnClickListener() {

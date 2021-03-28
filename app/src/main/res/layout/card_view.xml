@@ -40,15 +40,22 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:text="Harvard"
-                        android:textAllCaps="true"
-                        android:textSize="20sp"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/txt_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cambridge, Massachusetts"
                         android:textAllCaps="true" />
+                    <TextView
+                        android:id="@+id/txt_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:textAllCaps="false" />
                 </LinearLayout>
 
             </LinearLayout>
