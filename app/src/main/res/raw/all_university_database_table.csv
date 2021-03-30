@@ -1,27 +1,13 @@
-name,address.streetAddress,address.addressLocality,address.addressRegion,cost,web_page,image
-Community College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,,www.maxwell.af.mil/au/ccaf/,
-Alabama A & M University,4900 Meridian St,Normal,AL,,www.aamu.edu/,
-University of Alabama at Birmingham,1720 2nd Avenue South,Birmingham,AL,,www.uab.edu,
-Amridge University,1200 Taylor Rd,Montgomery,AL,,www.amridgeuniversity.edu,
-University of Alabama at Huntsville,301 Sparkman Dr,Huntsville,AL,,www.uah.edu,
-Alabama State University,915 S Jackson Street,Montgomery,AL,,www.alasu.edu,
-The University of Alabama,739 University Boulevard,Tuscaloosa,AL,,www.ua.edu/,
-Central Alabama Community College,1675 Cherokee Road,Alexander City,AL,,www.cacc.edu,
-Athens State University,300 N Beaty St,Athens,AL,,www.athens.edu,
-Auburn University-Montgomery,7440 East Drive P.O. Box 244023,Montgomery,AL,,www.aum.edu,
-Auburn University Main Campus,,Auburn University,AL,,www.auburn.edu,
-Birmingham Southern College,900 Arkadelphia Road,Birmingham,AL,,www.bsc.edu,
-Chattahoochee Valley Community College,2602 College Dr,Phenix City,AL,,www.cv.edu,
-Concordia College Alabama,1804 Green Street,Selma,AL,,www.concordiaselma.edu,
-DCH Regional Medical Center,"809 University Blvd., East",Tuscaloosa,AL,,www.dchsystem.com,
-Enterprise State Community College,600 Plaza Drive,Enterprise,AL,,www.escc.edu,
-James H. Faulkner State Community College,1900 US Hwy 31 S,Bay Minette,AL,,www.faulknerstate.edu,
-Faulkner University,5345 Atlanta Hwy,Montgomery,AL,,www.faulkner.edu,
-Gadsden Business College,3225 Rainbow Drive Suite 246,Rainbow City,AL,,www.gadsdenbusinesscollege.com,
-Gadsden State Community College,1001 George Wallace Dr,Gadsden,AL,,www.gadsdenstate.edu,
-George C Wallace Community College - Dothan,1141 Wallace Drive,Dothan,AL,,www.wallace.edu,
-Wallace State Community College  - Hanceville,801 Main St. P. O. Box 2000,Hanceville,AL,,www.wallacestate.edu,
-George Corley Wallace State Community College - Selma,3000 Earl Goodwin Parkway,Selma,AL,,www.wccs.edu,
-Huntingdon College,1500 East Fairview Avenue,Montgomery,AL,,www.huntingdon.edu,
-Huntsville Hospital,101 Sivley Road,Huntsville,AL,,,
-Heritage Christian University,3625 Helton Dr,Florence,AL,,www.hcu.edu,
+name,address.streetAddress,address.addressLocality,address.addressRegion,cost,web_page,image,graduation_rate,acceptance_rate,description
+Community College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
+Community 5College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama1 A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
+Community1 College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama2 A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
+Community2 College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama3 A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
+Community3 College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama4 A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
+Community4 College of the Air Force,130 W Maxwell Blvd,Montgomery,AL,24000,www.maxwell.af.mil/au/ccaf/,air force,70,25,From distinguished faculty taking a genuine interest in students' success to offering some of the smallest class sizes of colleges and universities in the country Samford University offers a collegial scholarly environment that continues to receive high ratings for quality of life and instruction. The 87th oldest institution of higher learning in the United States Samford University is a globally-engaged teaching and research university rooted firmly in its historic Christian mission.
+Alabama5 A & M University,4900 Meridian St,Normal,AL,16000,www.aamu.edu/,a&m,50,43,gsgjsdgojsgsdjsdgksdghjskgks
