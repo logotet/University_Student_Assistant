@@ -68,7 +68,7 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
     public void onWebPageClicked(UniversityEntity entity) {
         //TODO: extract this logic to avoid duplication
         try {
-            String url = "http://" + entity.getWebPage();
+            String url = entity.getWebPage();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             startActivity(intent);

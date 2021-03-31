@@ -56,10 +56,14 @@ public class SplashActivity extends AppCompatActivity {
                         entityPrep.setState(tokens[3]);
                         entityPrep.setCostOfAttendance(Integer.parseInt(tokens[4]));
                         entityPrep.setWebPage(tokens[5]);
-                        entityPrep.setImage(tokens[6]);
+                        entityPrep.setImage(tokens[6].replace("|", ","));
                         entityPrep.setGraduationRate(Integer.parseInt(tokens[7]));
                         entityPrep.setAcceptanceRate(Integer.parseInt(tokens[8]));
-                        entityPrep.setDescription(tokens[9]);
+                        String replace = tokens[9]
+                                .replace("|", ",")
+                                .replace("�", "'")
+                                .replace("\"", "");
+                        entityPrep.setDescription(replace);
                         Log.i("Entity", entityPrep.getName() + " "
                                 + "address " + entityPrep.getAddress() + ", "
                                 + "city " + entityPrep.getCity() + " "

@@ -1,22 +1,30 @@
 package com.project.universitystudentassistant.adapters;
 
+import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.UniversityHolder> {
@@ -59,6 +67,13 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
         holder.cost.setText(String.format("%s%s", universityEntity.getCostOfAttendance(),
                 resources.getString(R.string.dollar_sign)));
         holder.description.setText(universityEntity.getDescription());
+        holder.setImageUniversity(universityEntity.getName());
+//        String imageBytes = universityEntity.getImage();
+//        byte[] imageByteArray = Base64.getDecoder().decode(imageBytes);
+//        Glide.with(holder.itemView.getContext())
+//                .load(imageByteArray)
+//                .placeholder(R.drawable.university_image)
+//                .into(holder.imgUniversity);
         holder.setUniversity(universityEntity);
     }
 
@@ -71,11 +86,14 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
         private UniversityEntity universityEntity;
         private TextView name, location, address, webPage, description, gradRate, accRate, cost;
         private ImageButton imageButton;
+        private ImageView imgUniversity;
         private String tag = "";
+        private AssetManager assets;
 
         public UniversityHolder(@NonNull View itemView, OnItemPressedListener listener, String tag) {
             super(itemView);
             this.tag = tag;
+            assets = itemView.getContext().getAssets();
             name = itemView.findViewById(R.id.txt_uni_name);
             location = itemView.findViewById(R.id.txt_location);
             address = itemView.findViewById(R.id.txt_address);
@@ -85,6 +103,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             accRate = itemView.findViewById(R.id.txt_acc_rate_value);
             gradRate = itemView.findViewById(R.id.txt_grad_rate_value);
             cost = itemView.findViewById(R.id.txt_cost_value);
+            imgUniversity = itemView.findViewById(R.id.img_university);
             toggleFavButton(imageButton, tag);
             itemView.setOnClickListener(view -> {
 //                    TODO: button should stay pressed
@@ -104,6 +123,21 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
 
         public void setUniversity(UniversityEntity unversity) {
             this.universityEntity = unversity;
+        }
+
+        public void setImageUniversity(String fileName){
+            InputStream is = null;
+            try{
+                is = assets.open(fileName + ".jpg");
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+
+            Glide.with(itemView.getContext())
+                .load(bitmap)
+                .placeholder(R.drawable.university_image)
+                .into(imgUniversity);
         }
 
         public interface OnItemPressedListener {

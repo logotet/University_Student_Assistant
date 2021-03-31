@@ -124,7 +124,7 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     @Override
     public void onWebPageClicked(UniversityEntity entity) {
         try {
-            String url = "http://" + entity.getWebPage();
+            String url = entity.getWebPage();
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             startActivity(intent);
