@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table);
+                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table_final);
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(inputStream, StandardCharsets.UTF_8)
                 );
@@ -59,12 +59,16 @@ public class SplashActivity extends AppCompatActivity {
                         entityPrep.setImage(tokens[6]);
                         entityPrep.setGraduationRate(Integer.parseInt(tokens[7]));
                         entityPrep.setAcceptanceRate(Integer.parseInt(tokens[8]));
-                        entityPrep.setWebPage(tokens[9]);
+                        entityPrep.setDescription(tokens[9]);
                         Log.i("Entity", entityPrep.getName() + " "
-                                + entityPrep.getAddress() + ", "
-                                + entityPrep.getCity() + " "
-                                + entityPrep.getState() + " "
-                                + "web page " + entityPrep.getWebPage());
+                                + "address " + entityPrep.getAddress() + ", "
+                                + "city " + entityPrep.getCity() + " "
+                                + "state " + entityPrep.getState() + " "
+                                + "web page " + entityPrep.getWebPage() + " "
+                                + "grad rate " + entityPrep.getGraduationRate()
+                                + "acc rate " + entityPrep.getAcceptanceRate() + " "
+                                + "description " + entityPrep.getDescription()
+                        );
                         repository.insertPrepUniversity(entityPrep);
                     }
                 } catch (IOException e) {

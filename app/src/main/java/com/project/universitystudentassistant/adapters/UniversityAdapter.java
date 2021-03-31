@@ -1,5 +1,6 @@
 package com.project.universitystudentassistant.adapters;
 
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,10 +47,18 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
     @Override
     public void onBindViewHolder(@NonNull UniversityHolder holder, int position) {
         UniversityEntity universityEntity = universityEntityList.get(position);
+        Resources resources = holder.itemView.getResources();
         holder.name.setText(universityEntity.getName());
         holder.location.setText(String.format("%s, %s", universityEntity.getCity(), universityEntity.getState()));
         holder.address.setText(universityEntity.getAddress());
         holder.webPage.setText(universityEntity.getWebPage());
+        holder.accRate.setText(String.format("%s%s", String.valueOf(universityEntity.getAcceptanceRate()),
+                resources.getString(R.string.percent_sign)));
+        holder.gradRate.setText(String.format("%s%s", String.valueOf(universityEntity.getGraduationRate()),
+                resources.getString(R.string.percent_sign)));
+        holder.cost.setText(String.format("%s%s", universityEntity.getCostOfAttendance(),
+                resources.getString(R.string.dollar_sign)));
+        holder.description.setText(universityEntity.getDescription());
         holder.setUniversity(universityEntity);
     }
 
@@ -59,7 +69,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
 
     public static class UniversityHolder extends RecyclerView.ViewHolder {
         private UniversityEntity universityEntity;
-        private TextView name, location, address, webPage;
+        private TextView name, location, address, webPage, description, gradRate, accRate, cost;
         private ImageButton imageButton;
         private String tag = "";
 
@@ -71,6 +81,10 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             address = itemView.findViewById(R.id.txt_address);
             webPage = itemView.findViewById(R.id.txt_web_address);
             imageButton = itemView.findViewById(R.id.img_favourite);
+            description = itemView.findViewById(R.id.txt_description);
+            accRate = itemView.findViewById(R.id.txt_acc_rate_value);
+            gradRate = itemView.findViewById(R.id.txt_grad_rate_value);
+            cost = itemView.findViewById(R.id.txt_cost_value);
             toggleFavButton(imageButton, tag);
             itemView.setOnClickListener(view -> {
 //                    TODO: button should stay pressed

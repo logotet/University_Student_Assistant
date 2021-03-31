@@ -11,6 +11,11 @@ public class EntityConverter {
         entityPrep.setCity(entity.getCity());
         entityPrep.setState(entity.getState());
         entityPrep.setWebPage(entity.getWebPage());
+        entityPrep.setCostOfAttendance(entity.getCostOfAttendance());
+        entityPrep.setImage(entity.getImage());
+        entityPrep.setAcceptanceRate(entity.getAcceptanceRate());
+        entityPrep.setGraduationRate(entity.getGraduationRate());
+        entityPrep.setDescription(entity.getDescription());
         return entityPrep;
     }
 
@@ -20,6 +25,11 @@ public class EntityConverter {
         entity.setCity(entityPrep.getCity());
         entity.setState(entityPrep.getState());
         entity.setWebPage(entityPrep.getWebPage());
+        entity.setImage(entityPrep.getImage());
+        entity.setCostOfAttendance(entityPrep.getCostOfAttendance());
+        entity.setAcceptanceRate(entityPrep.getAcceptanceRate());
+        entity.setGraduationRate(entityPrep.getGraduationRate());
+        entity.setDescription(entityPrep.getDescription());
         return entity;
     }
 
