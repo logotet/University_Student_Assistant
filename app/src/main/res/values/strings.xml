@@ -75,9 +75,9 @@
     <string name="hint_day_of_week">Day of the Week</string>
     <string name="hint_start_time">From</string>
     <string name="hint_end_time">Until</string>
-    <string name="acceptance_rate">Acceptance rate:</string>
-    <string name="graduation_rate">Graduation rate:</string>
-    <string name="string_cost">Cost:</string>
+    <string name="acceptance_rate">Acceptance rate: </string>
+    <string name="graduation_rate">Graduation rate: </string>
+    <string name="string_cost">Average cost :</string>
     <string name="percent_sign">%</string>
     <string name="dollar_sign">$</string>
     <string name="tab">\u0009</string>

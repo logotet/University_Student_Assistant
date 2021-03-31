@@ -28,23 +28,24 @@ public abstract class AppDatabase extends RoomDatabase {
             appDatabase = Room.databaseBuilder(context,
                     AppDatabase.class,
                     "university-assistant-database.db")
-                    .addMigrations(new Migration(4, 5) {
-                        @Override
-                        public void migrate(@NonNull SupportSQLiteDatabase database) {
-                            database.execSQL("ALTER TABLE prepopulated_universities_table "
-                                    + " ADD COLUMN graduation_rate INTEGER DEFAULT 1 NOT NULL");
-                            database.execSQL("ALTER TABLE prepopulated_universities_table "
-                                    + " ADD COLUMN acceptance_rate INTEGER DEFAULT 1 NOT NULL");
-                            database.execSQL("ALTER TABLE prepopulated_universities_table "
-                                    + " ADD COLUMN description TEXT");
-                            database.execSQL("ALTER TABLE my_universities_table "
-                                    + " ADD COLUMN graduation_rate INTEGER DEFAULT 1 NOT NULL");
-                            database.execSQL("ALTER TABLE my_universities_table "
-                                    + " ADD COLUMN acceptance_rate INTEGER DEFAULT 1 NOT NULL");
-                            database.execSQL("ALTER TABLE my_universities_table "
-                                    + " ADD COLUMN description TEXT");
-                        }
-                    })
+                    .fallbackToDestructiveMigration()
+//                    .addMigrations(new Migration(4, 5) {
+//                        @Override
+//                        public void migrate(@NonNull SupportSQLiteDatabase database) {
+//                            database.execSQL("ALTER TABLE prepopulated_universities_table "
+//                                    + " ADD COLUMN graduation_rate INTEGER DEFAULT 1 NOT NULL");
+//                            database.execSQL("ALTER TABLE prepopulated_universities_table "
+//                                    + " ADD COLUMN acceptance_rate INTEGER DEFAULT 1 NOT NULL");
+//                            database.execSQL("ALTER TABLE prepopulated_universities_table "
+//                                    + " ADD COLUMN description TEXT");
+//                            database.execSQL("ALTER TABLE my_universities_table "
+//                                    + " ADD COLUMN graduation_rate INTEGER DEFAULT 1 NOT NULL");
+//                            database.execSQL("ALTER TABLE my_universities_table "
+//                                    + " ADD COLUMN acceptance_rate INTEGER DEFAULT 1 NOT NULL");
+//                            database.execSQL("ALTER TABLE my_universities_table "
+//                                    + " ADD COLUMN description TEXT");
+//                        }
+//                    })
                     .allowMainThreadQueries()
                     .build();
         }
