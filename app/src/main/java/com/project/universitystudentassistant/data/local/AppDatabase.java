@@ -46,7 +46,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //                                    + " ADD COLUMN description TEXT");
 //                        }
 //                    })
-                    .allowMainThreadQueries()
+//                    .allowMainThreadQueries()
                     .build();
         }
         return appDatabase;

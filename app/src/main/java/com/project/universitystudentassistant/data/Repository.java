@@ -25,7 +25,8 @@ public class Repository {
     private Executor executor = Executors.newSingleThreadExecutor();
 
     private static Repository repository;
-//TODO: change the constructor to private
+
+    //TODO: change the constructor to private
     public Repository(Context context) {
         firebaseAuthService = new FirebaseAuthService();
         dummyRemoteDataProvider = new DummyRemoteDataProvider();
@@ -33,8 +34,8 @@ public class Repository {
         roomDb = AppDatabase.getInstance(context);
     }
 
-    public static Repository getInstance(Context context){
-        if(repository == null){
+    public static Repository getInstance(Context context) {
+        if (repository == null) {
             repository = new Repository(context);
         }
         return repository;
@@ -61,34 +62,36 @@ public class Repository {
 
     //Room local database
     //User
-    public void insertUserToRoomDb(User user){
+    public void insertUserToRoomDb(User user) {
         roomDb.userDao().insertUser(user);
     }
 
     //University
-    public void insertUniversityToRoomDb(UniversityEntity universityEntity){
-        roomDb.universityDao().insertUniversity(universityEntity);
+    public void insertUniversityToRoomDb(UniversityEntity universityEntity) {
+        executor.execute(() -> roomDb.universityDao().insertUniversity(universityEntity));
     }
 
-    public LiveData<List<UniversityEntity>> getAllUniversities(){
-       return roomDb.universityDao().getAll();
+    public LiveData<List<UniversityEntity>> getAllUniversities() {
+        return roomDb.universityDao().getAll();
     }
 
-    public void deleteUniversity(UniversityEntity entity){
+    public void deleteUniversity(UniversityEntity entity) {
         String name = entity.getName();
-        roomDb.universityDao().deleteUniversityByName(name);
+        executor.execute(() -> roomDb.universityDao().deleteUniversityByName(name));
+
     }
 
     //Pre populated University Entity
-    public void insertPrepUniversity(UniversityEntityPrep universityEntityPrep){
-        roomDb.prepUniversityDao().insertUniversity(universityEntityPrep);
+    public void insertPrepUniversity(UniversityEntityPrep universityEntityPrep) {
+        executor.execute(() -> roomDb.prepUniversityDao().insertUniversity(universityEntityPrep));
+
     }
 
-    public LiveData<List<UniversityEntityPrep>> getAllPrepUniversities(){
+    public LiveData<List<UniversityEntityPrep>> getAllPrepUniversities() {
         return roomDb.prepUniversityDao().getAll();
     }
 
-    public LiveData<List<UniversityEntityPrep>> getSomePrepUniversities(){
+    public LiveData<List<UniversityEntityPrep>> getSomePrepUniversities() {
         return roomDb.prepUniversityDao().getFive();
     }
 
