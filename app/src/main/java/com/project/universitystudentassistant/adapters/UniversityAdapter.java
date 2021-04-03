@@ -68,12 +68,6 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
                 resources.getString(R.string.dollar_sign)));
         holder.description.setText(universityEntity.getDescription());
         holder.setImageUniversity(universityEntity.getName());
-//        String imageBytes = universityEntity.getImage();
-//        byte[] imageByteArray = Base64.getDecoder().decode(imageBytes);
-//        Glide.with(holder.itemView.getContext())
-//                .load(imageByteArray)
-//                .placeholder(R.drawable.university_image)
-//                .into(holder.imgUniversity);
         holder.setUniversity(universityEntity);
     }
 

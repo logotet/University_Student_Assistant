@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table_final);
+                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table);
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(inputStream, StandardCharsets.UTF_8)
                 );
