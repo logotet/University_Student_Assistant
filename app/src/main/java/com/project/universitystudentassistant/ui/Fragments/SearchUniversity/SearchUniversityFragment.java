@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,6 +30,8 @@ import com.project.universitystudentassistant.data.entities.EntityConverter;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
+import com.project.universitystudentassistant.ui.Fragments.AddScheduleTaskFragment;
+import com.project.universitystudentassistant.ui.Fragments.FilterFragment;
 import com.project.universitystudentassistant.utils.AppConstants;
 
 import java.util.List;
@@ -79,6 +82,7 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.search_universities_menu, menu);
         SearchManager searchManager =
                 (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
@@ -98,12 +102,16 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
                 return true;
             }
         });
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.search) {
+        }
+        if (item.getItemId() == R.id.filter) {
+            DialogFragment filterFragment = FilterFragment.newInstance();
+//            filterFragment.setTargetFragment(SearchUniversityFragment.this, 300);
+            filterFragment.show(getActivity().getSupportFragmentManager(), "sort");
         }
         return true;
     }
@@ -118,7 +126,7 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
         searchUniversityViewModel.insertUniversity(entity);
-        Toast.makeText(getContext(), entity.getName() +" was added to your favourites.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), entity.getName() + " was added to your favourites.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -128,14 +136,14 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             startActivity(intent);
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e("error", e.getMessage());
         }
     }
 
     @Override
     public void onAddressClicked(UniversityEntity entity) {
-        String location = "geo:0,0?q="+entity.getAddress()+", "+entity.getCity()+", " + entity.getState();
+        String location = "geo:0,0?q=" + entity.getAddress() + ", " + entity.getCity() + ", " + entity.getState();
         Uri gmmIntentUri = Uri.parse(location);
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");

@@ -25,7 +25,13 @@
         <activity android:name="com.project.universitystudentassistant.ui.ProfileActivity" />
         <activity
             android:name="com.project.universitystudentassistant.ui.UniversityActivity"
-            android:label="@string/title_activity_university" />
+            android:label="@string/title_activity_university" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity android:name="com.project.universitystudentassistant.ui.SignupActivity" />
         <activity android:name="com.project.universitystudentassistant.ui.LoginActivity" />
 
