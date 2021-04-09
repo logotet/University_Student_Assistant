@@ -1,5 +1,9 @@
 package com.project.universitystudentassistant.utils;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class AppConstants {
 
     public static final String USERS = "users";
@@ -9,57 +13,64 @@ public class AppConstants {
     public static final String FRAGMENT_SEARCH_UNIVERSITIES = "fragment_search_universities";
     public static final String FRAGMENT_MY_UNIVERSITIES = "fragment_my_universities";
 
-//       states = new List<US_State>(50);
-//    states.Add(new US_State("AL", "Alabama"));
-//    states.Add(new US_State("AK", "Alaska"));
-//    states.Add(new US_State("AZ", "Arizona"));
-//    states.Add(new US_State("AR", "Arkansas"));
-//    states.Add(new US_State("CA", "California"));
-//    states.Add(new US_State("CO", "Colorado"));
-//    states.Add(new US_State("CT", "Connecticut"));
-//    states.Add(new US_State("DE", "Delaware"));
-//    states.Add(new US_State("DC", "District Of Columbia"));
-//    states.Add(new US_State("FL", "Florida"));
-//    states.Add(new US_State("GA", "Georgia"));
-//    states.Add(new US_State("HI", "Hawaii"));
-//    states.Add(new US_State("ID", "Idaho"));
-//    states.Add(new US_State("IL", "Illinois"));
-//    states.Add(new US_State("IN", "Indiana"));
-//    states.Add(new US_State("IA", "Iowa"));
-//    states.Add(new US_State("KS", "Kansas"));
-//    states.Add(new US_State("KY", "Kentucky"));
-//    states.Add(new US_State("LA", "Louisiana"));
-//    states.Add(new US_State("ME", "Maine"));
-//    states.Add(new US_State("MD", "Maryland"));
-//    states.Add(new US_State("MA", "Massachusetts"));
-//    states.Add(new US_State("MI", "Michigan"));
-//    states.Add(new US_State("MN", "Minnesota"));
-//    states.Add(new US_State("MS", "Mississippi"));
-//    states.Add(new US_State("MO", "Missouri"));
-//    states.Add(new US_State("MT", "Montana"));
-//    states.Add(new US_State("NE", "Nebraska"));
-//    states.Add(new US_State("NV", "Nevada"));
-//    states.Add(new US_State("NH", "New Hampshire"));
-//    states.Add(new US_State("NJ", "New Jersey"));
-//    states.Add(new US_State("NM", "New Mexico"));
-//    states.Add(new US_State("NY", "New York"));
-//    states.Add(new US_State("NC", "North Carolina"));
-//    states.Add(new US_State("ND", "North Dakota"));
-//    states.Add(new US_State("OH", "Ohio"));
-//    states.Add(new US_State("OK", "Oklahoma"));
-//    states.Add(new US_State("OR", "Oregon"));
-//    states.Add(new US_State("PA", "Pennsylvania"));
-//    states.Add(new US_State("RI", "Rhode Island"));
-//    states.Add(new US_State("SC", "South Carolina"));
-//    states.Add(new US_State("SD", "South Dakota"));
-//    states.Add(new US_State("TN", "Tennessee"));
-//    states.Add(new US_State("TX", "Texas"));
-//    states.Add(new US_State("UT", "Utah"));
-//    states.Add(new US_State("VT", "Vermont"));
-//    states.Add(new US_State("VA", "Virginia"));
-//    states.Add(new US_State("WA", "Washington"));
-//    states.Add(new US_State("WV", "West Virginia"));
-//    states.Add(new US_State("WI", "Wisconsin"));
-//    states.Add(new US_State("WY", "Wyoming"));
-//  }
+    private static LinkedHashMap<String, String> states;
+
+
+    private static LinkedHashMap<String, String> getStatesNames(){
+        if(states == null) {
+            states = new LinkedHashMap<>();
+            states.put("AL", "Alabama");
+            states.put("AK", "Alaska");
+            states.put("AZ", "Arizona");
+            states.put("AR", "Arkansas");
+            states.put("CA", "California");
+            states.put("CO", "Colorado");
+            states.put("CT", "Connecticut");
+            states.put("DE", "Delaware");
+            states.put("DC", "District Of Columbia");
+            states.put("FL", "Florida");
+            states.put("GA", "Georgia");
+            states.put("HI", "Hawaii");
+            states.put("ID", "Idaho");
+            states.put("IL", "Illinois");
+            states.put("IN", "Indiana");
+            states.put("IA", "Iowa");
+            states.put("KS", "Kansas");
+            states.put("KY", "Kentucky");
+            states.put("LA", "Louisiana");
+            states.put("ME", "Maine");
+            states.put("MD", "Maryland");
+            states.put("MA", "Massachusetts");
+            states.put("MI", "Michigan");
+            states.put("MN", "Minnesota");
+            states.put("MS", "Mississippi");
+            states.put("MO", "Missouri");
+            states.put("MT", "Montana");
+            states.put("NE", "Nebraska");
+            states.put("NV", "Nevada");
+            states.put("NH", "New Hampshire");
+            states.put("NJ", "New Jersey");
+            states.put("NM", "New Mexico");
+            states.put("NY", "New York");
+            states.put("NC", "North Carolina");
+            states.put("ND", "North Dakota");
+            states.put("OH", "Ohio");
+            states.put("OK", "Oklahoma");
+            states.put("OR", "Oregon");
+            states.put("PA", "Pennsylvania");
+            states.put("RI", "Rhode Island");
+            states.put("SC", "South Carolina");
+            states.put("SD", "South Dakota");
+            states.put("TN", "Tennessee");
+            states.put("TX", "Texas");
+            states.put("UT", "Utah");
+            states.put("VT", "Vermont");
+            states.put("VA", "Virginia");
+            states.put("WA", "Washington");
+            states.put("WV", "West Virginia");
+            states.put("WI", "Wisconsin");
+            states.put("WY", "Wyoming");
+        }
+        return states;
+    }
 }

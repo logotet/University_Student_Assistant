@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="4dp"
+    android:id="@+id/state_chip_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="example"
+    style="@style/Widget.MaterialComponents.Chip.Entry"
+    app:closeIcon="@drawable/ic_close">
+
+
+</com.google.android.material.chip.Chip>

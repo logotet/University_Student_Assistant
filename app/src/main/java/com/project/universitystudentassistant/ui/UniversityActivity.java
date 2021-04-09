@@ -36,4 +36,6 @@ public class UniversityActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+
+
 }

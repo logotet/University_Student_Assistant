@@ -30,8 +30,7 @@ import com.project.universitystudentassistant.data.entities.EntityConverter;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
-import com.project.universitystudentassistant.ui.Fragments.AddScheduleTaskFragment;
-import com.project.universitystudentassistant.ui.Fragments.FilterFragment;
+import com.project.universitystudentassistant.ui.Fragments.Filter.FilterFragment;
 import com.project.universitystudentassistant.utils.AppConstants;
 
 import java.util.List;
@@ -109,10 +108,12 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         if (item.getItemId() == R.id.search) {
         }
         if (item.getItemId() == R.id.filter) {
-            DialogFragment filterFragment = FilterFragment.newInstance();
-//            filterFragment.setTargetFragment(SearchUniversityFragment.this, 300);
+            DialogFragment filterFragment = new FilterFragment();
+////            filterFragment.setTargetFragment(SearchUniversityFragment.this, 300);
             filterFragment.show(getActivity().getSupportFragmentManager(), "sort");
-        }
+
+
+            }
         return true;
     }
 

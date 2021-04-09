@@ -13,29 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityStudentAssistant"
         tools:replace="android:theme">
-        <activity android:name="com.project.universitystudentassistant.ui.SplashActivity">
+        <activity android:name="com.project.universitystudentassistant.ui.SplashActivity"/>
+        <activity android:name="com.project.universitystudentassistant.ui.TimetableActivity" />
+        <activity android:name="com.project.universitystudentassistant.ui.ProfileActivity" />
+        <activity
+            android:name="com.project.universitystudentassistant.ui.UniversityActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.project.universitystudentassistant.ui.TimetableActivity" />
-
-        <activity android:name="com.project.universitystudentassistant.ui.ProfileActivity" />
-        <activity
-            android:name="com.project.universitystudentassistant.ui.UniversityActivity"
-            android:label="@string/title_activity_university" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
         <activity android:name="com.project.universitystudentassistant.ui.SignupActivity" />
         <activity android:name="com.project.universitystudentassistant.ui.LoginActivity" />
+        <activity android:name="com.project.universitystudentassistant.ui.MainActivity"
+            android:label="@string/title_activity_university">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
 
-        <activity android:name="com.project.universitystudentassistant.ui.MainActivity" />
     </application>
 
 </manifest>
