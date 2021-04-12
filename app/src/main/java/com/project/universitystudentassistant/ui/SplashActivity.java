@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table);
+                InputStream inputStream = getResources().openRawResource(R.raw.all_university_database_table_final2);
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(inputStream, StandardCharsets.UTF_8)
                 );
@@ -51,9 +51,9 @@ public class SplashActivity extends AppCompatActivity {
                     while ((line = bufferedReader.readLine()) != null) {
                         String[] tokens = line.split(",");
                         UniversityEntityPrep entityPrep = new UniversityEntityPrep(tokens[0]);
-                        entityPrep.setAddress(tokens[1]);
+                        entityPrep.setAddress(tokens[1].replace("�", ""));
                         entityPrep.setCity(tokens[2]);
-                        entityPrep.setState(tokens[3]);
+                        entityPrep.setState(tokens[3].replace("�", ""));
                         entityPrep.setCostOfAttendance(Integer.parseInt(tokens[4]));
                         entityPrep.setWebPage(tokens[5]);
                         entityPrep.setImage(tokens[6].replace("|", ","));
