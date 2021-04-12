@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
+import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 
 import java.io.BufferedReader;
@@ -50,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
                     bufferedReader.readLine();
                     while ((line = bufferedReader.readLine()) != null) {
                         String[] tokens = line.split(",");
-                        UniversityEntityPrep entityPrep = new UniversityEntityPrep(tokens[0]);
+                        UniversityEntity entityPrep = new UniversityEntity(tokens[0]);
                         entityPrep.setAddress(tokens[1].replace("�", ""));
                         entityPrep.setCity(tokens[2]);
                         entityPrep.setState(tokens[3].replace("�", ""));
@@ -73,7 +74,7 @@ public class SplashActivity extends AppCompatActivity {
                                 + "acc rate " + entityPrep.getAcceptanceRate() + " "
                                 + "description " + entityPrep.getDescription()
                         );
-                        repository.insertPrepUniversity(entityPrep);
+                        repository.insertUniveristy(entityPrep);
                     }
                 } catch (IOException e) {
                     Log.wtf("Splash Activity", "Error reading file!!! " + line, e);

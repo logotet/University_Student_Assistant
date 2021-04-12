@@ -29,6 +29,14 @@ public class MyUniversitiesViewModel extends AndroidViewModel {
         return repository.getAllUniversities();
     }
 
+    public void updateUniversity(UniversityEntity entity){
+        repository.updateUniversity(entity);
+    }
+
+    public LiveData<List<UniversityEntity>> getSavedUniversities(){
+        return repository.getSavedUniversities();
+    }
+
     public void deleteUniversity(UniversityEntity entity){
         repository.deleteUniversity(entity);
     }

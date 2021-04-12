@@ -12,6 +12,7 @@ import com.project.universitystudentassistant.data.local.AppDatabase;
 import com.project.universitystudentassistant.data.remote.dummyremote.DummyRemoteDataProvider;
 import com.project.universitystudentassistant.data.remote.firebase.FirebaseAuthService;
 import com.project.universitystudentassistant.data.remote.firebase.FirestoreService;
+import com.project.universitystudentassistant.utils.AppConstants;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -67,12 +68,21 @@ public class Repository {
     }
 
     //My Universities Data
-    public void insertUniversityToRoomDb(UniversityEntity universityEntity) {
+    public void insertUniveristy(UniversityEntity universityEntity) {
         executor.execute(() -> roomDb.universityDao().insertUniversity(universityEntity));
+    }
+
+    public void updateUniversity(UniversityEntity entity){
+        executor.execute(() -> roomDb.universityDao().update(entity));
+
     }
 
     public LiveData<List<UniversityEntity>> getAllUniversities() {
         return roomDb.universityDao().getAll();
+    }
+
+    public LiveData<List<UniversityEntity>> getSavedUniversities(){
+        return roomDb.universityDao().getSavedUniversities(AppConstants.SAVED);
     }
 
     public LiveData<Boolean> checkIfUniExists(String name) {
@@ -90,36 +100,36 @@ public class Repository {
 
     }
 
-    public LiveData<List<UniversityEntityPrep>> getAllPrepUniversities() {
-        return roomDb.prepUniversityDao().getAll();
+    public LiveData<List<UniversityEntity>> getAllPrepUniversities() {
+        return roomDb.universityDao().getAll();
     }
 
-    public LiveData<List<UniversityEntityPrep>> getPrepUniversitiesByStates(String...states) {
-        return roomDb.prepUniversityDao().getUniversitiesByStates(states);
+    public LiveData<List<UniversityEntity>> getPrepUniversitiesByStates(String...states) {
+        return roomDb.universityDao().getUniversitiesByStates(states);
     }
 
     public LiveData<Integer> getMinCost(){
-        return roomDb.prepUniversityDao().getMinCost();
+        return roomDb.universityDao().getMinCost();
     }
 
     public LiveData<Integer> getMaxCost(){
-        return roomDb.prepUniversityDao().getMaxCost();
+        return roomDb.universityDao().getMaxCost();
     }
 
     public LiveData<Integer> getMinAccRate(){
-        return roomDb.prepUniversityDao().getMinAccRate();
+        return roomDb.universityDao().getMinAccRate();
     }
 
     public LiveData<Integer> getMaxAccRate(){
-        return roomDb.prepUniversityDao().getMaxAccRate();
+        return roomDb.universityDao().getMaxAccRate();
     }
 
     public LiveData<Integer> getMinGradRate(){
-        return roomDb.prepUniversityDao().getMinGradRate();
+        return roomDb.universityDao().getMinGradRate();
     }
 
     public LiveData<Integer> getMaxGradRate(){
-        return roomDb.prepUniversityDao().getMaxGradRate();
+        return roomDb.universityDao().getMaxGradRate();
     }
 
 

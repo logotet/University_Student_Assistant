@@ -73,22 +73,16 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         binding.recViewUniversities.setAdapter(adapter);
 
         searchUniversityViewModel.getUniversitiesList().observe(getViewLifecycleOwner(),
-                new Observer<List<UniversityEntityPrep>>() {
+                new Observer<List<UniversityEntity>>() {
                     @Override
-                    public void onChanged(List<UniversityEntityPrep> universityEntityPreps) {
-//                        universityEntityPreps.forEach(u -> searchUniversityViewModel.isUniSaved(u.getName()).observe(
-//                                getViewLifecycleOwner(),
-//                                aBoolean -> {
-//                                    if(aBoolean) u.setSelected(true);
-//                                }
-//                        ));
-                        universityEntityPreps.get(0).setSelected(true);
+                    public void onChanged(List<UniversityEntity> universityEntities) {
                         SortManager sortManager = new SortManager();
-                        universities = EntityConverter.convertToMyUnis(sortManager.sortByCost(universityEntityPreps));
+                        universities = sortManager.sortByCost(universityEntities);
 
                         adapter.updateData(universities);
                     }
                 });
+
 
 
     }
@@ -138,7 +132,12 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
 
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
-        searchUniversityViewModel.insertUniversity(entity);
+        if(!entity.isSelected()) {
+            entity.setImage(AppConstants.SAVED);
+        }else {
+            entity.setImage("");
+        }
+        searchUniversityViewModel.updateUniversity(entity);
         Toast.makeText(getContext(), entity.getName() + " was added to your favourites.", Toast.LENGTH_SHORT).show();
     }
 
@@ -178,15 +177,14 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
 
             searchUniversityViewModel.getUniversitiesListA(states)
                     .observe(getViewLifecycleOwner(),
-                            new Observer<List<UniversityEntityPrep>>() {
+                            new Observer<List<UniversityEntity>>() {
                                 @Override
-                                public void onChanged(List<UniversityEntityPrep> universityEntityPreps) {
+                                public void onChanged(List<UniversityEntity> universityEntities) {
                                     SortManager sortManager = new SortManager();
-                                    List<UniversityEntityPrep> universityEntityPreps1
-                                            = sortManager.filterUniversities(sort, universityEntityPreps);
-                                    sortManager.sortBy(sort.getSortBy(), sortManager.filterUniversities(sort, universityEntityPreps));
-                                    universities =
-                                            EntityConverter.convertToMyUnis(universityEntityPreps1);
+                                    List<UniversityEntity> universityEntityPreps1
+                                            = sortManager.filterUniversities(sort, universityEntities);
+                                    sortManager.sortBy(sort.getSortBy(), sortManager.filterUniversities(sort, universityEntities));
+                                    universities = universityEntityPreps1;
                                     //TODO change the logic with a sort builder(sortManager.sortBy(sort.getSortBy(), universityEntityPreps));
                                     adapter.updateData(universities);
                                 }

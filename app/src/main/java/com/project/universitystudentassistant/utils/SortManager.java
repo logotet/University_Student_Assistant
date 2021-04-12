@@ -14,32 +14,32 @@ public class SortManager {
     private Sort sort;
 
     //Sorting methods
-    public List<UniversityEntityPrep> sortByStates(List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> sortByStates(List<UniversityEntity> entityPreps) {
         return entityPreps.stream().sorted(Comparator.comparing(UniversityEntity::getState))
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> sortByName(List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> sortByName(List<UniversityEntity> entityPreps) {
         return entityPreps.stream().sorted(Comparator.comparing(UniversityEntity::getName))
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> sortByCost(List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> sortByCost(List<UniversityEntity> entityPreps) {
         return entityPreps.stream().sorted(Comparator.comparing(UniversityEntity::getCostOfAttendance))
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> sortByAccRate(List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> sortByAccRate(List<UniversityEntity> entityPreps) {
         return entityPreps.stream().sorted(Comparator.comparing(UniversityEntity::getAcceptanceRate))
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> sortByGradRate(List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> sortByGradRate(List<UniversityEntity> entityPreps) {
         return entityPreps.stream().sorted(Comparator.comparing(UniversityEntity::getGraduationRate))
                 .collect(Collectors.toList());
     }
 
-    public void sortBy(String sortBy, List<UniversityEntityPrep> entityPreps) {
+    public void sortBy(String sortBy, List<UniversityEntity> entityPreps) {
         switch (sortBy) {
             case AppConstants.NAMES:
                 sortByName(entityPreps);
@@ -62,26 +62,26 @@ public class SortManager {
     //TODO add asc/desc order option
 
     //Filter methods
-    public List<UniversityEntityPrep> filterByPriceRange(int startPrice, int endPrice, List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> filterByPriceRange(int startPrice, int endPrice, List<UniversityEntity> entityPreps) {
         return entityPreps.stream().filter(e -> e.getCostOfAttendance() >= startPrice)
                 .filter(e -> e.getCostOfAttendance() <= endPrice)
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> filterByAccRange(int startRate, int endRate, List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> filterByAccRange(int startRate, int endRate, List<UniversityEntity> entityPreps) {
         return entityPreps.stream().filter(e -> e.getCostOfAttendance() >= startRate)
                 .filter(e -> e.getCostOfAttendance() <= endRate)
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> filterByGradRange(int startRate, int endRate, List<UniversityEntityPrep> entityPreps) {
+    public List<UniversityEntity> filterByGradRange(int startRate, int endRate, List<UniversityEntity> entityPreps) {
         return entityPreps.stream().filter(e -> e.getCostOfAttendance() >= startRate)
                 .filter(e -> e.getCostOfAttendance() <= endRate)
                 .collect(Collectors.toList());
     }
 
-    public List<UniversityEntityPrep> filterUniversities(Sort sort, List<UniversityEntityPrep> universities) {
-        List<UniversityEntityPrep> unis =  universities.stream()
+    public List<UniversityEntity> filterUniversities(Sort sort, List<UniversityEntity> universities) {
+        List<UniversityEntity> unis =  universities.stream()
 //                .filter(u -> u.getCostOfAttendance() >= sort.getStartCost())
 //                .filter(u -> u.getCostOfAttendance() <= sort.getEndCost())
                 .filter(u -> u.getAcceptanceRate() >= sort.getStartAccRate())

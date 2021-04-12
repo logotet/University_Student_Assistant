@@ -5,6 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.project.universitystudentassistant.utils.AppConstants;
+
 @Entity(tableName = "my_universities_table")
 public class UniversityEntity {
     //    TODO: consider changing the field names when getting the data from the REST API
@@ -137,7 +139,7 @@ public class UniversityEntity {
     }
 
     public boolean isSelected() {
-        return isSelected;
+        return getImage().equals(AppConstants.SAVED);
     }
 
     public void setSelected(boolean selected) {

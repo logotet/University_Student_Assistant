@@ -21,11 +21,11 @@ public class SearchUniversityViewModel extends AndroidViewModel {
         repository = new Repository(application.getApplicationContext());
     }
 
-    public LiveData<List<UniversityEntityPrep>> getUniversitiesList() {
+    public LiveData<List<UniversityEntity>> getUniversitiesList() {
         return repository.getAllPrepUniversities();
     }
 
-    public LiveData<List<UniversityEntityPrep>> getUniversitiesListA(String...states) {
+    public LiveData<List<UniversityEntity>> getUniversitiesListA(String...states) {
         if(states.length > 0) {
             return repository.getPrepUniversitiesByStates(states);
         }else {
@@ -34,8 +34,13 @@ public class SearchUniversityViewModel extends AndroidViewModel {
     }
 
     public void insertUniversity(UniversityEntity entity){
-        repository.insertUniversityToRoomDb(entity);
+        repository.insertUniveristy(entity);
     }
+
+    public void updateUniversity(UniversityEntity entity){
+        repository.updateUniversity(entity);
+    }
+
 
     public LiveData<Boolean> isUniSaved(String name){
         return repository.checkIfUniExists(name);

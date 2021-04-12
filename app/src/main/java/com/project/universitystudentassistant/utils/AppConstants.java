@@ -20,6 +20,9 @@ public class AppConstants {
     public static final String ACCEPTANCE_RATE = "acceptance rate";
     public static final String GRADUATION_RATE = "graduation rate";
 
+    public static final String SAVED = "saved";
+
+
 
 
 

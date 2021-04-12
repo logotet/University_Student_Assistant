@@ -49,7 +49,7 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
         binding.recViewUniversities.setAdapter(adapter);
 
 
-        myUniversitiesViewModel.getUniversities().observe(getViewLifecycleOwner(), new Observer<List<UniversityEntity>>() {
+        myUniversitiesViewModel.getSavedUniversities().observe(getViewLifecycleOwner(), new Observer<List<UniversityEntity>>() {
             @Override
             public void onChanged(List<UniversityEntity> universityEntities) {
                 universities = universityEntities;
@@ -61,7 +61,10 @@ public class MyUniversitiesFragment extends Fragment implements UniversityAdapte
 
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
-        myUniversitiesViewModel.deleteUniversity(entity);
+        entity.setImage("");
+        entity.setSelected(false);
+        myUniversitiesViewModel.updateUniversity(entity);
+
     }
 
     @Override
