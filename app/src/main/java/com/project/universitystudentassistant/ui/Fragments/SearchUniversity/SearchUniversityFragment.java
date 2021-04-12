@@ -1,8 +1,10 @@
 package com.project.universitystudentassistant.ui.Fragments.SearchUniversity;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,14 +26,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.gson.Gson;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.UniversityAdapter;
 import com.project.universitystudentassistant.data.entities.EntityConverter;
+import com.project.universitystudentassistant.data.entities.Sort;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
 import com.project.universitystudentassistant.ui.Fragments.Filter.FilterFragment;
 import com.project.universitystudentassistant.utils.AppConstants;
+import com.project.universitystudentassistant.utils.SortManager;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,7 +47,7 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     private SearchUniversityViewModel searchUniversityViewModel;
     private UniversityAdapter adapter;
     private List<UniversityEntity> universities;
-
+    private final static int TARGET_FRAGMENT_REQUEST_CODE = 1;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,10 +57,8 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_search_universities, container, false);
         binding = DataBindingUtil.bind(root);
-
         return root;
     }
 
@@ -64,7 +67,6 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         super.onViewCreated(view, savedInstanceState);
         searchUniversityViewModel =
                 new ViewModelProvider(this).get(SearchUniversityViewModel.class);
-
         adapter = new UniversityAdapter(this, AppConstants.FRAGMENT_SEARCH_UNIVERSITIES);
         binding.recViewUniversities.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewUniversities.setAdapter(adapter);
@@ -73,10 +75,14 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
                 new Observer<List<UniversityEntityPrep>>() {
                     @Override
                     public void onChanged(List<UniversityEntityPrep> universityEntityPreps) {
-                        universities = EntityConverter.convertToMyUnis(universityEntityPreps);
+                        SortManager sortManager = new SortManager();
+                        universities = EntityConverter.convertToMyUnis(sortManager.sortByCost(universityEntityPreps));
+
                         adapter.updateData(universities);
                     }
                 });
+
+
     }
 
     @Override
@@ -109,11 +115,9 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         }
         if (item.getItemId() == R.id.filter) {
             DialogFragment filterFragment = new FilterFragment();
-////            filterFragment.setTargetFragment(SearchUniversityFragment.this, 300);
-            filterFragment.show(getActivity().getSupportFragmentManager(), "sort");
-
-
-            }
+            filterFragment.setTargetFragment(SearchUniversityFragment.this, TARGET_FRAGMENT_REQUEST_CODE);
+            filterFragment.show(getParentFragmentManager(), "sort");
+        }
         return true;
     }
 
@@ -149,5 +153,42 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         startActivity(mapIntent);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+        if (requestCode == TARGET_FRAGMENT_REQUEST_CODE) {
+            binding.recViewUniversities.scrollToPosition(0);
+            String sortMessage = data.getStringExtra("sort");
+            Gson gson = new Gson();
+            Sort sort = gson.fromJson(sortMessage, Sort.class);
+            String[] states = sort.getStatesRange().toArray(new String[sort.getStatesRange().size()]);
+
+            searchUniversityViewModel.getUniversitiesListA(states)
+                    .observe(getViewLifecycleOwner(),
+                            new Observer<List<UniversityEntityPrep>>() {
+                                @Override
+                                public void onChanged(List<UniversityEntityPrep> universityEntityPreps) {
+                                    SortManager sortManager = new SortManager();
+                                    List<UniversityEntityPrep> universityEntityPreps1
+                                            = sortManager.filterUniversities(sort, universityEntityPreps);
+                                    sortManager.sortBy(sort.getSortBy(), sortManager.filterUniversities(sort, universityEntityPreps));
+                                    universities =
+                                            EntityConverter.convertToMyUnis(universityEntityPreps1);
+                                    //TODO change the logic with a sort builder(sortManager.sortBy(sort.getSortBy(), universityEntityPreps));
+                                    adapter.updateData(universities);
+                                }
+                            });
+        }
+    }
+
+    public static Intent newIntent(String sortJson) {
+        Intent intent = new Intent();
+        intent.putExtra("sort", sortJson);
+        return intent;
     }
 }

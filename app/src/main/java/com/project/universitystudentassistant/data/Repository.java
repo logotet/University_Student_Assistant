@@ -91,8 +91,32 @@ public class Repository {
         return roomDb.prepUniversityDao().getAll();
     }
 
-    public LiveData<List<UniversityEntityPrep>> getSomePrepUniversities() {
-        return roomDb.prepUniversityDao().getFive();
+    public LiveData<List<UniversityEntityPrep>> getPrepUniversitiesByStates(String...states) {
+        return roomDb.prepUniversityDao().getUniversitiesByStates(states);
+    }
+
+    public LiveData<Integer> getMinCost(){
+        return roomDb.prepUniversityDao().getMinCost();
+    }
+
+    public LiveData<Integer> getMaxCost(){
+        return roomDb.prepUniversityDao().getMaxCost();
+    }
+
+    public LiveData<Integer> getMinAccRate(){
+        return roomDb.prepUniversityDao().getMinAccRate();
+    }
+
+    public LiveData<Integer> getMaxAccRate(){
+        return roomDb.prepUniversityDao().getMaxAccRate();
+    }
+
+    public LiveData<Integer> getMinGradRate(){
+        return roomDb.prepUniversityDao().getMinGradRate();
+    }
+
+    public LiveData<Integer> getMaxGradRate(){
+        return roomDb.prepUniversityDao().getMaxGradRate();
     }
 
 

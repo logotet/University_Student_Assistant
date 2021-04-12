@@ -25,6 +25,14 @@ public class SearchUniversityViewModel extends AndroidViewModel {
         return repository.getAllPrepUniversities();
     }
 
+    public LiveData<List<UniversityEntityPrep>> getUniversitiesListA(String...states) {
+        if(states.length > 0) {
+            return repository.getPrepUniversitiesByStates(states);
+        }else {
+            return repository.getAllPrepUniversities();
+        }
+    }
+
     public void insertUniversity(UniversityEntity entity){
         repository.insertUniversityToRoomDb(entity);
     }

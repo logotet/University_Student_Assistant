@@ -32,7 +32,34 @@ public interface PrepUniversityDao {
     LiveData<List<UniversityEntityPrep>> getUniversitiesByState(String uniState);
 
     @Query("SELECT * FROM prepopulated_universities_table WHERE cost BETWEEN :startPrice AND :endPrice")
-    LiveData<List<UniversityEntityPrep>> getUniversitiesOverPrice(int startPrice, int endPrice);
+    LiveData<List<UniversityEntityPrep>> getUniversitiesInPriceRange(int startPrice, int endPrice);
+
+    @Query("SELECT * FROM prepopulated_universities_table WHERE cost BETWEEN :startRate AND :endRate")
+    LiveData<List<UniversityEntityPrep>> getUniversitiesInAccRange(int startRate, int endRate);
+
+    @Query("SELECT * FROM prepopulated_universities_table WHERE cost BETWEEN :startRate AND :endRate")
+    LiveData<List<UniversityEntityPrep>> getUniversitiesInGradRange(int startRate, int endRate);
+
+    @Query("SELECT * FROM prepopulated_universities_table WHERE state IN (:states)")
+    LiveData<List<UniversityEntityPrep>> getUniversitiesByStates(String...states);
+
+    @Query("SELECT MIN(cost) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMinCost();
+
+    @Query("SELECT MAX(cost) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMaxCost();
+
+    @Query("SELECT MIN(acceptance_rate) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMinAccRate();
+
+    @Query("SELECT MAX(acceptance_rate) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMaxAccRate();
+
+    @Query("SELECT MIN(graduation_rate) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMinGradRate();
+
+    @Query("SELECT MAX(graduation_rate) FROM prepopulated_universities_table LIMIT 1")
+    LiveData<Integer> getMaxGradRate();
 
     @Query("SELECT * FROM prepopulated_universities_table WHERE cost BETWEEN :uniPrice AND 0")
     LiveData<List<UniversityEntityPrep>> getUniversitiesUnderPrice(int uniPrice);
