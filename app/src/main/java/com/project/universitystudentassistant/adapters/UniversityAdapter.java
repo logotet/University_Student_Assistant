@@ -44,7 +44,6 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
         notifyDataSetChanged();
     }
 
-
     @NonNull
     @Override
     public UniversityHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,6 +66,10 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
         holder.cost.setText(String.format("%s%s", universityEntity.getCostOfAttendance(),
                 resources.getString(R.string.dollar_sign)));
         holder.description.setText(universityEntity.getDescription());
+        if(universityEntity.isSelected()){
+            holder.imageButton.setSelected(true);
+        }
+//        holder.imageButton.setSelected(fragmentCreatorTag.equals(AppConstants.FRAGMENT_MY_UNIVERSITIES));
         holder.setImageUniversity(universityEntity.getName());
         holder.setUniversity(universityEntity);
     }
@@ -100,11 +103,12 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             imgUniversity = itemView.findViewById(R.id.img_university);
             toggleFavButton(imageButton, tag);
             itemView.setOnClickListener(view -> {
-//                    TODO: button should stay pressed
-                imageButton.setPressed(true);
                 Toast.makeText(itemView.getContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
             });
-            imageButton.setOnClickListener(view -> listener.onFavButtonClicked(universityEntity));
+            imageButton.setOnClickListener(view -> {
+                imageButton.setSelected(!imageButton.isSelected());
+                    listener.onFavButtonClicked(universityEntity);
+            });
             webPage.setOnClickListener(view -> { listener.onWebPageClicked(universityEntity); });
             address.setOnClickListener(view -> listener.onAddressClicked(universityEntity));
         }

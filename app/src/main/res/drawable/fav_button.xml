@@ -4,8 +4,14 @@
         android:state_pressed="true"
         android:drawable="@drawable/ic_heart_full" />
     <item
-        android:state_enabled="false"
-        android:drawable="@drawable/ic_heart_empty" />
+        android:state_selected="true"
+        android:drawable="@drawable/ic_heart_full" />
+    <item
+        android:state_checked="true"
+        android:drawable="@drawable/ic_heart_full" />
+    <item
+        android:state_activated="true"
+        android:drawable="@drawable/ic_heart_full" />
     <item
         android:drawable="@drawable/ic_heart_empty" />
 </selector>

@@ -37,5 +37,9 @@ public class SearchUniversityViewModel extends AndroidViewModel {
         repository.insertUniversityToRoomDb(entity);
     }
 
+    public LiveData<Boolean> isUniSaved(String name){
+        return repository.checkIfUniExists(name);
+    }
+
 
 }

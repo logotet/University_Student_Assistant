@@ -39,6 +39,7 @@ import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.SortManager;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class SearchUniversityFragment extends Fragment implements UniversityAdapter.UniversityHolder.OnItemPressedListener {
@@ -75,6 +76,13 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
                 new Observer<List<UniversityEntityPrep>>() {
                     @Override
                     public void onChanged(List<UniversityEntityPrep> universityEntityPreps) {
+//                        universityEntityPreps.forEach(u -> searchUniversityViewModel.isUniSaved(u.getName()).observe(
+//                                getViewLifecycleOwner(),
+//                                aBoolean -> {
+//                                    if(aBoolean) u.setSelected(true);
+//                                }
+//                        ));
+                        universityEntityPreps.get(0).setSelected(true);
                         SortManager sortManager = new SortManager();
                         universities = EntityConverter.convertToMyUnis(sortManager.sortByCost(universityEntityPreps));
 

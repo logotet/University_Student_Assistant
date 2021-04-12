@@ -16,6 +16,7 @@ public class EntityConverter {
         entityPrep.setAcceptanceRate(entity.getAcceptanceRate());
         entityPrep.setGraduationRate(entity.getGraduationRate());
         entityPrep.setDescription(entity.getDescription());
+        entityPrep.setSelected(entity.isSelected());
         return entityPrep;
     }
 
@@ -30,6 +31,7 @@ public class EntityConverter {
         entity.setAcceptanceRate(entityPrep.getAcceptanceRate());
         entity.setGraduationRate(entityPrep.getGraduationRate());
         entity.setDescription(entityPrep.getDescription());
+        entity.setSelected(entityPrep.isSelected());
         return entity;
     }
 

@@ -66,7 +66,7 @@ public class Repository {
         roomDb.userDao().insertUser(user);
     }
 
-    //University
+    //My Universities Data
     public void insertUniversityToRoomDb(UniversityEntity universityEntity) {
         executor.execute(() -> roomDb.universityDao().insertUniversity(universityEntity));
     }
@@ -75,10 +75,13 @@ public class Repository {
         return roomDb.universityDao().getAll();
     }
 
+    public LiveData<Boolean> checkIfUniExists(String name) {
+        return roomDb.universityDao().isUniSelected(name);
+    }
+
     public void deleteUniversity(UniversityEntity entity) {
         String name = entity.getName();
         executor.execute(() -> roomDb.universityDao().deleteUniversityByName(name));
-
     }
 
     //Pre populated University Entity

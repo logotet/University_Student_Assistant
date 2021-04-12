@@ -19,6 +19,9 @@ public interface UniversityDao {
     @Query("SELECT * FROM my_universities_table")
     LiveData<List<UniversityEntity>> getAll();
 
+    @Query("SELECT EXISTS(SELECT 1 FROM my_universities_table WHERE name = :name)")
+    LiveData<Boolean> isUniSelected(String name);
+
     @Query("SELECT * FROM my_universities_table WHERE name LIKE :uniName LIMIT 1")
     LiveData<UniversityEntity> getUniversityByName(String uniName);
 

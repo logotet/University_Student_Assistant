@@ -2,6 +2,7 @@ package com.project.universitystudentassistant.data.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "my_universities_table")
@@ -29,6 +30,8 @@ public class UniversityEntity {
     private int acceptanceRate;
     @ColumnInfo(name = "description")
     private String description;
+    @Ignore
+    private boolean isSelected;
 
 
     public UniversityEntity(String name) {
@@ -131,5 +134,13 @@ public class UniversityEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }
