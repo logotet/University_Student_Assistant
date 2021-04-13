@@ -72,16 +72,15 @@ public class Repository {
         executor.execute(() -> roomDb.universityDao().insertUniversity(universityEntity));
     }
 
-    public void updateUniversity(UniversityEntity entity){
+    public void updateUniversity(UniversityEntity entity) {
         executor.execute(() -> roomDb.universityDao().update(entity));
-
     }
 
     public LiveData<List<UniversityEntity>> getAllUniversities() {
         return roomDb.universityDao().getAll();
     }
 
-    public LiveData<List<UniversityEntity>> getSavedUniversities(){
+    public LiveData<List<UniversityEntity>> getSavedUniversities() {
         return roomDb.universityDao().getSavedUniversities(AppConstants.SAVED);
     }
 
@@ -94,41 +93,35 @@ public class Repository {
         executor.execute(() -> roomDb.universityDao().deleteUniversityByName(name));
     }
 
-    //Pre populated University Entity
-    public void insertPrepUniversity(UniversityEntityPrep universityEntityPrep) {
-        executor.execute(() -> roomDb.prepUniversityDao().insertUniversity(universityEntityPrep));
-
-    }
-
     public LiveData<List<UniversityEntity>> getAllPrepUniversities() {
         return roomDb.universityDao().getAll();
     }
 
-    public LiveData<List<UniversityEntity>> getPrepUniversitiesByStates(String...states) {
+    public LiveData<List<UniversityEntity>> getPrepUniversitiesByStates(String... states) {
         return roomDb.universityDao().getUniversitiesByStates(states);
     }
 
-    public LiveData<Integer> getMinCost(){
+    public LiveData<Integer> getMinCost() {
         return roomDb.universityDao().getMinCost();
     }
 
-    public LiveData<Integer> getMaxCost(){
+    public LiveData<Integer> getMaxCost() {
         return roomDb.universityDao().getMaxCost();
     }
 
-    public LiveData<Integer> getMinAccRate(){
+    public LiveData<Integer> getMinAccRate() {
         return roomDb.universityDao().getMinAccRate();
     }
 
-    public LiveData<Integer> getMaxAccRate(){
+    public LiveData<Integer> getMaxAccRate() {
         return roomDb.universityDao().getMaxAccRate();
     }
 
-    public LiveData<Integer> getMinGradRate(){
+    public LiveData<Integer> getMinGradRate() {
         return roomDb.universityDao().getMinGradRate();
     }
 
-    public LiveData<Integer> getMaxGradRate(){
+    public LiveData<Integer> getMaxGradRate() {
         return roomDb.universityDao().getMaxGradRate();
     }
 

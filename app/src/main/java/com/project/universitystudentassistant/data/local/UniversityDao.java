@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public interface UniversityDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUniversity(UniversityEntity entityPrep);
 
     @Query("SELECT * FROM my_universities_table")
