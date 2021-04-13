@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             app:titleTextColor="@color/white"
             app:itemIconTint="@color/colorWhite"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
