@@ -12,16 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
+        android:layout_margin="4dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="6dp"
-            android:layout_height="match_parent">
+            android:paddingHorizontal="8dp">
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_uni_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,20 +33,22 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Cambridge, Massachusetts"
+                android:textAllCaps="true"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_uni_name"
-                android:textAllCaps="true" />
+                app:layout_constraintTop_toBottomOf="@id/txt_uni_name" />
 
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,64 +56,72 @@
                 android:text="Address"
                 android:textAllCaps="false"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_location"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_location" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/string_cost"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_address"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_address" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_cost_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="24 000 $"
                 android:textAllCaps="true"
-                app:layout_constraintStart_toEndOf="@id/txt_cost"
-                app:layout_constraintBaseline_toBaselineOf="@id/txt_cost"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_cost"
+                app:layout_constraintStart_toEndOf="@id/txt_cost" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_acc_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/acceptance_rate"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_cost"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_cost" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_acc_rate_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="56%"
+                android:layout_marginStart="2dp"
                 android:textAllCaps="true"
-                app:layout_constraintStart_toEndOf="@id/txt_acc_rate"
-                app:layout_constraintBaseline_toBaselineOf="@id/txt_acc_rate"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_acc_rate"
+                app:layout_constraintStart_toEndOf="@id/txt_acc_rate" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_grad_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/graduation_rate"
-                app:layout_constraintEnd_toStartOf="@id/txt_grad_rate_value"
-                app:layout_constraintBaseline_toBaselineOf="@id/txt_acc_rate"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_acc_rate"
+                app:layout_constraintEnd_toStartOf="@id/txt_grad_rate_value" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_grad_rate_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="34%"
+                android:layout_marginStart="2dp"
                 android:textAllCaps="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBaseline_toBaselineOf="@id/txt_grad_rate"/>
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_grad_rate"
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
             <ImageView
@@ -119,17 +131,18 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/university_image"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_acc_rate"/>
+                app:layout_constraintTop_toBottomOf="@id/txt_acc_rate" />
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/txt_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries"
+                android:text="@string/string_dummy_text"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_university"/>
+                app:layout_constraintTop_toBottomOf="@id/img_university" />
 
             <RelativeLayout
                 android:id="@+id/bottom_layout"

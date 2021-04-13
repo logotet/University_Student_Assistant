@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
+import com.project.universitystudentassistant.utils.AppStringFormatter;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,7 +64,7 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
                 resources.getString(R.string.percent_sign)));
         holder.gradRate.setText(String.format("%s%s", String.valueOf(universityEntity.getGraduationRate()),
                 resources.getString(R.string.percent_sign)));
-        holder.cost.setText(String.format("%s%s", universityEntity.getCostOfAttendance(),
+        holder.cost.setText(String.format("%s", AppStringFormatter.replaceZeros(universityEntity.getCostOfAttendance()),
                 resources.getString(R.string.dollar_sign)));
         holder.description.setText(universityEntity.getDescription());
         if(universityEntity.isSelected()){

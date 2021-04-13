@@ -12,6 +12,7 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
+import com.project.universitystudentassistant.utils.AppStringFormatter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,20 +52,16 @@ public class SplashActivity extends AppCompatActivity {
                     bufferedReader.readLine();
                     while ((line = bufferedReader.readLine()) != null) {
                         String[] tokens = line.split(",");
-                        UniversityEntity entityPrep = new UniversityEntity(tokens[0]);
-                        entityPrep.setAddress(tokens[1].replace("�", ""));
-                        entityPrep.setCity(tokens[2]);
-                        entityPrep.setState(tokens[3].replace("�", ""));
-                        entityPrep.setCostOfAttendance(Integer.parseInt(tokens[4]));
-                        entityPrep.setWebPage(tokens[5]);
-                        entityPrep.setImage(tokens[6].replace("|", ","));
-                        entityPrep.setGraduationRate(Integer.parseInt(tokens[7]));
-                        entityPrep.setAcceptanceRate(Integer.parseInt(tokens[8]));
-                        String replace = tokens[9]
-                                .replace("|", ",")
-                                .replace("�", "'")
-                                .replace("\"", "");
-                        entityPrep.setDescription(replace);
+                        UniversityEntity entityPrep = new UniversityEntity(AppStringFormatter.replaceSymbols(tokens[0]));
+                        entityPrep.setAddress(AppStringFormatter.replaceSymbols(tokens[1]));
+                        entityPrep.setCity(AppStringFormatter.replaceSymbols(tokens[2]));
+                        entityPrep.setState(AppStringFormatter.replaceSymbols(tokens[3]));
+                        entityPrep.setCostOfAttendance(Integer.parseInt(AppStringFormatter.replaceSymbols(tokens[4])));
+                        entityPrep.setWebPage(AppStringFormatter.replaceSymbols(tokens[5]));
+                        entityPrep.setImage(AppStringFormatter.replaceSymbols(tokens[6]));
+                        entityPrep.setGraduationRate(Integer.parseInt(AppStringFormatter.replaceSymbols(tokens[7])));
+                        entityPrep.setAcceptanceRate(Integer.parseInt(AppStringFormatter.replaceSymbols(tokens[8])));
+                        entityPrep.setDescription(AppStringFormatter.replaceSymbols(tokens[9]));
                         Log.i("Entity", entityPrep.getName() + " "
                                 + "address " + entityPrep.getAddress() + ", "
                                 + "city " + entityPrep.getCity() + " "
