@@ -49,6 +49,8 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     private UniversityAdapter adapter;
     private List<UniversityEntity> universities;
     private final static int TARGET_FRAGMENT_REQUEST_CODE = 1;
+    private Sort sort = new Sort();
+    private SortManager sortManager = new SortManager();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,16 +75,10 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
         binding.recViewUniversities.setAdapter(adapter);
 
         searchUniversityViewModel.getUniversitiesList().observe(getViewLifecycleOwner(),
-                new Observer<List<UniversityEntity>>() {
-                    @Override
-                    public void onChanged(List<UniversityEntity> universityEntities) {
-                        SortManager sortManager = new SortManager();
-                        universities = sortManager.sortByCost(universityEntities);
-
-                        adapter.updateData(universities);
-                    }
+                universityEntities -> {
+                    universities = sortManager.sortByStates(universityEntities);
+                    adapter.updateData(universities);
                 });
-
 
 
     }
@@ -120,6 +116,10 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
             filterFragment.setTargetFragment(SearchUniversityFragment.this, TARGET_FRAGMENT_REQUEST_CODE);
             filterFragment.show(getParentFragmentManager(), "sort");
         }
+        if (item.getItemId() == R.id.order) {
+            sortManager.reverse(universities);
+            adapter.updateData(universities);
+        }
         return true;
     }
 
@@ -132,9 +132,9 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
 
     @Override
     public void onFavButtonClicked(UniversityEntity entity) {
-        if(!entity.isSelected()) {
+        if (!entity.isSelected()) {
             entity.setImage(AppConstants.SAVED);
-        }else {
+        } else {
             entity.setImage("");
         }
         searchUniversityViewModel.updateUniversity(entity);
@@ -172,22 +172,15 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
             binding.recViewUniversities.scrollToPosition(0);
             String sortMessage = data.getStringExtra("sort");
             Gson gson = new Gson();
-            Sort sort = gson.fromJson(sortMessage, Sort.class);
+            sort = gson.fromJson(sortMessage, Sort.class);
             String[] states = sort.getStatesRange().toArray(new String[sort.getStatesRange().size()]);
 
             searchUniversityViewModel.getUniversitiesListA(states)
                     .observe(getViewLifecycleOwner(),
-                            new Observer<List<UniversityEntity>>() {
-                                @Override
-                                public void onChanged(List<UniversityEntity> universityEntities) {
-                                    SortManager sortManager = new SortManager();
-                                    List<UniversityEntity> universityEntityPreps1
-                                            = sortManager.filterUniversities(sort, universityEntities);
-                                    sortManager.sortBy(sort.getSortBy(), sortManager.filterUniversities(sort, universityEntities));
-                                    universities = universityEntityPreps1;
-                                    //TODO change the logic with a sort builder(sortManager.sortBy(sort.getSortBy(), universityEntityPreps));
-                                    adapter.updateData(universities);
-                                }
+                            universityEntities -> {
+                                universities = sortManager.filterUniversities(sort, universityEntities);
+                                universities = sortManager.sortBy(sort.getSortBy(), universities);
+                                adapter.updateData(universities);
                             });
         }
     }

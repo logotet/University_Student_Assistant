@@ -2,8 +2,8 @@ package com.project.universitystudentassistant.utils;
 
 import com.project.universitystudentassistant.data.entities.Sort;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
-import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -39,27 +39,33 @@ public class SortManager {
                 .collect(Collectors.toList());
     }
 
-    public void sortBy(String sortBy, List<UniversityEntity> entityPreps) {
+    public List<UniversityEntity> sortBy(String sortBy, List<UniversityEntity> entityPreps) {
+        List<UniversityEntity> sortedUniversities = new ArrayList<>();
         switch (sortBy) {
-            case AppConstants.NAMES:
-                sortByName(entityPreps);
+            case AppConstants.NAME:
+                sortedUniversities = sortByName(entityPreps);
                 break;
-            case AppConstants.STATES:
-                sortByStates(entityPreps);
+            case AppConstants.STATE:
+                sortedUniversities = sortByStates(entityPreps);
                 break;
             case AppConstants.ATTENDANCE_COST:
-                sortByCost(entityPreps);
+                sortedUniversities = sortByCost(entityPreps);
                 break;
             case AppConstants.ACCEPTANCE_RATE:
-                sortByAccRate(entityPreps);
+                sortedUniversities = sortByAccRate(entityPreps);
                 break;
             case AppConstants.GRADUATION_RATE:
-                sortByGradRate(entityPreps);
+                sortedUniversities = sortByGradRate(entityPreps);
                 break;
         }
+        return sortedUniversities;
     }
 
     //TODO add asc/desc order option
+
+    public void reverse(List<UniversityEntity> entityPreps) {
+             Collections.reverse(entityPreps);
+    }
 
     //Filter methods
     public List<UniversityEntity> filterByPriceRange(int startPrice, int endPrice, List<UniversityEntity> entityPreps) {
@@ -82,8 +88,8 @@ public class SortManager {
 
     public List<UniversityEntity> filterUniversities(Sort sort, List<UniversityEntity> universities) {
         List<UniversityEntity> unis =  universities.stream()
-//                .filter(u -> u.getCostOfAttendance() >= sort.getStartCost())
-//                .filter(u -> u.getCostOfAttendance() <= sort.getEndCost())
+                .filter(u -> u.getCostOfAttendance() >= sort.getStartCost())
+                .filter(u -> u.getCostOfAttendance() <= sort.getEndCost())
                 .filter(u -> u.getAcceptanceRate() >= sort.getStartAccRate())
                 .filter(u -> u.getAcceptanceRate() <= sort.getEndAccRate())
                 .filter(u -> u.getGraduationRate() >= sort.getStartGradRate())

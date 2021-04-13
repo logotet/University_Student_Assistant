@@ -102,9 +102,6 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
             cost = itemView.findViewById(R.id.txt_cost_value);
             imgUniversity = itemView.findViewById(R.id.img_university);
             toggleFavButton(imageButton, tag);
-            itemView.setOnClickListener(view -> {
-                Toast.makeText(itemView.getContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
-            });
             imageButton.setOnClickListener(view -> {
                 imageButton.setSelected(!imageButton.isSelected());
                     listener.onFavButtonClicked(universityEntity);

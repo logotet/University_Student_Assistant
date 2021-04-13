@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:background="@color/white"
             tools:context=".ui.Fragments.Filter.FilterFragment">
 
@@ -20,12 +19,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/purple_700"
-                app:titleTextColor="@color/white"
-                app:title="Sort and Filter"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="Sort and Filter"
+                app:titleTextColor="@color/white" />
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_sort"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -35,12 +35,13 @@
                 app:layout_constraintTop_toBottomOf="@id/toolbar_filter" />
 
             <RadioGroup
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/rg_sort"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/profile_radio_button_height"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,8 @@
                     android:button="@null"
                     android:checked="true"
                     android:gravity="center"
-                    android:text="Name"
+                    android:text="State"
+                    android:textSize="14sp"
                     android:textColor="@drawable/drawable_tab_text_color_selector"
                     android:textStyle="bold" />
 
@@ -67,7 +69,8 @@
                     android:background="@drawable/drawable_tab_selector_filter"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="State"
+                    android:text="Name"
+                    android:textSize="14sp"
                     android:textColor="@drawable/drawable_tab_text_color_selector"
                     android:textStyle="bold" />
 
@@ -80,6 +83,7 @@
                     android:button="@null"
                     android:gravity="center"
                     android:text="Cost"
+                    android:textSize="14sp"
                     android:textColor="@drawable/drawable_tab_text_color_selector"
                     android:textStyle="bold" />
 
@@ -92,7 +96,8 @@
                     android:button="@null"
                     android:gravity="center"
                     android:singleLine="false"
-                    android:text="Acceptance rate"
+                    android:text="Acceptance"
+                    android:textSize="14sp"
                     android:textColor="@drawable/drawable_tab_text_color_selector"
                     android:textStyle="bold" />
 
@@ -105,13 +110,15 @@
                     android:button="@null"
                     android:gravity="center"
                     android:singleLine="false"
-                    android:text="Graduation rate"
+                    android:text="Graduation"
+                    android:textSize="14sp"
                     android:textColor="@drawable/drawable_tab_text_color_selector"
                     android:textStyle="bold" />
 
             </RadioGroup>
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,10 +140,10 @@
                 android:id="@+id/search_view_states"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:completionThreshold="1"
                 android:drawableStart="@drawable/ic_search_grey"
                 android:hint="Select a state"
-                android:layout_marginStart="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_states" />
 
@@ -151,10 +158,11 @@
 
 
             <com.google.android.material.chip.ChipGroup
+                android:layout_marginHorizontal="8dp"
+                android:id="@+id/chip_group_states"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/chip_group_states"
-                app:layout_constraintTop_toBottomOf="@id/search_view_states"/>
+                app:layout_constraintTop_toBottomOf="@id/search_view_states" />
 
             <TextView
                 android:id="@+id/txt_average_cost"
@@ -167,30 +175,71 @@
                 app:layout_constraintTop_toBottomOf="@id/chip_group_states" />
 
             <TextView
-                android:id="@+id/txt_start_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1K"
+                android:id="@+id/txt_cost_from"
+                android:layout_width="16dp"
+                android:paddingHorizontal="1dp"
+                android:layout_height="40dp"
+                android:paddingTop="12dp"
+                android:layout_marginStart="16dp"
+                android:text="$"
+                android:textAlignment="viewEnd"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_average_cost" />
 
-            <TextView
-                android:id="@+id/txt_end_cost"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_cost_from"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100K"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="From"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintStart_toEndOf="@id/txt_cost_from"
+                app:layout_constraintTop_toBottomOf="@id/txt_average_cost">
+                <EditText
+                    android:id="@+id/edt_cost_from"
+                    android:inputType="number"
+                    android:layout_width="120dp"
+                    android:textSize="16sp"
+                    android:layout_height="50dp"
+                  />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/txt_cost_until"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:paddingHorizontal="1dp"
+                android:paddingTop="12dp"
+                android:text="$"
+                android:textAlignment="viewEnd"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/til_cost_until"
+                app:layout_constraintStart_toEndOf="@id/til_cost_from"
                 app:layout_constraintTop_toBottomOf="@id/txt_average_cost" />
 
-            <com.google.android.material.slider.RangeSlider
-                android:id="@+id/range_slider_cost"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
-                app:layout_constraintTop_toBottomOf="@id/txt_start_cost"
-                app:values="@array/rangeSliderValues" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_cost_until"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="To"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/colorSecondaryText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txt_cost_until"
+                app:layout_constraintTop_toBottomOf="@id/txt_average_cost">
+                <EditText
+                    android:id="@+id/edt_cost_until"
+                    android:inputType="number"
+                    android:textSize="16sp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/txt_acceptance_rate"
@@ -198,11 +247,13 @@
                 android:layout_height="wrap_content"
                 android:text="Acceptance rate"
                 android:textSize="24sp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/range_slider_cost" />
+                app:layout_constraintTop_toBottomOf="@id/til_cost_from" />
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_start_acc_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -212,6 +263,7 @@
 
             <TextView
                 android:id="@+id/txt_end_acc_rate"
+                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100%"
@@ -219,6 +271,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_acceptance_rate" />
 
             <com.google.android.material.slider.RangeSlider
+                android:layout_marginHorizontal="16dp"
                 android:id="@+id/range_slider_acceptance_rate"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
@@ -230,6 +283,7 @@
 
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_graduation_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -240,6 +294,7 @@
                 app:layout_constraintTop_toBottomOf="@id/range_slider_acceptance_rate" />
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_start_grad_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -248,6 +303,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_graduation_rate" />
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/txt_end_grad_rate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -256,6 +312,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_graduation_rate" />
 
             <com.google.android.material.slider.RangeSlider
+                android:layout_marginHorizontal="16dp"
                 android:id="@+id/range_slider_grad_rate"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
@@ -264,8 +321,6 @@
                 android:valueTo="100.0"
                 app:layout_constraintTop_toBottomOf="@id/txt_start_grad_rate"
                 app:values="@array/rangeSliderValues" />
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

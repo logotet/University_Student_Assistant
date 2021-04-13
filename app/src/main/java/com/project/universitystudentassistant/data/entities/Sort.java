@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Sort {
-    private String sortBy = AppConstants.ACCEPTANCE_RATE;
-    private int startCost;
-    private int endCost;
+    private String sortBy = AppConstants.STATE;
+    private int startCost = 1;
+    private int endCost = 1000000;
     private int startAccRate = 1;
     private int endAccRate = 100;
     private int startGradRate = 1;
