@@ -49,6 +49,8 @@ dependencies {
 
     implementation 'com.jackandphantom.android:androidlikebutton:1.2.0'
 
+    implementation 'com.quiph.ui:recyclerviewfastscroller:1.0.0'
+
     //Gson
     implementation 'com.google.code.gson:gson:2.8.6'
 

@@ -20,6 +20,9 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
+import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +31,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.UniversityHolder> {
+public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.UniversityHolder> implements RecyclerViewFastScroller.OnPopupTextUpdate {
 
     private List<UniversityEntity> universityEntityList = new ArrayList<>();
     private UniversityHolder.OnItemPressedListener listener;
@@ -78,6 +81,12 @@ public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.Un
     @Override
     public int getItemCount() {
         return universityEntityList.size();
+    }
+
+    @NotNull
+    @Override
+    public CharSequence onChange(int i) {
+        return universityEntityList.get(i).getState();
     }
 
     public static class UniversityHolder extends RecyclerView.ViewHolder {

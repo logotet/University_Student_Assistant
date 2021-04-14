@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,24 +21,21 @@ import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.gson.Gson;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.UniversityAdapter;
-import com.project.universitystudentassistant.data.entities.EntityConverter;
 import com.project.universitystudentassistant.data.entities.Sort;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
-import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
 import com.project.universitystudentassistant.ui.Fragments.Filter.FilterFragment;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.SortManager;
+import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class SearchUniversityFragment extends Fragment implements UniversityAdapter.UniversityHolder.OnItemPressedListener {

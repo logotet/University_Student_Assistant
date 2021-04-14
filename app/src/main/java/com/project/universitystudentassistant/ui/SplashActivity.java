@@ -55,7 +55,7 @@ public class SplashActivity extends AppCompatActivity {
                         UniversityEntity entityPrep = new UniversityEntity(AppStringFormatter.replaceSymbols(tokens[0]));
                         entityPrep.setAddress(AppStringFormatter.replaceSymbols(tokens[1]));
                         entityPrep.setCity(AppStringFormatter.replaceSymbols(tokens[2]));
-                        entityPrep.setState(AppStringFormatter.replaceSymbols(tokens[3]));
+                        entityPrep.setState(AppStringFormatter.replaceSymbols(tokens[3]).replace("'", ""));
                         entityPrep.setCostOfAttendance(Integer.parseInt(AppStringFormatter.replaceSymbols(tokens[4])));
                         entityPrep.setWebPage(AppStringFormatter.replaceSymbols(tokens[5]));
                         entityPrep.setImage(AppStringFormatter.replaceSymbols(tokens[6]));
