@@ -6,8 +6,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.project.universitystudentassistant.data.entities.UniversityEntity;
-import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
+import com.project.universitystudentassistant.data.models.UniversityEntityPrep;
 
 import java.util.List;
 

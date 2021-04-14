@@ -1,7 +1,7 @@
 package com.project.universitystudentassistant.utils;
 
-import com.project.universitystudentassistant.data.entities.Sort;
-import com.project.universitystudentassistant.data.entities.UniversityEntity;
+import com.project.universitystudentassistant.data.models.Sort;
+import com.project.universitystudentassistant.data.models.UniversityEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;

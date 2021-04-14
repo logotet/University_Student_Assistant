@@ -7,7 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.project.universitystudentassistant.data.Repository;
-import com.project.universitystudentassistant.data.entities.UniversityEntity;
+import com.project.universitystudentassistant.data.models.UniversityEntity;
 
 import java.util.List;
 

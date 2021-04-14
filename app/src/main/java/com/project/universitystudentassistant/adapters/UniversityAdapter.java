@@ -10,14 +10,13 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.data.entities.UniversityEntity;
+import com.project.universitystudentassistant.data.models.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller;
@@ -26,9 +25,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class UniversityAdapter extends RecyclerView.Adapter<UniversityAdapter.UniversityHolder> implements RecyclerViewFastScroller.OnPopupTextUpdate {

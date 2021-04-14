@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.data.entities.ScheduleTask;
+import com.project.universitystudentassistant.data.models.ScheduleTask;
 import com.project.universitystudentassistant.databinding.AddScheduleTaskFragmentBinding;
 
 public class AddScheduleTaskFragment extends DialogFragment {

@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.data.entities;
+package com.project.universitystudentassistant.data.models;
 
 import java.util.ArrayList;
 import java.util.List;

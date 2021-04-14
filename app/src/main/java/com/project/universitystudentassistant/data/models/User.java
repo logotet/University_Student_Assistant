@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.data.entities;
+package com.project.universitystudentassistant.data.models;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

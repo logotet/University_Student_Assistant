@@ -21,7 +21,7 @@ import android.widget.RadioButton;
 import com.google.android.material.chip.Chip;
 import com.google.gson.Gson;
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.data.entities.Sort;
+import com.project.universitystudentassistant.data.models.Sort;
 import com.project.universitystudentassistant.databinding.FragmentFilterBinding;
 import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
 

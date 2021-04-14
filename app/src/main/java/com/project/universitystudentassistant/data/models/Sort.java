@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.data.entities;
+package com.project.universitystudentassistant.data.models;
 
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.StateNameConverter;
