@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui;
+package com.project.universitystudentassistant.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.data.entities.User;
 import com.project.universitystudentassistant.databinding.ActivitySignupBinding;
+import com.project.universitystudentassistant.ui.BaseActivity;
+import com.project.universitystudentassistant.ui.MainActivity;
 
 public class SignupActivity extends BaseActivity {
 

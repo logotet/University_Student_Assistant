@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.Fragments.MyUniversities;
+package com.project.universitystudentassistant.ui.university.Fragments.MyUniversities;
 
 import android.content.Intent;
 import android.net.Uri;

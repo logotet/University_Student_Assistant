@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui;
+package com.project.universitystudentassistant.ui.timetable;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import com.islandparadise14.mintable.model.ScheduleDay;
 import com.islandparadise14.mintable.model.ScheduleEntity;
 import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener;
-import com.project.universitystudentassistant.ui.Fragments.AddScheduleTaskFragment;
+import com.project.universitystudentassistant.ui.university.Fragments.AddScheduleTaskFragment;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.databinding.ActivityTimetableBinding;
 

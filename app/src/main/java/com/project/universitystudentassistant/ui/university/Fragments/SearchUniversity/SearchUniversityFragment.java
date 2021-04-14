@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.Fragments.SearchUniversity;
+package com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity;
 
 import android.app.Activity;
 import android.app.SearchManager;
@@ -30,10 +30,9 @@ import com.project.universitystudentassistant.adapters.UniversityAdapter;
 import com.project.universitystudentassistant.data.entities.Sort;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
-import com.project.universitystudentassistant.ui.Fragments.Filter.FilterFragment;
+import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragment;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.SortManager;
-import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller;
 
 import java.util.List;
 import java.util.stream.Collectors;

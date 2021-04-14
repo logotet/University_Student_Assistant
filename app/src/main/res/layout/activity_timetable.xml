@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.TimetableActivity">
+        tools:context=".ui.timetable.TimetableActivity">
 
         <com.islandparadise14.mintable.MinTimeTableView
             style="@style/AppTheme"

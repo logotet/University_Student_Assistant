@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.Fragments.Filter;
+package com.project.universitystudentassistant.ui.university.Fragments.Filter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,14 +17,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.google.android.material.chip.Chip;
 import com.google.gson.Gson;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.entities.Sort;
 import com.project.universitystudentassistant.databinding.FragmentFilterBinding;
-import com.project.universitystudentassistant.ui.Fragments.SearchUniversity.SearchUniversityFragment;
+import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -10,6 +10,9 @@ import androidx.databinding.DataBindingUtil;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.databinding.ActivityMainBinding;
+import com.project.universitystudentassistant.ui.timetable.TimetableActivity;
+import com.project.universitystudentassistant.ui.university.UniversityActivity;
+import com.project.universitystudentassistant.ui.user.ProfileActivity;
 import com.project.universitystudentassistant.utils.ViewHelper;
 
 public class MainActivity extends BaseActivity {

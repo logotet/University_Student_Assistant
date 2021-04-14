@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.Fragments.SearchUniversity;
+package com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity;
 
 import android.app.Application;
 
@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
-import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
 
 import java.util.List;
 

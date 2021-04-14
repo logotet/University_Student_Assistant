@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui;
+package com.project.universitystudentassistant.ui.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui;
+package com.project.universitystudentassistant.ui.user;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.databinding.ActivityLoginBinding;
+import com.project.universitystudentassistant.ui.BaseActivity;
+import com.project.universitystudentassistant.ui.MainActivity;
 import com.project.universitystudentassistant.utils.AppConstants;
 
 public class LoginActivity extends BaseActivity {

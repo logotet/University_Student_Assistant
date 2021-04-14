@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.Fragments.Filter;
+package com.project.universitystudentassistant.ui.university.Fragments.Filter;
 
 import android.app.Application;
 

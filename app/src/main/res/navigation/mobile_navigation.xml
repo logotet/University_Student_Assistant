@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_my_universities"
-        android:name="com.project.universitystudentassistant.ui.Fragments.MyUniversities.MyUniversitiesFragment"
+        android:name="com.project.universitystudentassistant.ui.university.Fragments.MyUniversities.MyUniversitiesFragment"
         android:label="@string/title_my_universities"
         tools:layout="@layout/fragment_my_universities" />
 
 
     <fragment
         android:id="@+id/navigation_search_universities"
-        android:name="com.project.universitystudentassistant.ui.Fragments.SearchUniversity.SearchUniversityFragment"
+        android:name="com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment"
         android:label="@string/title_search_universities"
         tools:layout="@layout/fragment_search_universities" />
 

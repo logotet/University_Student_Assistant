@@ -14,7 +14,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.universitystudentassistant.data.entities.User;
-import com.project.universitystudentassistant.ui.LoginActivity;
+import com.project.universitystudentassistant.ui.user.LoginActivity;
 
 public class FirebaseAuthService {
     private FirebaseAuth auth;

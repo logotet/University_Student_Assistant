@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui;
+package com.project.universitystudentassistant.ui.university;
 
 import android.os.Bundle;
 
@@ -10,7 +10,6 @@ import com.project.universitystudentassistant.utils.ViewHelper;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;

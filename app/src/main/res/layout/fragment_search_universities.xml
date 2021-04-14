@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_marginBottom="10dp"
-        tools:context=".ui.Fragments.SearchUniversity.SearchUniversityFragment">
+        tools:context=".ui.university.Fragments.SearchUniversity.SearchUniversityFragment">
 
         <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
             android:layout_width="match_parent"

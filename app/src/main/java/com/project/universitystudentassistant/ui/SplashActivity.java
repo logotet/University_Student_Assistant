@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.data.entities.UniversityEntity;
-import com.project.universitystudentassistant.data.entities.UniversityEntityPrep;
+import com.project.universitystudentassistant.ui.user.LoginActivity;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
 
 import java.io.BufferedReader;
