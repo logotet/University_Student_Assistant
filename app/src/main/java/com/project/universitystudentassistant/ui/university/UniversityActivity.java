@@ -21,6 +21,7 @@ public class UniversityActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_university);
+        ViewHelper.setUpToolbar(this, binding.toolbarSearchUniversitiesActivity);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -29,7 +30,6 @@ public class UniversityActivity extends AppCompatActivity {
                  R.id.navigation_search_universities, R.id.navigation_my_universities)
                 .build();
 
-        ViewHelper.setUpToolbar(this, binding.toolbarSearchUniversitiesActivity);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
         NavController navController = navHostFragment.getNavController();

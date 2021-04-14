@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/timetable_navigation"
+    app:startDestination="@+id/navigation_week_timetable">
+
+    <fragment
+        android:id="@+id/navigation_week_timetable"
+        android:name="com.project.universitystudentassistant.ui.timetable.WeekFragment"
+        android:label="Week"
+        tools:layout="@layout/fragment_week"/>
+    <action android:id="@+id/action_week_to_day"
+        app:destination="@id/navigation_day_timetable"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+
+    <fragment
+        android:id="@+id/navigation_day_timetable"
+        android:name="com.project.universitystudentassistant.ui.timetable.DayFragment"
+        android:label="Day"
+        tools:layout="@layout/fragment_day" />
+    <action android:id="@+id/action_day_to_week"
+        app:destination="@id/navigation_week_timetable"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
+
+</navigation>

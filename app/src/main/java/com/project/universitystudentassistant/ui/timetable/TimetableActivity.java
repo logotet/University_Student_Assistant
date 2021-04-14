@@ -9,6 +9,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.islandparadise14.mintable.model.ScheduleDay;
 import com.islandparadise14.mintable.model.ScheduleEntity;
@@ -16,6 +18,7 @@ import com.islandparadise14.mintable.tableinterface.OnScheduleClickListener;
 import com.project.universitystudentassistant.ui.university.Fragments.AddScheduleTaskFragment;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.databinding.ActivityTimetableBinding;
+import com.project.universitystudentassistant.utils.ViewHelper;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,41 +27,37 @@ import java.util.ArrayList;
 public class TimetableActivity extends AppCompatActivity {
 //
     private  ActivityTimetableBinding binding;
-    private String[] days = new String[]{"Mon", "Tue", "Wen", "Thu", "Fri"};
-    private ArrayList<ScheduleEntity> scheduleEntities = new ArrayList<>();
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        binding.table.baseSetting(30, 20, 70); //default (20, 30, 50)
-        binding.table.initTable(days);
-        binding.table.updateSchedules(scheduleEntities);
-    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_timetable);
 
-        ScheduleEntity scheduleEntity = new ScheduleEntity(
-                32, //originId
-                "Database", //scheduleName
-                "IT Building 301", //roomInfo
-                ScheduleDay.TUESDAY,
-                "8:20", //startTime format: "HH:mm"
-                "10:30", //endTime  format: "HH:mm"
-                "#73fcae68", //backgroundColor (optional)
-                "#000000" //textcolor (optional)//ScheduleDay object
-        );
+        ViewHelper.setUpToolbar(this, binding.toolbarTimetable);
 
-        scheduleEntities.add(scheduleEntity);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_timetable);
+        NavController navController = navHostFragment.getNavController();
 
-        binding.table.setOnScheduleClickListener(new OnScheduleClickListener() {
+        binding.fabDayView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void scheduleClicked(@NotNull ScheduleEntity scheduleEntity) {
-                Toast.makeText(TimetableActivity.this, scheduleEntity.getScheduleName(), Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                navController.navigate(R.id.action_week_to_day);
             }
         });
+
+        binding.fabWeekView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_day_to_week);
+            }
+        });
+
+
+
+
 
 
         binding.fabAddScheduleTask.setOnClickListener(new View.OnClickListener() {

@@ -89,8 +89,8 @@
     <string name="string_dummy_text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries</string>
 
     <string-array name="rangeSliderValues">
-    <item>1</item>
-    <item>100</item>
+        <item>1</item>
+        <item>100</item>
     </string-array>
 
     <string-array name="states">
