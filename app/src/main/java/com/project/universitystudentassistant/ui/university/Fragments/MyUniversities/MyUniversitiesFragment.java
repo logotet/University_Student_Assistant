@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.UniversityAdapter;
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.databinding.FragmentMyUniversitiesBinding;
 import com.project.universitystudentassistant.utils.AppConstants;
 

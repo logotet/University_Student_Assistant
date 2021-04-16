@@ -13,13 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityStudentAssistant"
         tools:replace="android:theme">
-        <activity android:name="com.project.universitystudentassistant.ui.SplashActivity">
+        <activity android:name="com.project.universitystudentassistant.ui.SplashActivity"/>
+<!--        <intent-filter>-->
+<!--            <action android:name="android.intent.action.MAIN" />-->
+<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+<!--        </intent-filter>-->
+<!--    </activity>-->
+        <activity android:name="com.project.universitystudentassistant.ui.timetable.TimetableActivity" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-        <activity android:name="com.project.universitystudentassistant.ui.timetable.TimetableActivity" />
         <activity android:name="com.project.universitystudentassistant.ui.user.ProfileActivity" />
         <activity
             android:name="com.project.universitystudentassistant.ui.university.UniversityActivity"/>

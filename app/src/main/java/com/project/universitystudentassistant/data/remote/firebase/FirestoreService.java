@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-import com.project.universitystudentassistant.data.models.User;
+import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.utils.AppConstants;
 
 public class FirestoreService {

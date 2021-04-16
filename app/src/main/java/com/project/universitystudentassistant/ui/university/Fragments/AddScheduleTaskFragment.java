@@ -11,13 +11,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.data.models.ScheduleTask;
+import com.project.universitystudentassistant.models.Subject;
 import com.project.universitystudentassistant.databinding.AddScheduleTaskFragmentBinding;
 
 public class AddScheduleTaskFragment extends DialogFragment {
 
     private AddScheduleTaskFragmentBinding binding;
-    private ScheduleTask scheduleTask;
+    private Subject subject;
 
     @Override
     public void onResume() {

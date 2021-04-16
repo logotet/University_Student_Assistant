@@ -13,21 +13,21 @@
         android:id="@+id/fragment_week"
         tools:context=".ui.timetable.WeekFragment">
 
-        <com.islandparadise14.mintable.MinTimeTableView
-            style="@style/AppTheme"
-            android:id="@+id/table"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:border="true"
-            app:xEndLine="true"
-            app:yEndLine="true"
-            app:menuTextColor="@color/colorDarkGrey"
-            app:widthPadding="20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<!--        <com.islandparadise14.mintable.MinTimeTableView-->
+<!--            style="@style/AppTheme"-->
+<!--            android:id="@+id/table"-->
+<!--            android:layout_marginTop="?attr/actionBarSize"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:border="true"-->
+<!--            app:xEndLine="true"-->
+<!--            app:yEndLine="true"-->
+<!--            app:menuTextColor="@color/colorDarkGrey"-->
+<!--            app:widthPadding="20"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -25,11 +25,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class TimetableActivity extends AppCompatActivity {
-//
-    private  ActivityTimetableBinding binding;
 
-
-
+    private ActivityTimetableBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +38,9 @@ public class TimetableActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_timetable);
         NavController navController = navHostFragment.getNavController();
 
-        binding.fabDayView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_week_to_day);
-            }
-        });
+        binding.fabDayView.setOnClickListener(view -> navController.navigate(R.id.action_week_to_day));
 
-        binding.fabWeekView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_day_to_week);
-            }
-        });
-
-
-
-
+        binding.fabWeekView.setOnClickListener(view -> navController.navigate(R.id.action_day_to_week));
 
 
         binding.fabAddScheduleTask.setOnClickListener(new View.OnClickListener() {
@@ -71,17 +54,4 @@ public class TimetableActivity extends AppCompatActivity {
 
     }
 
-//    private void openFragment(FragmentManager fm, Fragment targetFragment, Fragment fragment) {
-//        fragment.setTargetFragment(targetFragment, 300);
-//        FragmentTransaction transaction = fm.beginTransaction();
-//        transaction.replace(R.id.fragment_container, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
-
-    public void openTimeDialogFragment(FragmentManager fm, Fragment targetFragment, int viewId) {
-        DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance();
-        addScheduleTaskFragment.setTargetFragment(targetFragment, 300);
-        addScheduleTaskFragment.show(fm, "time picker");
-    }
 }

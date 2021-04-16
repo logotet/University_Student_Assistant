@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller;

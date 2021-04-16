@@ -5,8 +5,8 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
-import com.project.universitystudentassistant.data.models.UniversityEntity;
-import com.project.universitystudentassistant.data.models.User;
+import com.project.universitystudentassistant.models.UniversityEntity;
+import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.data.local.AppDatabase;
 import com.project.universitystudentassistant.data.remote.dummyremote.DummyRemoteDataProvider;
 import com.project.universitystudentassistant.data.remote.firebase.FirebaseAuthService;

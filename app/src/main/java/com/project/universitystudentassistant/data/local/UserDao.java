@@ -5,7 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.project.universitystudentassistant.data.models.User;
+import com.project.universitystudentassistant.models.User;
 
 @Dao
 public interface UserDao {

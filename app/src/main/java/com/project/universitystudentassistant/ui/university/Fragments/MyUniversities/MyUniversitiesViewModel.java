@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.project.universitystudentassistant.data.Repository;
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 
 import java.util.List;
 

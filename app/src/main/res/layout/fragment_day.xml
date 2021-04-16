@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_day"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_day"
         tools:context=".ui.timetable.DayFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <devs.mulham.horizontalcalendar.HorizontalCalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="DAY" />
+            android:layout_height="100dp"
+            android:background="#039be5"
+            app:selectorColor="@color/colorPrimary"
+            app:textColorNormal="#e0e0e0"
+            app:textColorSelected="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+           />
 
-    </FrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            android:id="@+id/rec_view_subjects"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

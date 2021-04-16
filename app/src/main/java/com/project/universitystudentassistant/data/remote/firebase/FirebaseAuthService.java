@@ -13,7 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.project.universitystudentassistant.data.models.User;
+import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.ui.user.LoginActivity;
 
 public class FirebaseAuthService {

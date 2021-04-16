@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.ui.user.LoginActivity;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
 

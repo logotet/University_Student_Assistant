@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 
 import java.util.List;
 

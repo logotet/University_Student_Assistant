@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import com.google.firebase.auth.FirebaseUser;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
-import com.project.universitystudentassistant.data.models.User;
+import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.databinding.ActivitySignupBinding;
 import com.project.universitystudentassistant.ui.BaseActivity;
 import com.project.universitystudentassistant.ui.MainActivity;

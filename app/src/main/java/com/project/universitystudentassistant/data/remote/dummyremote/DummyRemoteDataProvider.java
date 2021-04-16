@@ -1,6 +1,6 @@
 package com.project.universitystudentassistant.data.remote.dummyremote;
 
-import com.project.universitystudentassistant.data.models.UniversityEntity;
+import com.project.universitystudentassistant.models.UniversityEntity;
 
 import java.util.ArrayList;
 import java.util.List;
