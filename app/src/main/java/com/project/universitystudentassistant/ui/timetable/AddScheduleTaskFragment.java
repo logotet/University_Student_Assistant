@@ -1,4 +1,4 @@
-package com.project.universitystudentassistant.ui.university.Fragments;
+package com.project.universitystudentassistant.ui.timetable;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

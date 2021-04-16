@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".ui.university.Fragments.AddScheduleTaskFragment">
+        tools:context=".ui.timetable.AddScheduleTaskFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_subject_name"
@@ -17,10 +17,34 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/hint_subject_name"
-            android:textColorHint="@color/colorSecondaryText">
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <EditText
                 android:id="@+id/edt_subject_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:padding="@dimen/et_padding"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/et_textSize" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_teacher"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/string_teacher"
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintTop_toBottomOf="@id/til_subject_name">
+
+            <EditText
+                android:id="@+id/edt_teacher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -38,7 +62,8 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:hint="@string/hint_location"
-            android:textColorHint="@color/colorSecondaryText">
+            android:textColorHint="@color/colorSecondaryText"
+            app:layout_constraintTop_toBottomOf="@id/til_teacher">
 
             <EditText
                 android:id="@+id/edt_room_info"
@@ -50,107 +75,56 @@
                 android:textSize="@dimen/et_textSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_day_of_week"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_repeating_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repeating event"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_room_info" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_repeating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txt_repeating_event"
+            app:layout_constraintTop_toBottomOf="@id/til_room_info" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/btn_save"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/btn_padding"
+            android:paddingBottom="@dimen/btn_padding"
+            android:text="@string/brn_cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textSize="@dimen/btn_textSize"
+            app:layout_constraintTop_toBottomOf="@id/txt_repeating_event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/hint_day_of_week"
-            android:textColorHint="@color/colorSecondaryText">
-
-            <EditText
-                android:id="@+id/edt_day_of_week"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:padding="@dimen/et_padding"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/et_textSize" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_start_time"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/hint_start_time"
-            android:textColorHint="@color/colorSecondaryText">
-
-            <EditText
-                android:id="@+id/edt_start_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:padding="@dimen/et_padding"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/et_textSize" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_end_time"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:hint="@string/hint_end_time"
-            android:textColorHint="@color/colorSecondaryText">
-
-            <EditText
-                android:id="@+id/edt_end_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:padding="@dimen/et_padding"
-                android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/et_textSize" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
-
-            <Button
-                android:id="@+id/btn_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/btn_save"
-                android:layout_gravity="start"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
-                android:textAllCaps="false"
-                android:background="?attr/selectableItemBackground"
-                android:paddingTop="@dimen/btn_padding"
-                android:paddingBottom="@dimen/btn_padding"
-                android:text="@string/brn_cancel"
-                android:textColor="@color/purple_700"
-                android:textSize="@dimen/btn_textSize" />
-
-            <Button
-                android:id="@+id/btn_save"
-                android:textAllCaps="false"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="?attr/selectableItemBackground"
-                android:paddingTop="@dimen/btn_padding"
-                android:paddingBottom="@dimen/btn_padding"
-                android:text="@string/btn_save"
-                android:textColor="@color/purple_700"
-                android:textSize="@dimen/btn_textSize" />
-        </RelativeLayout>
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="@dimen/btn_padding"
+            android:paddingBottom="@dimen/btn_padding"
+            android:text="@string/btn_save"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textSize="@dimen/btn_textSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
-    </LinearLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout></layout>
