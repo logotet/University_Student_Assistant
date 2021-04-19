@@ -51,7 +51,7 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        subjects = Subject.getDummySubjectData();
+//        subjects = Subject.getDummySubjectData();
         SubjectAdapter subjectAdapter = new SubjectAdapter(subjects, this);
         binding.recViewSubjects.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewSubjects.setAdapter(subjectAdapter);

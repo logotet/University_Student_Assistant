@@ -38,6 +38,10 @@ public class TimetableActivity extends AppCompatActivity {
                 DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance();
 //                addScheduleTaskFragment.setTargetFragment(targetFragment, 300);
                 addScheduleTaskFragment.show(getSupportFragmentManager(), "time picker");
+
+                //Dummy
+//                Subject subject = new Subject();
+//                subject.createSubjectTime();
             }
         });
 

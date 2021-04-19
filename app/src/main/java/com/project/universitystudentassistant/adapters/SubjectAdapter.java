@@ -41,7 +41,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
     public void onBindViewHolder(@NonNull SubjectHolder holder, int position) {
         Subject subject = subjects.get(position);
         holder.name.setText(subject.getName());
-        holder.hours.setText(subject.getHours().get(0).toString());
+        holder.hours.setText(subject.getWeekMap().get(0).getStartHour().toString());
         holder.setSubject(subject);
     }
 

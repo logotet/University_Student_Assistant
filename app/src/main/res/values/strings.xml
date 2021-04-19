@@ -88,6 +88,8 @@
     <string name="order">order</string>
     <string name="string_dummy_text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries</string>
     <string name="string_teacher">Teacher</string>
+    <string name="string_subject_name_is_empty">Name should be filled</string>
+    <string name="days_of_week">Days of Week</string>
 
     <string-array name="rangeSliderValues">
         <item>1</item>
