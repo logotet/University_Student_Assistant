@@ -145,26 +145,28 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         String subjectName = "";
         String subjectTeacher = "";
         String subjectLocation = "";
-//        if (binding.edtSubjectName.getText() == null) {
-//            binding.edtSubjectName.setError(getString(R.string.string_subject_name_is_empty));
-//        } else {
-//            subjectName = binding.edtSubjectName.getText().toString().trim();
-//        }
-//        if (binding.edtTeacherName.getText() == null) {
-//            subjectTeacher = "";
-//        } else {
-//            subjectTeacher = binding.edtTeacherName.getText().toString().trim();
-//        }
-//        if (binding.edtRoomInfo.getText() == null) {
-//            subjectLocation = "";
-//        } else {
-//            subjectLocation = binding.edtRoomInfo.getText().toString().trim();
-//        }
+        if (binding.edtSubjectName.getText() == null) {
+            binding.edtSubjectName.setError(getString(R.string.string_subject_name_is_empty));
+        } else {
+            subjectName = binding.edtSubjectName.getText().toString().trim();
+        }
+        if (binding.edtTeacherName.getText() == null) {
+            subjectTeacher = "";
+        } else {
+            subjectTeacher = binding.edtTeacherName.getText().toString().trim();
+        }
+        if (binding.edtRoomInfo.getText() == null) {
+            subjectLocation = "";
+        } else {
+            subjectLocation = binding.edtRoomInfo.getText().toString().trim();
+        }
         subject.setName(subjectName);
         subject.setTeacher(subjectTeacher);
         subject.setLocation(subjectLocation);
         activeDays = Subject.createWeekMap(days);
         subject.setWeekMap(activeDays);
+        addSUbjectViewModel.insertSubject(subject);
+        addSUbjectViewModel.insertSubject(subject);
     }
 
     @Override

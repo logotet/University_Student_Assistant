@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.project.universitystudentassistant.models.Subject;
 import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.data.local.AppDatabase;
@@ -123,6 +124,13 @@ public class Repository {
     public LiveData<Integer> getMaxGradRate() {
         return roomDb.universityDao().getMaxGradRate();
     }
+
+
+    //Subjects
+    public void insertSubject(Subject subject) {
+        executor.execute(() -> roomDb.subjectDao().insertSubject(subject));
+    }
+
 
 
 }

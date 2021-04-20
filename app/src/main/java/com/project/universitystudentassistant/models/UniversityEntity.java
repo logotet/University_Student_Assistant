@@ -10,7 +10,6 @@ import com.project.universitystudentassistant.utils.AppConstants;
 
 @Entity(tableName = "my_universities_table", indices = @Index(value = {"name"}, unique = true))
 public class UniversityEntity {
-    //    TODO: consider changing the field names when getting the data from the REST API
     @PrimaryKey(autoGenerate = true)
     private int uid;
     @ColumnInfo(name = "name")
