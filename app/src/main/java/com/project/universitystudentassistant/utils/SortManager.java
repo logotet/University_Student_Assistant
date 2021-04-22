@@ -1,12 +1,17 @@
 package com.project.universitystudentassistant.utils;
 
 import com.project.universitystudentassistant.models.Sort;
+import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectTime;
 import com.project.universitystudentassistant.models.UniversityEntity;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class SortManager {
@@ -98,5 +103,30 @@ public class SortManager {
         sortBy(sort.getSortBy(), unis);
         return unis;
     }
+
+//    Subject Sorting
+
+//    public List<Subject> getSubjectsByWeekDay(List<Subject> data, DayOfWeek day){
+//        data.forEach(s -> s.getWeekMap().get(day));
+//        return data.stream().filter(s ->
+//                s.getWeekMap().entrySet().stream().anyMatch(entry -> entry.getKey() == day)).collect(Collectors.toList());
+//    }
+
+    public SubjectTime getSubjectsByWeekDay(List<Subject> days, DayOfWeek day){
+        return days.stream().filter(time -> time.getDayOfWeek() == day).
+                findFirst().orElse(null);
+    }
+//
+//    public List<Subject> sortSubjectByHours(List<Subject> data){
+//        List<Subject> collect = data.stream()
+//                .sorted(s -> s.getWeekMap()
+//                        .entrySet()
+//                        .stream()
+//                        .sorted(Map.Entry.comparingByValue(
+//                                (e1, e2) -> Integer.compare(e1.getStartHour().getHour(), e2.getStartHour().getHour())
+//                        )).collect(Collectors.toMap(Map.Entry::getKey, SubjectTime::getDate)))
+//                .collect(Collectors.toList());
+//        return collect;
+//    }
 
 }

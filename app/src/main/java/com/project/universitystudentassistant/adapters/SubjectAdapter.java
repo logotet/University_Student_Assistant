@@ -41,8 +41,11 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
     public void onBindViewHolder(@NonNull SubjectHolder holder, int position) {
         Subject subject = subjects.get(position);
         holder.name.setText(subject.getName());
-        holder.hours.setText(subject.getWeekMap().get(0).getStartHour().toString());
+        holder.teacher.setText(subject.getTeacher());
+        holder.location.setText(subject.getLocation());
+//        holder.hours.setText(subject.getWeekMap().get(0).getStartHour().toString());
         holder.setSubject(subject);
+        holder.itemView.setBackgroundColor(subject.getColor());
     }
 
     @Override
@@ -52,12 +55,14 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
 
     public static class SubjectHolder extends RecyclerView.ViewHolder {
 
-        TextView name, hours;
+        TextView name, hours, teacher, location;
         Subject subject;
         public SubjectHolder(@NonNull View itemView, OnSubjectClickedListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.txt_subject_name);
             hours = itemView.findViewById(R.id.txt_subject_hours);
+            teacher = itemView.findViewById(R.id.txt_subject_teacher);
+            location = itemView.findViewById(R.id.txt_subject_location);
             itemView.setOnClickListener(view -> {
                 listener.onSubjectClicked(subject);
             });

@@ -15,7 +15,9 @@ import com.project.universitystudentassistant.models.Subject;
 import com.project.universitystudentassistant.models.SubjectTime;
 
 import java.time.DayOfWeek;
+import java.time.format.TextStyle;
 import java.util.List;
+import java.util.Locale;
 
 public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.WeekPickerViewHolder> {
 
@@ -43,13 +45,11 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
     @Override
     public void onBindViewHolder(@NonNull WeekPickerViewHolder holder, int position) {
         SubjectTime subjectTime = weekList.get(position);
-        //TODO check the enum value
-        holder.weekDay.setText(subjectTime.getDayOfWeek().toString());
-        if(holder.weekDay.isChecked()){
-            subjectTime.setActive(true);
-        }else {
-            subjectTime.setActive(false);
+        holder.weekDay.setText(subjectTime.getDayOfWeek().getDisplayName(TextStyle.SHORT, Locale.US));
+        if(subjectTime.isActive()){
+            holder.weekDay.setChecked(true);
         }
+        holder.weekDay.setChecked(subjectTime.isActive());
         holder.start.setText(subjectTime.getStartHour().toString());
         holder.end.setText(subjectTime.getEndHour().toString());
         holder.setSubjectTime(subjectTime);
@@ -63,7 +63,7 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
     public class WeekPickerViewHolder extends ViewHolder {
         private TextView start, end;
         private CheckBox weekDay;
-        private SubjectTime subjectTime;
+        private SubjectTime subjectTime = new SubjectTime();
 
         public WeekPickerViewHolder(@NonNull View itemView, OnWeekPickerClickListener listener) {
             super(itemView);
@@ -73,7 +73,7 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
             setViews(false);
             weekDay.setOnCheckedChangeListener((compoundButton, b) -> {
                 setViews(b);
-                listener.onWeekDayChecked(subjectTime, b);
+//                listener.onWeekDayChecked(subjectTime, b);
             });
             start.setOnClickListener(v -> listener.onHourClicked(subjectTime, true));
             end.setOnClickListener(v -> listener.onHourClicked(subjectTime, false));
@@ -86,9 +86,11 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
 
         public void setViews(boolean checked) {
             if (checked) {
+                weekDay.setChecked(true);
                 start.setEnabled(true);
                 end.setEnabled(true);
             } else {
+                weekDay.setChecked(false);
                 start.setEnabled(false);
                 end.setEnabled(false);
             }
@@ -97,7 +99,7 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
 
 
     public interface OnWeekPickerClickListener {
-        void onWeekDayChecked(SubjectTime subjectTime, boolean checked);
+//        void onWeekDayChecked(SubjectTime subjectTime, boolean checked);
 
         void onHourClicked(SubjectTime subjectTime, boolean startHour);
 

@@ -131,6 +131,10 @@ public class Repository {
         executor.execute(() -> roomDb.subjectDao().insertSubject(subject));
     }
 
+    public LiveData<List<Subject>> getAllSubjects(){
+        return roomDb.subjectDao().getAll();
+    }
+
 
 
 }

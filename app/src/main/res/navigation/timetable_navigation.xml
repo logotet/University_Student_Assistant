@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/timetable_navigation"
-    app:startDestination="@+id/navigation_week_timetable">
+    app:startDestination="@+id/navigation_day_timetable">
 
     <fragment
         android:id="@+id/navigation_week_timetable"

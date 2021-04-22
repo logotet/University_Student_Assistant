@@ -40,6 +40,7 @@
             android:id="@+id/fab_add_schedule_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:src="@drawable/ic_plus"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="32dp"
@@ -48,6 +49,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_week_view"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_200"
@@ -61,6 +63,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_day_view"
             android:layout_width="wrap_content"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:background="@color/purple_200"
             android:src="@drawable/ic_day_view"

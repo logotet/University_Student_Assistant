@@ -17,6 +17,7 @@ public class SubjectTime {
         this.startHour = startHour;
         this.endHour = endHour;
         this.date = date;
+        active = false;
     }
 
     public SubjectTime() {

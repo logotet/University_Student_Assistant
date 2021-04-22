@@ -47,9 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/hint_location"
+            android:hint="@string/string_teacher"
             android:textColorHint="@color/colorSecondaryText">
 
             <EditText
@@ -68,9 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:hint="@string/hint_day_of_week"
+            android:hint="Room Info"
             android:textColorHint="@color/colorSecondaryText">
 
             <EditText
@@ -82,6 +82,36 @@
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/et_textSize" />
         </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/layout_color_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:id="@+id/txt_subject_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginEnd="16dp"
+                android:text="@string/string_color"
+                android:textSize="24sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_color"
+                android:elevation="0dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:checked="true" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -95,7 +125,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="Repeating event"
                 android:textSize="24sp" />
@@ -107,18 +136,17 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                android:checked="true" />
+               />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/txt_days_of_week"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            android:textAlignment="center"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/days_of_week"
+            android:text="Days"
             android:textSize="24sp" />
 
 
@@ -136,45 +164,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_view_week_picker"
             android:layout_width="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_height="wrap_content" />
 
-        <!--        <RelativeLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginBottom="20dp">-->
 
-        <!--            <Button-->
-        <!--                android:id="@+id/btn_cancel"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_alignBaseline="@id/btn_save"-->
-        <!--                android:layout_gravity="start"-->
-        <!--                android:layout_marginStart="8dp"-->
-        <!--                android:layout_marginEnd="16dp"-->
-        <!--                android:background="?attr/selectableItemBackground"-->
-        <!--                android:paddingTop="@dimen/btn_padding"-->
-        <!--                android:paddingBottom="@dimen/btn_padding"-->
-        <!--                android:text="@string/brn_cancel"-->
-        <!--                android:textAllCaps="false"-->
-        <!--                android:textColor="@color/purple_700"-->
-        <!--                android:textSize="@dimen/btn_textSize" />-->
-
-        <!--            <Button-->
-        <!--                android:id="@+id/btn_save"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_alignParentEnd="true"-->
-        <!--                android:layout_centerVertical="true"-->
-        <!--                android:layout_marginStart="16dp"-->
-        <!--                android:layout_marginEnd="8dp"-->
-        <!--                android:background="?attr/selectableItemBackground"-->
-        <!--                android:paddingTop="@dimen/btn_padding"-->
-        <!--                android:paddingBottom="@dimen/btn_padding"-->
-        <!--                android:text="@string/btn_save"-->
-        <!--                android:textAllCaps="false"-->
-        <!--                android:textColor="@color/purple_700"-->
-        <!--                android:textSize="@dimen/btn_textSize" />-->
-        <!--        </RelativeLayout>-->
 
     </LinearLayout>
 </layout>

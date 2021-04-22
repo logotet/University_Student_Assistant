@@ -90,6 +90,8 @@
     <string name="string_teacher">Teacher</string>
     <string name="string_subject_name_is_empty">Name should be filled</string>
     <string name="days_of_week">Days of Week</string>
+    <string name="string_color">Color</string>
+    <string name="string_choose_color">Choose color for the subject</string>
 
     <string-array name="rangeSliderValues">
         <item>1</item>
