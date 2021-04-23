@@ -67,7 +67,14 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
 //                if(subjectSchedules.size() > 0){
 //                    subjectSchedules = sortManager.sortSubjByHour(subjectSchedules);
 //                }
-                subjectAdapter.updateData(subjectSchedules);
+                if(subjectSchedules.size() > 0) {
+                    binding.recViewSubjects.setVisibility(View.VISIBLE);
+                    binding.txtNoTasks.setVisibility(View.GONE);
+                    subjectAdapter.updateData(subjectSchedules);
+                }else {
+                    binding.recViewSubjects.setVisibility(View.GONE);
+                    binding.txtNoTasks.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -104,14 +111,20 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
                 } catch (DateTimeException e) {
                     dayOfWeek = DayOfWeek.of(7);
                 }
-                Toast.makeText(getContext(), dayOfWeek.toString(), Toast.LENGTH_SHORT).show();
                 viewModel.getAllSubjectsToday(dayOfWeek).observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
                     @Override
                     public void onChanged(List<SubjectSchedule> subjectSchedules) {
 //                        if(subjectSchedules.size() > 0){
 //                            subjectSchedules = sortManager.sortSubjByHour(subjectSchedules);
 //                        }
-                        subjectAdapter.updateData(subjectSchedules);                    }
+                        if(subjectSchedules.size() > 0) {
+                            binding.recViewSubjects.setVisibility(View.VISIBLE);
+                            binding.txtNoTasks.setVisibility(View.GONE);
+                            subjectAdapter.updateData(subjectSchedules);
+                        }else {
+                            binding.recViewSubjects.setVisibility(View.GONE);
+                            binding.txtNoTasks.setVisibility(View.VISIBLE);
+                        }                    }
                 });
             }
         });
