@@ -3,6 +3,7 @@ package com.project.universitystudentassistant.data.local;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -11,12 +12,19 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.models.UniversityEntityPrep;
 import com.project.universitystudentassistant.models.User;
 
-@Database(entities = {UniversityEntity.class, User.class, UniversityEntityPrep.class, Subject.class}, version = 7, exportSchema = false)
-@TypeConverters(SubjectTimeConverter.class)
+@Database(entities = {UniversityEntity.class, User.class, UniversityEntityPrep.class, Subject.class, SubjectSchedule.class},
+//        autoMigrations = @AutoMigration(
+//                from = 7,
+//                to = 8
+//        ),
+        version = 8,
+        exportSchema = true)
+@TypeConverters({SubjectTimeConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase appDatabase;
 
@@ -28,13 +36,16 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract SubjectDao subjectDao();
 
+    public abstract SubjectScheduleDao subjectScheduleDao();
+
+
     public static AppDatabase getInstance(Context context) {
         if (appDatabase == null) {
             appDatabase = Room.databaseBuilder(context,
                     AppDatabase.class,
                     "university-assistant-database.db")
                     .fallbackToDestructiveMigration()
-                    .addMigrations(new Migration(6,7) {
+                    .addMigrations(new Migration(7,8) {
                         @Override
                         public void migrate(@NonNull SupportSQLiteDatabase database) {
 //                            database.execSQL("ALTER TABLE prepopulated_universities_table "
@@ -50,7 +61,7 @@ public abstract class AppDatabase extends RoomDatabase {
 //                            database.execSQL("ALTER TABLE my_universities_table "
 //                                    + " ADD COLUMN description TEXT");
 
-                            database.execSQL("CREATE TABLE IF NOT EXISTS`subjects_table` (`uid` INTEGER, "
+                            database.execSQL("CREATE TABLE IF NOT EXISTS`subjects_shcedule_table` (`uid` INTEGER, "
                                     + "'teacher' TEXT, "
                                     + "'location' TEXT, "
                                     + "'repeating_time' TEXT, "

@@ -8,6 +8,8 @@ import com.project.universitystudentassistant.models.SubjectTime;
 
 import java.lang.reflect.Type;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
@@ -17,25 +19,63 @@ public class SubjectTimeConverter {
     private Gson gson = new Gson();
 
     @TypeConverter
-    public String fromMapOfSubjTime(Map<DayOfWeek, SubjectTime> week){
+    public String fromMapOfSubjTime(Map<DayOfWeek, SubjectTime> week) {
         return gson.toJson(week);
     }
 
     @TypeConverter
-    public Map<DayOfWeek, SubjectTime> weekMapFromJson(String json){
-        Type type = new TypeToken<Map<DayOfWeek, SubjectTime>>() {}.getType();
+    public Map<DayOfWeek, SubjectTime> weekMapFromJson(String json) {
+        Type type = new TypeToken<Map<DayOfWeek, SubjectTime>>() {
+        }.getType();
         return new Gson().fromJson(json, type);
     }
 
     @TypeConverter
-    public String fromMapOfSubjTime(SubjectTime s){
+    public String fromMapOfSubjTime(SubjectTime s) {
         return gson.toJson(s);
     }
 
     @TypeConverter
-    public SubjectTime sujectTimefromJson(String json){
-        Type type = new TypeToken<SubjectTime>() {}.getType();
-        return new Gson().fromJson(json, type);
+    public SubjectTime sujectTimefromJson(String json) {
+        Type type = new TypeToken<SubjectTime>() {
+        }.getType();
+        return gson.fromJson(json, type);
+    }
+
+    @TypeConverter
+    public String fromLocalTime(LocalTime localTime) {
+        return gson.toJson(localTime);
+    }
+
+    @TypeConverter
+    public LocalTime toLocalTime(String localTimeJson) {
+        Type type = new TypeToken<LocalTime>() {
+        }.getType();
+        return gson.fromJson(localTimeJson, type);
+    }
+
+    @TypeConverter
+    public String fromLocalDate(LocalDate localDate) {
+        return gson.toJson(localDate);
+    }
+
+    @TypeConverter
+    public LocalDate toLocalDate(String localDateJson) {
+        Type type = new TypeToken<LocalDate>() {
+        }.getType();
+        return gson.fromJson(localDateJson, type);
+    }
+
+    @TypeConverter
+    public String fromDayOfWeek(DayOfWeek dayOfWeek) {
+        return gson.toJson(dayOfWeek);
+    }
+
+    @TypeConverter
+    public DayOfWeek toDayOfWeek(String dayOfWeekJson) {
+        Type type = new TypeToken<DayOfWeek>() {
+        }.getType();
+        return gson.fromJson(dayOfWeekJson, type);
     }
 
 
