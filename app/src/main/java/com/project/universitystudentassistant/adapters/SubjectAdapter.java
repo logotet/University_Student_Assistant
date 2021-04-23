@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.utils.SortManager;
 
 import java.time.DayOfWeek;
@@ -19,22 +20,16 @@ import java.util.List;
 
 public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectHolder> {
 
-    private List<Subject> subjects = new ArrayList<>();
+    private List<SubjectSchedule> subjects = new ArrayList<>();
     private SubjectHolder.OnSubjectClickedListener listener;
     private SortManager sortManager = new SortManager();
-    private DayOfWeek dayOfWeek;
 
-    public SubjectAdapter(List<Subject> subjects, SubjectHolder.OnSubjectClickedListener listener, DayOfWeek dayOfWeek) {
+    public SubjectAdapter(List<SubjectSchedule> subjects, SubjectHolder.OnSubjectClickedListener listener) {
         this.subjects = subjects;
         this.listener = listener;
-        this.dayOfWeek = dayOfWeek;
     }
 
-    public void setDayOfWeek(DayOfWeek dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
-    public void updateData(List<Subject> data){
+    public void updateData(List<SubjectSchedule> data){
         subjects.clear();
         subjects.addAll(data);
         notifyDataSetChanged();
@@ -49,12 +44,11 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
 
     @Override
     public void onBindViewHolder(@NonNull SubjectHolder holder, int position) {
-        Subject subject = subjects.get(position);
+        SubjectSchedule subject = subjects.get(position);
         holder.name.setText(subject.getName());
         holder.teacher.setText(subject.getTeacher());
         holder.location.setText(subject.getLocation());
-        LocalTime startHour = subject.getWeekMap().get(dayOfWeek).getStartHour();
-        holder.hours.setText(startHour.toString());
+        holder.hours.setText(subject.getStartHour() + " - " + subject.getEndHour());
         holder.setSubject(subject);
         holder.itemView.setBackgroundColor(subject.getColor());
     }
@@ -67,7 +61,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
     public static class SubjectHolder extends RecyclerView.ViewHolder {
 
         TextView name, hours, teacher, location;
-        Subject subject;
+        SubjectSchedule subject;
         private DayOfWeek dayOfWeek;
         public SubjectHolder(@NonNull View itemView, OnSubjectClickedListener listener) {
             super(itemView);
@@ -80,12 +74,12 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
             });
         }
 
-        public void setSubject(Subject subject) {
+        public void setSubject(SubjectSchedule subject) {
             this.subject = subject;
         }
 
         public interface OnSubjectClickedListener{
-            void onSubjectClicked(Subject subject);
+            void onSubjectClicked(SubjectSchedule subject);
         }
     }
 }

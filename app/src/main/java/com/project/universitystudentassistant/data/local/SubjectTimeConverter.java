@@ -44,14 +44,23 @@ public class SubjectTimeConverter {
 
     @TypeConverter
     public String fromLocalTime(LocalTime localTime) {
-        return gson.toJson(localTime);
+        int hour = localTime.getHour();
+        int minute = localTime.getMinute();
+        String time = hour + ":" + minute;
+        return time;
     }
 
     @TypeConverter
-    public LocalTime toLocalTime(String localTimeJson) {
-        Type type = new TypeToken<LocalTime>() {
-        }.getType();
-        return gson.fromJson(localTimeJson, type);
+    public LocalTime toLocalTime(String localTimeString) {
+        LocalTime localTime;
+        try {
+            String[] time = localTimeString.split(":");
+            localTime = LocalTime.of(Integer.parseInt(time[0]), Integer.parseInt(time[0]));
+        }catch (Exception e){
+            localTime = LocalTime.of(1, 1);
+        }
+
+        return localTime;
     }
 
     @TypeConverter

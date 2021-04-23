@@ -6,6 +6,7 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.models.User;
 import com.project.universitystudentassistant.data.local.AppDatabase;
@@ -14,6 +15,7 @@ import com.project.universitystudentassistant.data.remote.firebase.FirebaseAuthS
 import com.project.universitystudentassistant.data.remote.firebase.FirestoreService;
 import com.project.universitystudentassistant.utils.AppConstants;
 
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -135,6 +137,18 @@ public class Repository {
         return roomDb.subjectDao().getAll();
     }
 
+
+    public void insertSubjectSchedule(SubjectSchedule subject) {
+        executor.execute(() -> roomDb.subjectScheduleDao().insertSubject(subject));
+    }
+
+    public LiveData<List<SubjectSchedule>> getAllSubjectsSchedule(){
+        return roomDb.subjectScheduleDao().getAll();
+    }
+
+    public LiveData<List<SubjectSchedule>> getAllSubjectsOnThisDay(DayOfWeek dayOfWeek){
+        return roomDb.subjectScheduleDao().getAllOnThisDay(dayOfWeek);
+    }
 
 
 }

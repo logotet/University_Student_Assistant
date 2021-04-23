@@ -2,6 +2,7 @@ package com.project.universitystudentassistant.utils;
 
 import com.project.universitystudentassistant.models.Sort;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.SubjectTime;
 import com.project.universitystudentassistant.models.UniversityEntity;
 
@@ -111,21 +112,9 @@ public class SortManager {
                 s.getWeekMap().entrySet().stream().anyMatch(entry -> entry.getKey() == day)).collect(Collectors.toList());
     }
 
-    public SubjectTime getSubjectsByWeekDays(Map<DayOfWeek, SubjectTime> days, DayOfWeek day){
-        return days.get(day);
-
+    public List<SubjectSchedule> sortSubjByHour(List<SubjectSchedule> data){
+       return data.stream().sorted(Comparator.comparingInt(d -> d.getStartHour().getHour())).collect(Collectors.toList());
     }
-//
-//    public List<Subject> sortSubjectByHours(List<Subject> data){
-//        List<Subject> collect = data.stream()
-//                .sorted(s -> s.getWeekMap()
-//                        .entrySet()
-//                        .stream()
-//                        .sorted(Map.Entry.comparingByValue(
-//                                (e1, e2) -> Integer.compare(e1.getStartHour().getHour(), e2.getStartHour().getHour())
-//                        )).collect(Collectors.toMap(Map.Entry::getKey, SubjectTime::getDate)))
-//                .collect(Collectors.toList());
-//        return collect;
-//    }
+
 
 }

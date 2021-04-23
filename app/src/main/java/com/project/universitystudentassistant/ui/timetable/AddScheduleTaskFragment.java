@@ -30,6 +30,7 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.WeekPickerAdapter;
 import com.project.universitystudentassistant.databinding.AddScheduleTaskFragmentBinding;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.SubjectTime;
 import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragmentViewModel;
 import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
@@ -40,6 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 import petrov.kristiyan.colorpicker.ColorPicker;
@@ -58,6 +60,7 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
     private int[] colors;
     private int subjectColor;
     private SubjectTime subjectTime;
+    private SubjectSchedule subjectSchedule;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +148,7 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
                 if (item.getItemId() == R.id.menu_apply) {
                     dismiss();
                     saveSubject();
+                    saveSubjectSchedule();
                 }
                 return true;
             }
@@ -212,6 +216,41 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         activeDays = Subject.createWeekMap(days);
         subject.setWeekMap(activeDays);
         addSUbjectViewModel.insertSubject(subject);
+    }
+
+    private void saveSubjectSchedule() {
+        String subjectName = "";
+        String subjectTeacher = "";
+        String subjectLocation = "";
+        if (binding.edtSubjectName.getText() == null) {
+            binding.edtSubjectName.setError(getString(R.string.string_subject_name_is_empty));
+        } else {
+            subjectName = binding.edtSubjectName.getText().toString().trim();
+        }
+        if (binding.edtTeacherName.getText() == null) {
+            subjectTeacher = "";
+        } else {
+            subjectTeacher = binding.edtTeacherName.getText().toString().trim();
+        }
+        if (binding.edtRoomInfo.getText() == null) {
+            subjectLocation = "";
+        } else {
+            subjectLocation = binding.edtRoomInfo.getText().toString().trim();
+        }
+        List<SubjectTime> activeDays = days.stream().filter(SubjectTime::isActive).collect(Collectors.toList());
+        for (SubjectTime activeDay : activeDays) {
+            subjectSchedule = new SubjectSchedule();
+            subjectSchedule.setName(subjectName);
+            subjectSchedule.setTeacher(subjectTeacher);
+            subjectSchedule.setLocation(subjectLocation);
+            subjectSchedule.setColor(subjectColor);
+//            subjectSchedule.setDate(activeDay.getDate());
+            subjectSchedule.setDayOfWeek(activeDay.getDayOfWeek());
+            subjectSchedule.setStartHour(activeDay.getStartHour());
+            subjectSchedule.setEndHour(activeDay.getEndHour());
+            addSUbjectViewModel.insertSubjectSchedule(subjectSchedule);
+        }
+
     }
 
 //    @Override

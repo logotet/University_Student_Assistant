@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.SubjectAdapter;
 import com.project.universitystudentassistant.databinding.FragmentDayBinding;
+import com.project.universitystudentassistant.models.Sort;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.utils.SortManager;
 
 import java.time.DateTimeException;
@@ -34,10 +36,11 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolder.OnSubjectClickedListener {
 
     private FragmentDayBinding binding;
-    private List<Subject> subjects = new ArrayList<>();
+    private List<SubjectSchedule> subjects = new ArrayList<>();
     private DayFragmentViewModel viewModel;
     private DayOfWeek dayOfWeek;
     private SubjectAdapter subjectAdapter;
+    private SortManager sortManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,20 +54,20 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(DayFragmentViewModel.class);
-
+        SortManager sortManager = new SortManager();
         setUpCalendar(view);
 
-        subjectAdapter = new SubjectAdapter(subjects, this, dayOfWeek);
+        subjectAdapter = new SubjectAdapter(subjects, this);
         binding.recViewSubjects.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewSubjects.setAdapter(subjectAdapter);
 
-        viewModel.getAllSubjects().observe(getViewLifecycleOwner(), new Observer<List<Subject>>() {
+        viewModel.getAllSubjectsToday(dayOfWeek).observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
             @Override
-            public void onChanged(List<Subject> subjects) {
-                SortManager sortManager = new SortManager();
-                List<Subject> subjectsByWeekDay = sortManager.getSubjectsByWeekDay(subjects, dayOfWeek);
-                subjectAdapter.setDayOfWeek(dayOfWeek);
-                subjectAdapter.updateData(subjectsByWeekDay);
+            public void onChanged(List<SubjectSchedule> subjectSchedules) {
+//                if(subjectSchedules.size() > 0){
+//                    subjectSchedules = sortManager.sortSubjByHour(subjectSchedules);
+//                }
+                subjectAdapter.updateData(subjectSchedules);
             }
         });
     }
@@ -79,7 +82,7 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         today.add(Calendar.DAY_OF_YEAR, 1);
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
-        HorizontalCalendar horizontalCalendar =  new HorizontalCalendar.Builder(view.getRootView(), R.id.calendarView)
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(view.getRootView(), R.id.calendarView)
                 .defaultSelectedDate(today)
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
@@ -88,7 +91,7 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         int i = horizontalCalendar.getSelectedDate().get(Calendar.DAY_OF_WEEK);
         try {
             dayOfWeek = DayOfWeek.of(i - 2);
-        }catch (DateTimeException e){
+        } catch (DateTimeException e) {
             dayOfWeek = DayOfWeek.of(6);
         }
 
@@ -98,25 +101,24 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
                 int i = date.get(Calendar.DAY_OF_WEEK);
                 try {
                     dayOfWeek = DayOfWeek.of(i - 1);
-                }catch (DateTimeException e){
-                   dayOfWeek = DayOfWeek.of(7);
+                } catch (DateTimeException e) {
+                    dayOfWeek = DayOfWeek.of(7);
                 }
                 Toast.makeText(getContext(), dayOfWeek.toString(), Toast.LENGTH_SHORT).show();
-                viewModel.getAllSubjects().observe(getViewLifecycleOwner(), new Observer<List<Subject>>() {
+                viewModel.getAllSubjectsToday(dayOfWeek).observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
                     @Override
-                    public void onChanged(List<Subject> subjects) {
-                        SortManager sortManager = new SortManager();
-                        List<Subject> subjectsByWeekDay = sortManager.getSubjectsByWeekDay(subjects, dayOfWeek);
-                        subjectAdapter.setDayOfWeek(dayOfWeek);
-                        subjectAdapter.updateData(subjectsByWeekDay);
-                    }
+                    public void onChanged(List<SubjectSchedule> subjectSchedules) {
+//                        if(subjectSchedules.size() > 0){
+//                            subjectSchedules = sortManager.sortSubjByHour(subjectSchedules);
+//                        }
+                        subjectAdapter.updateData(subjectSchedules);                    }
                 });
             }
         });
     }
 
     @Override
-    public void onSubjectClicked(Subject subject) {
+    public void onSubjectClicked(SubjectSchedule subject) {
         Toast.makeText(getContext(), subject.getName(), Toast.LENGTH_SHORT).show();
     }
 }
