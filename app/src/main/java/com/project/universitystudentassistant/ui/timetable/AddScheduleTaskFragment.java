@@ -212,7 +212,6 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         activeDays = Subject.createWeekMap(days);
         subject.setWeekMap(activeDays);
         addSUbjectViewModel.insertSubject(subject);
-        addSUbjectViewModel.insertSubject(subject);
     }
 
 //    @Override

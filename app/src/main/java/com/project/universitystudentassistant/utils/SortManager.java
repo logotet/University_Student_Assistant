@@ -107,15 +107,14 @@ public class SortManager {
 //    Subject Sorting
 
     public List<Subject> getSubjectsByWeekDay(List<Subject> data, DayOfWeek day){
-        data.forEach(s -> s.getWeekMap().get(day));
         return data.stream().filter(s ->
                 s.getWeekMap().entrySet().stream().anyMatch(entry -> entry.getKey() == day)).collect(Collectors.toList());
     }
 
-//    public SubjectTime getSubjectsByWeekDay(List<Subject> days, DayOfWeek day){
-//        return days.stream().filter(time -> time.getDayOfWeek() == day).
-//                findFirst().orElse(null);
-//    }
+    public SubjectTime getSubjectsByWeekDays(Map<DayOfWeek, SubjectTime> days, DayOfWeek day){
+        return days.get(day);
+
+    }
 //
 //    public List<Subject> sortSubjectByHours(List<Subject> data){
 //        List<Subject> collect = data.stream()

@@ -52,12 +52,30 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(DayFragmentViewModel.class);
 
+        setUpCalendar(view);
+
+        subjectAdapter = new SubjectAdapter(subjects, this, dayOfWeek);
+        binding.recViewSubjects.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recViewSubjects.setAdapter(subjectAdapter);
+
+        viewModel.getAllSubjects().observe(getViewLifecycleOwner(), new Observer<List<Subject>>() {
+            @Override
+            public void onChanged(List<Subject> subjects) {
+                SortManager sortManager = new SortManager();
+                List<Subject> subjectsByWeekDay = sortManager.getSubjectsByWeekDay(subjects, dayOfWeek);
+                subjectAdapter.setDayOfWeek(dayOfWeek);
+                subjectAdapter.updateData(subjectsByWeekDay);
+            }
+        });
+    }
+
+    private void setUpCalendar(@NonNull View view) {
         /* starts before 1 month from now */
         Calendar startDate = Calendar.getInstance();
         startDate.add(Calendar.MONTH, -1);
 
         /* ends after 1 month from now */
-                Calendar today = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
         today.add(Calendar.DAY_OF_YEAR, 1);
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
@@ -66,15 +84,12 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
                 .range(startDate, endDate)
                 .datesNumberOnScreen(5)
                 .build();
-//        Calendar today = Calendar.getInstance();
-//        today.add(Calendar.DAY_OF_YEAR, 1);
-//        horizontalCalendar.selectDate(today, true);
-//        horizontalCalendar.
+
         int i = horizontalCalendar.getSelectedDate().get(Calendar.DAY_OF_WEEK);
         try {
-            dayOfWeek = DayOfWeek.of(i - 1);
+            dayOfWeek = DayOfWeek.of(i - 2);
         }catch (DateTimeException e){
-            dayOfWeek = DayOfWeek.of(7);
+            dayOfWeek = DayOfWeek.of(6);
         }
 
         horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
@@ -92,28 +107,12 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
                     public void onChanged(List<Subject> subjects) {
                         SortManager sortManager = new SortManager();
                         List<Subject> subjectsByWeekDay = sortManager.getSubjectsByWeekDay(subjects, dayOfWeek);
+                        subjectAdapter.setDayOfWeek(dayOfWeek);
                         subjectAdapter.updateData(subjectsByWeekDay);
                     }
                 });
             }
         });
-
-
-        subjectAdapter = new SubjectAdapter(subjects, this);
-        binding.recViewSubjects.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.recViewSubjects.setAdapter(subjectAdapter);
-
-        viewModel.getAllSubjects().observe(getViewLifecycleOwner(), new Observer<List<Subject>>() {
-            @Override
-            public void onChanged(List<Subject> subjects) {
-                SortManager sortManager = new SortManager();
-                List<Subject> subjectsByWeekDay = sortManager.getSubjectsByWeekDay(subjects, dayOfWeek);
-                subjectAdapter.updateData(subjectsByWeekDay);
-            }
-        });
-
-
-
     }
 
     @Override

@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.utils.SortManager;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +21,17 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
 
     private List<Subject> subjects = new ArrayList<>();
     private SubjectHolder.OnSubjectClickedListener listener;
+    private SortManager sortManager = new SortManager();
+    private DayOfWeek dayOfWeek;
 
-    public SubjectAdapter(List<Subject> subjects, SubjectHolder.OnSubjectClickedListener listener) {
+    public SubjectAdapter(List<Subject> subjects, SubjectHolder.OnSubjectClickedListener listener, DayOfWeek dayOfWeek) {
         this.subjects = subjects;
         this.listener = listener;
+        this.dayOfWeek = dayOfWeek;
+    }
+
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public void updateData(List<Subject> data){
@@ -43,7 +53,8 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
         holder.name.setText(subject.getName());
         holder.teacher.setText(subject.getTeacher());
         holder.location.setText(subject.getLocation());
-//        holder.hours.setText(subject.getWeekMap().get(0).getStartHour().toString());
+        LocalTime startHour = subject.getWeekMap().get(dayOfWeek).getStartHour();
+        holder.hours.setText(startHour.toString());
         holder.setSubject(subject);
         holder.itemView.setBackgroundColor(subject.getColor());
     }
@@ -57,6 +68,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SubjectH
 
         TextView name, hours, teacher, location;
         Subject subject;
+        private DayOfWeek dayOfWeek;
         public SubjectHolder(@NonNull View itemView, OnSubjectClickedListener listener) {
             super(itemView);
             name = itemView.findViewById(R.id.txt_subject_name);
