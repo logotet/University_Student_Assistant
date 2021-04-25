@@ -17,7 +17,7 @@ public class DateDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
-        boolean isEndDatePicker = true;
+//        boolean isEndDatePicker = true;
 //                = this.getArguments().getBoolean(AppConstants.IS_END_DATE_PICKER);
 
         Calendar c = Calendar.getInstance();
@@ -29,13 +29,13 @@ public class DateDialogFragment extends DialogFragment {
 
 //        TODO: Add logic for the "no end date" button
 
-        if(isEndDatePicker) {
-            datePickerDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "No end date", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
-        }
+//        if(isEndDatePicker) {
+//            datePickerDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "No end date", new DialogInterface.OnClickListener() {
+//                public void onClick(DialogInterface dialog, int id) {
+//                    dialog.dismiss();
+//                }
+//            });
+//        }
 
 //        new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getTargetFragment(), year,  month,  dayOfMonth);
 

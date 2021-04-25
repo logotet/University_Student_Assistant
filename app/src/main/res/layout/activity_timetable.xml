@@ -36,6 +36,19 @@
             app:navGraph="@navigation/timetable_navigation"
            />
 
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="?attr/actionBarSize"-->
+<!--            android:id="@+id/rec_view_weeks"/>-->
+
+
+<!--        <com.islandparadise14.mintable.MinTimeTableView-->
+<!--                    android:id="@+id/table"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    app:isFullWidth="true"/>-->
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_add_schedule_task"
             android:layout_width="wrap_content"
@@ -49,7 +62,6 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_week_view"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/purple_200"
@@ -63,7 +75,6 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_day_view"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="wrap_content"
             android:background="@color/purple_200"
             android:src="@drawable/ic_day_view"

@@ -7,9 +7,13 @@ import com.project.universitystudentassistant.models.SubjectTime;
 import com.project.universitystudentassistant.models.UniversityEntity;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -117,4 +121,30 @@ public class SortManager {
     }
 
 
+    public List<SubjectSchedule> getSubjectsWithDates(SubjectSchedule subjectSchedule){
+        Calendar calendar = Calendar.getInstance();
+        Date trialTime = new Date();
+        calendar.setTime(trialTime);
+        int i = calendar.get(Calendar.WEEK_OF_YEAR)-2;
+        LocalDate date;
+
+        List<SubjectSchedule> subjectSchedulesDates = new ArrayList<>();
+        for (int j = i; j <52 ; j++) {
+            SubjectSchedule newSubject = new SubjectSchedule();
+            newSubject.setName(subjectSchedule.getName());
+            newSubject.setStartHour(subjectSchedule.getStartHour());
+            newSubject.setTeacher(subjectSchedule.getTeacher());
+            newSubject.setLocation(subjectSchedule.getLocation());
+            newSubject.setEndHour(subjectSchedule.getEndHour());
+            newSubject.setDayOfWeek(subjectSchedule.getDayOfWeek());
+            newSubject.setColor(subjectSchedule.getColor());
+            date = LocalDate.now()
+                    .with(WeekFields.ISO.weekBasedYear(), 2021) // year
+                    .with(WeekFields.ISO.weekOfWeekBasedYear(), j) // week of year
+                    .with(WeekFields.ISO.dayOfWeek(), subjectSchedule.getDayOfWeek().getValue());
+            newSubject.setDate(date);
+            subjectSchedulesDates.add(newSubject);
+        }
+        return subjectSchedulesDates;
+    }
 }

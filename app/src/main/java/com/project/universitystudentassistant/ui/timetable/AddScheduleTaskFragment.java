@@ -1,9 +1,7 @@
 package com.project.universitystudentassistant.ui.timetable;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -32,10 +29,9 @@ import com.project.universitystudentassistant.databinding.AddScheduleTaskFragmen
 import com.project.universitystudentassistant.models.Subject;
 import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.SubjectTime;
-import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragmentViewModel;
-import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,14 +39,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-
 import petrov.kristiyan.colorpicker.ColorPicker;
 
 public class AddScheduleTaskFragment extends DialogFragment implements WeekPickerAdapter.OnWeekPickerClickListener,
         TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private AddScheduleTaskFragmentBinding binding;
-    private Subject subject;
     private List<SubjectTime> days = new ArrayList<>();
     private boolean startHour;
     private DayOfWeek day;
@@ -59,8 +53,9 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
     private Map<DayOfWeek, SubjectTime> activeDays = new HashMap<>();
     private int[] colors;
     private int subjectColor;
-    private SubjectTime subjectTime;
     private SubjectSchedule subjectSchedule;
+    private LocalDate localDate;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,16 +112,9 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         binding.recViewWeekPicker.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.recViewWeekPicker.setAdapter(weekPickerAdapter);
 
-        addSUbjectViewModel.getWeek().observe(getViewLifecycleOwner(), new Observer<List<SubjectTime>>() {
-            @Override
-            public void onChanged(List<SubjectTime> subjectTimes) {
-                days = subjectTimes;
-                weekPickerAdapter.updateData(days);
-            }
-        });
+        getWeekData();
 //        TODO same hours for every day option
 
-        subject = new Subject();
 
         binding.switchRepeating.setChecked(true);
         binding.switchRepeating.setOnCheckedChangeListener((compoundButton, b) -> setRepeatingVisibilty(b));
@@ -147,7 +135,6 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
                 }
                 if (item.getItemId() == R.id.menu_apply) {
                     dismiss();
-                    saveSubject();
                     saveSubjectSchedule();
                 }
                 return true;
@@ -155,9 +142,18 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         });
     }
 
+    private void getWeekData() {
+        addSUbjectViewModel.getWeek().observe(getViewLifecycleOwner(), new Observer<List<SubjectTime>>() {
+            @Override
+            public void onChanged(List<SubjectTime> subjectTimes) {
+                days = subjectTimes;
+                weekPickerAdapter.updateData(days);
+            }
+        });
+    }
+
     private void setColorDialog() {
         ColorPicker colorPicker = new ColorPicker(getActivity());
-//        colorPicker.show();
         colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
             @Override
             public void onChooseColor(int position, int color) {
@@ -167,13 +163,11 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
 
             @Override
             public void onCancel() {
-                // put code
             }
         })
                 .setDefaultColorButton(Color.parseColor("#f84c44"))
-//                .setColors(colors)
                 .setTitle(getString(R.string.string_choose_color))
-//                .setColumns(4)
+                .setRoundColorButton(true)
                 .show();
     }
 
@@ -190,33 +184,6 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         }
     }
 
-    private void saveSubject() {
-        String subjectName = "";
-        String subjectTeacher = "";
-        String subjectLocation = "";
-        if (binding.edtSubjectName.getText() == null) {
-            binding.edtSubjectName.setError(getString(R.string.string_subject_name_is_empty));
-        } else {
-            subjectName = binding.edtSubjectName.getText().toString().trim();
-        }
-        if (binding.edtTeacherName.getText() == null) {
-            subjectTeacher = "";
-        } else {
-            subjectTeacher = binding.edtTeacherName.getText().toString().trim();
-        }
-        if (binding.edtRoomInfo.getText() == null) {
-            subjectLocation = "";
-        } else {
-            subjectLocation = binding.edtRoomInfo.getText().toString().trim();
-        }
-        subject.setName(subjectName);
-        subject.setTeacher(subjectTeacher);
-        subject.setLocation(subjectLocation);
-        subject.setColor(subjectColor);
-        activeDays = Subject.createWeekMap(days);
-        subject.setWeekMap(activeDays);
-        addSUbjectViewModel.insertSubject(subject);
-    }
 
     private void saveSubjectSchedule() {
         String subjectName = "";
@@ -237,26 +204,33 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         } else {
             subjectLocation = binding.edtRoomInfo.getText().toString().trim();
         }
-        List<SubjectTime> activeDays = days.stream().filter(SubjectTime::isActive).collect(Collectors.toList());
-        for (SubjectTime activeDay : activeDays) {
+        if (binding.switchRepeating.isChecked()) {
+            List<SubjectTime> activeDays = days.stream().filter(SubjectTime::isActive).collect(Collectors.toList());
+            for (SubjectTime activeDay : activeDays) {
+                subjectSchedule = new SubjectSchedule();
+                subjectSchedule.setName(subjectName);
+                subjectSchedule.setTeacher(subjectTeacher);
+                subjectSchedule.setLocation(subjectLocation);
+                subjectSchedule.setColor(subjectColor);
+                subjectSchedule.setDate(null);
+                subjectSchedule.setDayOfWeek(activeDay.getDayOfWeek());
+                subjectSchedule.setStartHour(activeDay.getStartHour());
+                subjectSchedule.setEndHour(activeDay.getEndHour());
+                addSUbjectViewModel.insertSubjectSchedule(subjectSchedule);
+            }
+        }else {
             subjectSchedule = new SubjectSchedule();
             subjectSchedule.setName(subjectName);
             subjectSchedule.setTeacher(subjectTeacher);
             subjectSchedule.setLocation(subjectLocation);
             subjectSchedule.setColor(subjectColor);
-//            subjectSchedule.setDate(activeDay.getDate());
-            subjectSchedule.setDayOfWeek(activeDay.getDayOfWeek());
-            subjectSchedule.setStartHour(activeDay.getStartHour());
-            subjectSchedule.setEndHour(activeDay.getEndHour());
+            subjectSchedule.setDate(localDate);
+//            subjectSchedule.setStartHour(activeDay.getStartHour());
+//            subjectSchedule.setEndHour(activeDay.getEndHour());
             addSUbjectViewModel.insertSubjectSchedule(subjectSchedule);
         }
 
     }
-
-//    @Override
-//    public void onWeekDayChecked(SubjectTime subjectTime, boolean checked) {
-//        Toast.makeText(getContext(), subjectTime.getDayOfWeek().toString(), Toast.LENGTH_LONG).show();
-//    }
 
     @Override
     public void onHourClicked(SubjectTime subjectTime, boolean startHour) {
@@ -267,7 +241,6 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
         timePicker.setTargetFragment(this, 300);
         timePicker.show(fm, "time picker");
     }
-
 
     @Override
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
@@ -284,7 +257,8 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-
+        localDate = LocalDate.of(i, i1+1, i2);
+        Toast.makeText(getContext(), localDate.toString(), Toast.LENGTH_SHORT).show();
     }
 
 }
