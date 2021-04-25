@@ -32,8 +32,7 @@ public class MyAdapter extends WeekViewSimpleAdapterJsr310<SubjectSchedule> {
         LocalDateTime localDateTime = LocalDateTime.of(subject.getDate(), subject.getEndHour());
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime zonedDateTime = localDateTime.atZone(zoneId);
-        GregorianCalendar calendar = GregorianCalendar.from(zonedDateTime);
-        return calendar;
+        GregorianCalendar calendar = GregorianCalendar.from(zonedDateTime);        return calendar;
     }
 
     @NotNull

@@ -12,7 +12,6 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.islandparadise14.mintable.model.ScheduleEntity;
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.adapters.WeekAdapter;
 import com.project.universitystudentassistant.databinding.ActivityTimetableBinding;
 import com.project.universitystudentassistant.utils.ViewHelper;
 
