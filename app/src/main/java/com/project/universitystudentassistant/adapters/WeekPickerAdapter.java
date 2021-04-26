@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.models.Subject;
+import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.models.SubjectTime;
 
 import java.time.DayOfWeek;
@@ -70,6 +72,7 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
             weekDay = itemView.findViewById(R.id.checkbox_week_day);
             start = itemView.findViewById(R.id.txt_from_picker);
             end = itemView.findViewById(R.id.txt_to_picker);
+
 //            setViews(false);
             weekDay.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +82,7 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
             });
             start.setOnClickListener(v -> listener.onHourClicked(subjectTime, true));
             end.setOnClickListener(v -> listener.onHourClicked(subjectTime, false));
+
         }
 
 
@@ -106,8 +110,6 @@ public class WeekPickerAdapter extends RecyclerView.Adapter<WeekPickerAdapter.We
 
     public interface OnWeekPickerClickListener {
         void onWeekDayChecked(SubjectTime subjectTime, boolean checked);
-
         void onHourClicked(SubjectTime subjectTime, boolean startHour);
-
     }
 }

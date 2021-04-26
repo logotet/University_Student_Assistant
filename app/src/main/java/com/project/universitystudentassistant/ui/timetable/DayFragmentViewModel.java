@@ -29,5 +29,9 @@ public class DayFragmentViewModel extends AndroidViewModel {
         return repository.getAllSubjectsOnThisDay(today);
     }
 
+    public void deleteSubject(String name){
+        repository.deleteSubject(name);
+    }
+
 
 }

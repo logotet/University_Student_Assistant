@@ -24,9 +24,6 @@ public interface UniversityDao {
 //            (entity = UniversityEntity.class, onConflict = OnConflictStrategy.REPLACE)
     void update(UniversityEntity entity);
 
-    @Query("SELECT EXISTS(SELECT 1 FROM my_universities_table WHERE name = :name)")
-    LiveData<Boolean> isUniSelected(String name);
-
     @Query("SELECT * FROM my_universities_table LIMIT 5")
     LiveData<List<UniversityEntity>> getFive();
 

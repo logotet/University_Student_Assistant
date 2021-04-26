@@ -45,10 +45,16 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
     private DayFragmentViewModel viewModel;
     private DayOfWeek dayOfWeek;
     private SubjectAdapter subjectAdapter;
-    HorizontalCalendar horizontalCalendar;
+    private HorizontalCalendar horizontalCalendar;
     private SortManager sortManager;
     private Calendar today;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getData();
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -138,6 +144,16 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
     @Override
     public void onSubjectClicked(SubjectSchedule subject) {
         Toast.makeText(getContext(), subject.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onEditClicked(SubjectSchedule subject) {
+        ((TimetableActivity) getActivity()).opedAddSubject();
+    }
+
+    @Override
+    public void onDeleteClicked(SubjectSchedule subject) {
+        viewModel.deleteSubject(subject.getName());
     }
 
 

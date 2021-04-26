@@ -76,7 +76,10 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
     }
 
     public static AddScheduleTaskFragment newInstance() {
-        return new AddScheduleTaskFragment();
+        AddScheduleTaskFragment fragment = new AddScheduleTaskFragment();
+        Bundle args = new Bundle();
+
+        return fragment;
     }
 
     @Override
@@ -124,9 +127,9 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
             }
             if (item.getItemId() == R.id.menu_apply) {
                     if(validateName()) {
-//                        dismiss();
-//                        saveSubjectSchedule();
-//                    }else {
+                        dismiss();
+                        saveSubjectSchedule();
+                    }else {
                         Toast.makeText(getContext(), "You should add a valid name!", Toast.LENGTH_SHORT).show();
                     }
             }
@@ -262,7 +265,7 @@ public class AddScheduleTaskFragment extends DialogFragment implements WeekPicke
 
 
     private boolean validateName() {
-        return TextUtils.isEmpty(binding.edtSubjectName.getText().toString().trim());
+        return !TextUtils.isEmpty(binding.edtSubjectName.getText().toString().trim());
     }
 
 

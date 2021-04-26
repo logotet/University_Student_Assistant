@@ -55,8 +55,9 @@ public class SubjectTimeConverter {
         LocalTime localTime;
         try {
             String[] time = localTimeString.split(":");
-            localTime = LocalTime.of(Integer.parseInt(time[0]), Integer.parseInt(time[0]));
+            localTime = LocalTime.of(Integer.parseInt(time[0]), Integer.parseInt(time[1]));
         }catch (Exception e){
+            e.getMessage();
             localTime = LocalTime.of(1, 1);
         }
 

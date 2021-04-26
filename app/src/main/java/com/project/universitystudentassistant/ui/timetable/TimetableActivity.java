@@ -47,11 +47,15 @@ public class TimetableActivity extends AppCompatActivity {
         });
 
         binding.fabAddScheduleTask.setOnClickListener(view -> {
-            DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance();
-            addScheduleTaskFragment.show(getSupportFragmentManager(), "time picker");
+            opedAddSubject();
         });
 
 
+    }
+
+    public void opedAddSubject() {
+        DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance();
+        addScheduleTaskFragment.show(getSupportFragmentManager(), "time picker");
     }
 
 

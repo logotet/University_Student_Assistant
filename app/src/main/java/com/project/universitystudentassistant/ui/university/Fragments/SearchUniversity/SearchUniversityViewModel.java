@@ -41,9 +41,7 @@ public class SearchUniversityViewModel extends AndroidViewModel {
     }
 
 
-    public LiveData<Boolean> isUniSaved(String name){
-        return repository.checkIfUniExists(name);
-    }
+
 
 
 }

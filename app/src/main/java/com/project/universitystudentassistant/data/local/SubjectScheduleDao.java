@@ -23,4 +23,6 @@ public interface SubjectScheduleDao {
     @Query("SELECT * FROM subjects_schedule_table WHERE week_day = :dayOfWeek")
     LiveData<List<SubjectSchedule>> getAllOnThisDay(DayOfWeek dayOfWeek);
 
+    @Query("DELETE  FROM subjects_schedule_table WHERE name LIKE :name")
+    void deleteSubject(String name);
 }

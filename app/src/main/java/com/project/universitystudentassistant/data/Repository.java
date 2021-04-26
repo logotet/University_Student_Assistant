@@ -86,9 +86,7 @@ public class Repository {
         return roomDb.universityDao().getSavedUniversities(AppConstants.SAVED);
     }
 
-    public LiveData<Boolean> checkIfUniExists(String name) {
-        return roomDb.universityDao().isUniSelected(name);
-    }
+
 
     public void deleteUniversity(UniversityEntity entity) {
         String name = entity.getName();
@@ -148,6 +146,10 @@ public class Repository {
 
     public LiveData<List<SubjectSchedule>> getAllSubjectsOnThisDay(DayOfWeek dayOfWeek){
         return roomDb.subjectScheduleDao().getAllOnThisDay(dayOfWeek);
+    }
+
+    public void deleteSubject(String name){
+        executor.execute(() -> roomDb.subjectScheduleDao().deleteSubject(name));
     }
 
 
