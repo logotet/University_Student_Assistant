@@ -13,62 +13,51 @@
         android:layout_height="match_parent"
         tools:context=".ui.timetable.WeekFragment">
 
-<!--        <com.alamkanak.weekview.WeekView-->
-<!--            android:id="@+id/weekView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:dayBackgroundColor="#05000000"-->
-<!--            app:eventTextColor="@android:color/white"-->
-<!--            app:hourHeight="60dp"-->
-<!--            app:textSize="12sp"-->
-<!--            app:timeColumnResolution="60"-->
-<!--            app:todayColumnBackgroundColor="#1848adff"-->
-<!--            app:todayHeaderTextColor="@color/white"-->
-<!--            app:untitledEventText="blia"/>-->
+        <!--        <com.alamkanak.weekview.WeekView-->
+        <!--            android:id="@+id/weekView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:dayBackgroundColor="#05000000"-->
+        <!--            app:eventTextColor="@android:color/white"-->
+        <!--            app:hourHeight="60dp"-->
+        <!--            app:textSize="12sp"-->
+        <!--            app:timeColumnResolution="60"-->
+        <!--            app:todayColumnBackgroundColor="#1848adff"-->
+        <!--            app:todayHeaderTextColor="@color/white"-->
+        <!--            app:untitledEventText="blia"/>-->
 
-<!--        <com.alamkanak.weekview.WeekView-->
-<!--            android:id="@+id/weekView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:autoLimitTime="false"-->
-<!--            app:dayBackgroundColor="#05000000"-->
-<!--            app:headerColumnTextColor="@color/white"-->
-<!--            app:headerRowBackgroundColor="@color/purple_200"-->
-<!--            app:maxTime="16"-->
-<!--            app:minOverlappingMinutes="5"-->
-<!--            app:minTime="4"-->
-<!--            app:newEventTimeResolutionInMinutes="15"-->
-<!--            app:noOfVisibleDays="3"-->
-<!--            app:timeColumnResolution="60"-->
-<!--            app:todayColumnBackgroundColor="#1848adff"-->
-<!--            app:todayHeaderTextColor="@color/light_yellow"-->
-<!--            app:untitledEventText="blia" />-->
 
         <com.alamkanak.weekview.WeekView
             android:id="@+id/weekView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:columnGap="8dp"
+            app:dayBackgroundColor="@color/white"
             app:defaultEventColor="@color/colorPrimary"
             app:eventTextColor="@color/white"
-            app:timeColumnTextSize="12sp"
-            app:hourHeight="60dp"
-            app:timeColumnPadding="8dp"
-            app:timeColumnTextColor="@color/purple_200"
-            app:timeColumnBackgroundColor="@color/white"
+            app:headerBackgroundColor="@color/color_light_blue"
             app:headerPadding="12dp"
-            app:columnGap="8dp"
-            app:numberOfVisibleDays="3"
-            app:headerBackgroundColor="@color/purple_200"
-            app:dayBackgroundColor="@color/white"
-            app:todayBackgroundColor="@color/purple_200" />
-
-
-
-<!--        <de.tobiasschuerg.weekview.view.WeekView-->
-<!--            android:id="@+id/week_view"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:accent_color="@color/colorAccent"/>-->
+            app:headerTextColor="@color/colorLightGrey"
+            app:headerTextSize="18sp"
+            app:showHeaderBottomShadow="true"
+            app:headerBottomLineColor="@color/black"
+            app:headerBottomShadowRadius="10dp"
+            app:eventTextSize="12sp"
+            app:weekNumberTextSize="20sp"
+            android:textAlignment="center"
+            app:eventCornerRadius="10dp"
+            app:adaptiveEventTextSize="true"
+            app:hourHeight="20dp"
+            app:maxHour="20"
+            app:minHour="6"
+            app:numberOfVisibleDays="5"
+            app:timeColumnBackgroundColor="@color/colorLightGrey"
+            app:timeColumnPadding="8dp"
+            app:timeColumnTextColor="@color/black"
+            app:timeColumnTextSize="12sp"
+            app:todayBackgroundColor="@color/purple_200"
+            app:showWeekNumber="true"
+            app:todayHeaderTextColor="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

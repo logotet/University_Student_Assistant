@@ -15,8 +15,8 @@ import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MyAdapter extends WeekViewSimpleAdapterJsr310<SubjectSchedule> {
-    public MyAdapter() {
+public class WeekEventAdapter extends WeekViewSimpleAdapterJsr310<SubjectSchedule> {
+    public WeekEventAdapter() {
         super();
     }
 

@@ -17,7 +17,7 @@
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#039be5"
+            android:background="@color/color_light_blue"
             app:selectorColor="@color/colorPrimary"
             app:textColorNormal="#e0e0e0"
             app:textColorSelected="@color/white"

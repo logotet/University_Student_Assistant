@@ -1,55 +1,58 @@
 package com.project.universitystudentassistant.ui.timetable;
 
-import android.graphics.Color;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.alamkanak.weekview.WeekViewEvent;
-import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.project.universitystudentassistant.R;
-import com.project.universitystudentassistant.adapters.MyAdapter;
+import com.project.universitystudentassistant.adapters.WeekEventAdapter;
 import com.project.universitystudentassistant.databinding.FragmentWeekBinding;
 import com.project.universitystudentassistant.models.SubjectSchedule;
+import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragment;
+import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
 import com.project.universitystudentassistant.utils.SortManager;
 
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.LocalTime;
-
-import java.time.temporal.ChronoUnit;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-
-import de.tobiasschuerg.weekview.data.Event;
-import de.tobiasschuerg.weekview.data.WeekData;
 
 
 public class WeekFragment extends Fragment {
 
     private FragmentWeekBinding binding;
-    private List<WeekViewEvent> events = new ArrayList<>();
     private WeekFragmentViewModel viewModel;
-    private boolean focus;
-
+    private Calendar today;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
 
     @Override
-    public void onResume() {
-        super.onResume();
-        focus = getView().requestFocus();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_week, container, false);
         binding = DataBindingUtil.bind(view);
         return view;
@@ -59,12 +62,13 @@ public class WeekFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(this).get(WeekFragmentViewModel.class);
-        MyAdapter adapter = new MyAdapter();
+        today = Calendar.getInstance();
+        today.setTime(new Date());
+        WeekEventAdapter adapter = new WeekEventAdapter();
         binding.weekView.setAdapter(adapter);
         viewModel.getEventData().observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
             @Override
             public void onChanged(List<SubjectSchedule> subjectSchedules) {
-//                adapter.submitList(subjectSchedules);
                 SortManager sortManager = new SortManager();
                 List<SubjectSchedule> subjectsWithDates = new ArrayList<>();
                 for (SubjectSchedule subject :
@@ -74,8 +78,24 @@ public class WeekFragment extends Fragment {
                 adapter.submitList(subjectsWithDates);
             }
         });
+    }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.timetable_menu, menu);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Week Schedule");
+        MenuItem item = menu.findItem(R.id.menu_today);
+        item.setTitle(dateFormat.format(new Date()));
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.menu_today) {
+            binding.weekView.scrollToDate(today);
+        }
+
+        return true;
     }
 
 

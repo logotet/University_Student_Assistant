@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.models.Subject;
@@ -23,7 +22,7 @@ public class AddScheduleFragmentViewModel extends AndroidViewModel {
     public AddScheduleFragmentViewModel(@NonNull Application application) {
         super(application);
         week = new MutableLiveData<>();
-        week.setValue(SubjectTime.getDummySubjectData());
+        week.setValue(SubjectTime.getWeek());
         repository = new Repository(application.getApplicationContext());
     }
 
@@ -42,5 +41,9 @@ public class AddScheduleFragmentViewModel extends AndroidViewModel {
 
     public void setWeek(List<SubjectTime> week) {
         this.week.setValue(week);
+    }
+
+    public void updateWeek(SubjectTime day, int index) {
+        week.getValue().set(index, day);
     }
 }

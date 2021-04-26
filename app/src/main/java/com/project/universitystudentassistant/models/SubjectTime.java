@@ -63,7 +63,7 @@ public class SubjectTime {
         this.active = active;
     }
 
-    public static List<SubjectTime> getDummySubjectData() {
+    public static List<SubjectTime> getWeek() {
         List<SubjectTime> data = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
             SubjectTime subjectTime = new SubjectTime();
