@@ -13,9 +13,7 @@ public class ViewHelper {
         ActionBar supportActionBar = activity.getSupportActionBar();
         supportActionBar.setTitle("");
         supportActionBar.setDisplayHomeAsUpEnabled(true);
-        supportActionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back);
-//        binding.toolbarSearchUniversitiesActivity.setNavigationOnClickListener(item -> {
-//            onBackPressed();
-//        });
+//        supportActionBar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back);
+
     }
 }

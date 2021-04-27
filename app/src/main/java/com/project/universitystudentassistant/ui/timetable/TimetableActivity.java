@@ -1,8 +1,10 @@
 package com.project.universitystudentassistant.ui.timetable;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
@@ -54,9 +56,13 @@ public class TimetableActivity extends AppCompatActivity {
     }
 
     public void opedAddSubject() {
-        DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance();
+        DialogFragment addScheduleTaskFragment = AddScheduleTaskFragment.newInstance("name", false);
         addScheduleTaskFragment.show(getSupportFragmentManager(), "time picker");
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

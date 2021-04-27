@@ -1,8 +1,5 @@
 package com.project.universitystudentassistant.ui.timetable;
 
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,20 +11,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.alamkanak.weekview.WeekViewEvent;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.WeekEventAdapter;
 import com.project.universitystudentassistant.databinding.FragmentWeekBinding;
 import com.project.universitystudentassistant.models.SubjectSchedule;
-import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragment;
-import com.project.universitystudentassistant.ui.university.Fragments.SearchUniversity.SearchUniversityFragment;
 import com.project.universitystudentassistant.utils.SortManager;
 
 import java.text.SimpleDateFormat;

@@ -87,7 +87,6 @@ public class Repository {
     }
 
 
-
     public void deleteUniversity(UniversityEntity entity) {
         String name = entity.getName();
         executor.execute(() -> roomDb.universityDao().deleteUniversityByName(name));
@@ -131,7 +130,7 @@ public class Repository {
         executor.execute(() -> roomDb.subjectDao().insertSubject(subject));
     }
 
-    public LiveData<List<Subject>> getAllSubjects(){
+    public LiveData<List<Subject>> getAllSubjects() {
         return roomDb.subjectDao().getAll();
     }
 
@@ -140,15 +139,19 @@ public class Repository {
         executor.execute(() -> roomDb.subjectScheduleDao().insertSubject(subject));
     }
 
-    public LiveData<List<SubjectSchedule>> getAllSubjectsSchedule(){
+    public LiveData<List<SubjectSchedule>> getAllSubjectsSchedule() {
         return roomDb.subjectScheduleDao().getAll();
     }
 
-    public LiveData<List<SubjectSchedule>> getAllSubjectsOnThisDay(DayOfWeek dayOfWeek){
+    public LiveData<List<SubjectSchedule>> getAllSubjectsOnThisDay(DayOfWeek dayOfWeek) {
         return roomDb.subjectScheduleDao().getAllOnThisDay(dayOfWeek);
     }
 
-    public void deleteSubject(String name){
+    public LiveData<List<SubjectSchedule>> getSubject(String name) {
+        return roomDb.subjectScheduleDao().getSubject(name);
+    }
+
+    public void deleteSubject(String name) {
         executor.execute(() -> roomDb.subjectScheduleDao().deleteSubject(name));
     }
 

@@ -46,4 +46,8 @@ public class AddScheduleFragmentViewModel extends AndroidViewModel {
     public void updateWeek(SubjectTime day, int index) {
         week.getValue().set(index, day);
     }
+
+    public LiveData<List<SubjectSchedule>> getSubject(String name){
+        return  repository.getSubject(name);
+    }
 }

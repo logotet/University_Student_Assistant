@@ -13,20 +13,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.timetable.WeekFragment">
 
-        <!--        <com.alamkanak.weekview.WeekView-->
-        <!--            android:id="@+id/weekView"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            app:dayBackgroundColor="#05000000"-->
-        <!--            app:eventTextColor="@android:color/white"-->
-        <!--            app:hourHeight="60dp"-->
-        <!--            app:textSize="12sp"-->
-        <!--            app:timeColumnResolution="60"-->
-        <!--            app:todayColumnBackgroundColor="#1848adff"-->
-        <!--            app:todayHeaderTextColor="@color/white"-->
-        <!--            app:untitledEventText="blia"/>-->
-
-
         <com.alamkanak.weekview.WeekView
             android:id="@+id/weekView"
             android:layout_width="match_parent"
@@ -47,7 +33,7 @@
             android:textAlignment="center"
             app:eventCornerRadius="10dp"
             app:adaptiveEventTextSize="true"
-            app:hourHeight="20dp"
+            app:hourHeight="40dp"
             app:maxHour="20"
             app:minHour="6"
             app:numberOfVisibleDays="5"

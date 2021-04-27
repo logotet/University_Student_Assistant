@@ -75,4 +75,35 @@ public class SubjectTime {
         }
         return data;
     }
+
+    public static List<SubjectTime> getWeekFrom(List<SubjectSchedule> subjectSchedules){
+        List<SubjectTime> data = new ArrayList<>();
+
+        for (int i = 0; i < subjectSchedules.size(); i++) {
+            SubjectTime subjectTime = new SubjectTime();
+            SubjectSchedule subjectSchedule = subjectSchedules.get(i);
+            subjectTime.setDayOfWeek(subjectSchedule.getDayOfWeek());
+            subjectTime.setStartHour(subjectSchedule.getStartHour());
+            subjectTime.setEndHour(subjectSchedule.getEndHour());
+            subjectTime.setActive(true);
+            data.add(subjectTime);
+        }
+        return data;
+    }
+
+    public static List<SubjectTime> getWeekFromSubject(List<SubjectSchedule> subjectSchedules){
+        List<SubjectTime> data = getWeek();
+
+        for (int i = 0; i <data.size() ; i++) {
+            SubjectTime subjectTime = data.get(i);
+            SubjectSchedule subjectSchedule = subjectSchedules.stream().filter(s -> s.getDayOfWeek() == subjectTime.getDayOfWeek()).
+                    findAny().orElse(null);
+            if(subjectSchedule != null) {
+                subjectTime.setStartHour(subjectSchedule.getStartHour());
+                subjectTime.setEndHour(subjectSchedule.getEndHour());
+                subjectTime.setActive(true);
+            }
+        }
+        return data;
+    }
 }

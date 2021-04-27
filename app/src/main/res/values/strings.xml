@@ -94,6 +94,7 @@
     <string name="string_choose_color">Choose color for the subject</string>
     <string name="add_valid_subject_name">Please, add a subject name</string>
     <string name="string_default_color">#f84c44</string>
+    <string name="string_edit_subject">Edit Subject</string>
 
     <string-array name="rangeSliderValues">
         <item>1</item>
