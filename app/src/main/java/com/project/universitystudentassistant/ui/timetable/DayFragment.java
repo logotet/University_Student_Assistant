@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,8 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.adapters.SubjectAdapter;
 import com.project.universitystudentassistant.databinding.FragmentDayBinding;
-import com.project.universitystudentassistant.models.Sort;
-import com.project.universitystudentassistant.models.Subject;
 import com.project.universitystudentassistant.models.SubjectSchedule;
 import com.project.universitystudentassistant.utils.SortManager;
 
@@ -39,7 +36,7 @@ import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 
-public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolder.OnSubjectClickedListener {
+public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolder.OnSubjectClickedListener, EditTaskFragment.OnEditClosedListener {
 
     private FragmentDayBinding binding;
     private List<SubjectSchedule> subjects = new ArrayList<>();
@@ -91,14 +88,15 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         viewModel.getAllSubjectsToday(dayOfWeek).observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
             @Override
             public void onChanged(List<SubjectSchedule> subjectSchedules) {
-                if (subjectSchedules.size() > 0) {
-                    binding.recViewSubjects.setVisibility(View.VISIBLE);
-                    binding.txtNoTasks.setVisibility(View.GONE);
-                    subjectAdapter.updateData(subjectSchedules);
-                } else {
-                    binding.recViewSubjects.setVisibility(View.GONE);
-                    binding.txtNoTasks.setVisibility(View.VISIBLE);
-                }
+//                if (subjectSchedules.size() > 0) {
+//                    binding.recViewSubjects.setVisibility(View.VISIBLE);
+//                    binding.txtNoTasks.setVisibility(View.GONE);
+//                    subjectAdapter.updateData(subjectSchedules);
+//                } else {
+//                    binding.recViewSubjects.setVisibility(View.GONE);
+//                    binding.txtNoTasks.setVisibility(View.VISIBLE);
+//                }
+                subjectAdapter.updateData(subjectSchedules);
             }
         });
     }
@@ -175,5 +173,10 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
             getData();
         }
         return true;
+    }
+
+    @Override
+    public void onSaveEditClicked() {
+        getData();
     }
 }

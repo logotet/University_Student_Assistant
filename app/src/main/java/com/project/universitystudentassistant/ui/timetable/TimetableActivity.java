@@ -14,10 +14,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.databinding.ActivityTimetableBinding;
+import com.project.universitystudentassistant.ui.BaseActivity;
 import com.project.universitystudentassistant.utils.ViewHelper;
 
 
-public class TimetableActivity extends AppCompatActivity {
+public class TimetableActivity extends BaseActivity {
 
     private ActivityTimetableBinding binding;
 

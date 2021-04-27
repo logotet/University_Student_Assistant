@@ -48,6 +48,7 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
     private DayOfWeek day;
     private WeekPickerAdapter weekPickerAdapter;
     private AddScheduleFragmentViewModel addSUbjectViewModel;
+    private DayFragmentViewModel dayViewModel;
     private Map<DayOfWeek, SubjectTime> activeDays = new HashMap<>();
     private int[] colors;
     private int subjectColor;
@@ -57,6 +58,8 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
     private SubjectTime currentSubjectTime;
     private int index;
     private boolean isEdit = false;
+    private String oldName;
+    private OnEditClosedListener listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +118,7 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
                         days = SubjectTime.getWeekFromSubject(subjectSchedules);
                         subjectSchedule = subjectSchedules.get(0);
                         weekPickerAdapter.updateData(days);
+                        oldName = subjectSchedule.getName();
                         binding.edtSubjectName.setText(subjectSchedule.getName());
                         binding.edtTeacherName.setText(subjectSchedule.getTeacher());
                         binding.edtRoomInfo.setText(subjectSchedule.getLocation());
@@ -140,6 +144,7 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
             if (item.getItemId() == R.id.menu_apply) {
                 if (validateName()) {
                     dismiss();
+                    addSUbjectViewModel.deleteSubject(oldName);
                     saveSubjectSchedule();
                 } else {
                     Toast.makeText(getContext(), "You should add a valid name!", Toast.LENGTH_SHORT).show();
@@ -269,4 +274,7 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
     }
 
 
+    public interface OnEditClosedListener{
+        void onSaveEditClicked();
+    }
 }

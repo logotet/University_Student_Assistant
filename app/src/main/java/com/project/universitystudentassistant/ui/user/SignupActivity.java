@@ -3,6 +3,7 @@ package com.project.universitystudentassistant.ui.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -43,8 +44,16 @@ public class SignupActivity extends BaseActivity {
                 repository.createAccount(email, password, this, user);
                 repository.insertUserToRoomDb(user);
                 startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                finish();
 //            }
 
+        });
+
+        binding.txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
         });
     }
 

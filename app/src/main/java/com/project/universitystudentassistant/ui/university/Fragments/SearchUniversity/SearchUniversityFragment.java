@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,7 +31,10 @@ import com.project.universitystudentassistant.adapters.UniversityAdapter;
 import com.project.universitystudentassistant.models.Sort;
 import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.databinding.FragmentSearchUniversitiesBinding;
+import com.project.universitystudentassistant.ui.BaseActivity;
+import com.project.universitystudentassistant.ui.SplashActivity;
 import com.project.universitystudentassistant.ui.university.Fragments.Filter.FilterFragment;
+import com.project.universitystudentassistant.ui.user.LoginActivity;
 import com.project.universitystudentassistant.utils.AppConstants;
 import com.project.universitystudentassistant.utils.SortManager;
 
@@ -51,6 +55,9 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        ((BaseActivity)getActivity()).showProgressDialog();
+
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -74,7 +81,9 @@ public class SearchUniversityFragment extends Fragment implements UniversityAdap
                     universities = sortManager.sortByStates(universityEntities);
                     adapter.updateData(universities);
                 });
-
+        new Handler().postDelayed(() ->
+                ((BaseActivity)getActivity()).hideProgressBar(),
+                500);
 
     }
 

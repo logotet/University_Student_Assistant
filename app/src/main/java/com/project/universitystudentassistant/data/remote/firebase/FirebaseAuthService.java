@@ -61,6 +61,8 @@ public class FirebaseAuthService {
                         if (context instanceof LoginActivity) {
                             ((LoginActivity) context).goToMain();
                         }
+                    }else {
+                        Toast.makeText(context, "Invalid credentials", Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

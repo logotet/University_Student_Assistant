@@ -1,15 +1,23 @@
 package com.project.universitystudentassistant.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.WindowManager;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
+import com.project.universitystudentassistant.databinding.ActivitySplashBinding;
 import com.project.universitystudentassistant.models.UniversityEntity;
 import com.project.universitystudentassistant.ui.user.LoginActivity;
 import com.project.universitystudentassistant.utils.AppStringFormatter;
@@ -20,22 +28,25 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private Repository repository;
+    private ActivitySplashBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
         repository = new Repository(this);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         readData();
 
+
+
         new Handler().postDelayed(() ->
                         startActivity(new Intent(SplashActivity.this, LoginActivity.class)),
-                2000);
+                1500);
 
     }
 

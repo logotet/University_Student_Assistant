@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.databinding.ActivityUniversityBinding;
+import com.project.universitystudentassistant.ui.BaseActivity;
 import com.project.universitystudentassistant.utils.ViewHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class UniversityActivity extends AppCompatActivity {
+public class UniversityActivity extends BaseActivity {
 
     private ActivityUniversityBinding binding;
     @Override
@@ -37,8 +38,12 @@ public class UniversityActivity extends AppCompatActivity {
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finishAndRemoveTask();
+    }
 }

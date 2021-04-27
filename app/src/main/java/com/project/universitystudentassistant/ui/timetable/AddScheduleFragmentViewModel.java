@@ -50,4 +50,12 @@ public class AddScheduleFragmentViewModel extends AndroidViewModel {
     public LiveData<List<SubjectSchedule>> getSubject(String name){
         return  repository.getSubject(name);
     }
+
+    public void updateSubject(SubjectSchedule subjectSchedule){
+        repository.updateSubject(subjectSchedule);
+    }
+
+    public void deleteSubject(String name){
+        repository.deleteSubject(name);
+    }
 }

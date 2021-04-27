@@ -10,6 +10,7 @@ import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
 import com.project.universitystudentassistant.databinding.ActivityLoginBinding;
 import com.project.universitystudentassistant.ui.BaseActivity;
+import com.project.universitystudentassistant.ui.ForgotPasswordActivity;
 import com.project.universitystudentassistant.ui.MainActivity;
 import com.project.universitystudentassistant.utils.AppConstants;
 
@@ -25,8 +26,8 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         repository = new Repository(this);
-        email = AppConstants.DUMMY_EMAIL;
-        password = AppConstants.DUMMY_PASSWORD;
+//        email = AppConstants.DUMMY_EMAIL;
+//        password = AppConstants.DUMMY_PASSWORD;
 
         binding.txtRegister.setOnClickListener(view ->
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class)));
@@ -34,12 +35,20 @@ public class LoginActivity extends BaseActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                email = binding.edtEmail.getText().toString().trim();
+                password = binding.edtPassword.getText().toString().trim();
                 repository.signIn(email, password, LoginActivity.this);
             }
         });
+
+        binding.txtForgotPassword.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class)));
+        binding.edtEmail.getText().clear();
+        binding.edtPassword.getText().clear();
     }
 
-    public void goToMain(){
+    public void goToMain() {
         LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
     }
+
+
 }

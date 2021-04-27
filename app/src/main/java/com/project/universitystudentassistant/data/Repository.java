@@ -53,6 +53,7 @@ public class Repository {
         firebaseAuthService.signIntoAccount(email, password, context);
     }
 
+
     //Remote dummy data
     public List<UniversityEntity> getRemoteUniversityData() {
         return dummyRemoteDataProvider.getListOFUniversities();
@@ -66,7 +67,8 @@ public class Repository {
     //Room local database
     //User
     public void insertUserToRoomDb(User user) {
-        roomDb.userDao().insertUser(user);
+        executor.execute(() -> roomDb.userDao().insertUser(user));
+        ;
     }
 
     //My Universities Data
@@ -153,6 +155,10 @@ public class Repository {
 
     public void deleteSubject(String name) {
         executor.execute(() -> roomDb.subjectScheduleDao().deleteSubject(name));
+    }
+
+    public void updateSubject(SubjectSchedule subjectSchedule) {
+        executor.execute(() -> roomDb.subjectScheduleDao().update(subjectSchedule));
     }
 
 

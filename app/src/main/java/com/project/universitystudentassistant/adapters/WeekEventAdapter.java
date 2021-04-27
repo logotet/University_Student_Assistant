@@ -3,9 +3,12 @@ package com.project.universitystudentassistant.adapters;
 import android.graphics.Color;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.alamkanak.weekview.WeekViewEntity;
 import com.alamkanak.weekview.jsr310.WeekViewSimpleAdapterJsr310;
 import com.project.universitystudentassistant.models.SubjectSchedule;
+import com.project.universitystudentassistant.ui.timetable.EditTaskFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -56,5 +59,8 @@ public class WeekEventAdapter extends WeekViewSimpleAdapterJsr310<SubjectSchedul
     public void onEventClick(SubjectSchedule data) {
         super.onEventClick(data);
         Toast.makeText(getContext(), data.getName(), Toast.LENGTH_SHORT).show();
+//        EditTaskFragment editTaskFragment = EditTaskFragment.newInstance(data.getName());
+//        AppCompatActivity activity = (AppCompatActivity) getContext();
+//        editTaskFragment.show(activity.getSupportFragmentManager(), "time picker");
     }
 }

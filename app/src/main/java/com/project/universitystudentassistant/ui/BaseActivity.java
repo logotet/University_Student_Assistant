@@ -3,6 +3,7 @@ package com.project.universitystudentassistant.ui;
 import android.app.Dialog;
 import android.os.Handler;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,16 +40,16 @@ public class BaseActivity extends AppCompatActivity {
         snackBar.show();
     }
 
-//    public void showProgressDialog(String text){
-//        progressDialog = new Dialog(this);
-//        progressDialog.setContentView(R.layout.dialog_progress);
-//        TextView textView = progressDialog.findViewById(R.id.tv_progress_text);
-//        textView.setText(text);
-//        progressDialog.setCancelable(false);
-//        progressDialog.setCanceledOnTouchOutside(false);
-//
-//        progressDialog.show();
-//    }
+    public void showProgressDialog(){
+        progressDialog = new Dialog(this);
+        progressDialog.setContentView(R.layout.dialog_progress);
+        TextView textView = progressDialog.findViewById(R.id.tv_progress_text);
+        textView.setText(R.string.please_wait);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        progressDialog.show();
+    }
 
     public void hideProgressBar(){
         progressDialog.dismiss();
