@@ -123,6 +123,7 @@ public class EditTaskFragment extends DialogFragment implements WeekPickerAdapte
                         binding.edtTeacherName.setText(subjectSchedule.getTeacher());
                         binding.edtRoomInfo.setText(subjectSchedule.getLocation());
                         binding.fabColor.setBackgroundTintList(ColorStateList.valueOf(subjectSchedule.getColor()));
+                        subjectColor = subjectSchedule.getColor();
                     }
                 });
 

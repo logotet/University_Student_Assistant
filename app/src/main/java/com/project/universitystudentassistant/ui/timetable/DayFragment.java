@@ -88,14 +88,14 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         viewModel.getAllSubjectsToday(dayOfWeek).observe(getViewLifecycleOwner(), new Observer<List<SubjectSchedule>>() {
             @Override
             public void onChanged(List<SubjectSchedule> subjectSchedules) {
-//                if (subjectSchedules.size() > 0) {
-//                    binding.recViewSubjects.setVisibility(View.VISIBLE);
-//                    binding.txtNoTasks.setVisibility(View.GONE);
-//                    subjectAdapter.updateData(subjectSchedules);
-//                } else {
-//                    binding.recViewSubjects.setVisibility(View.GONE);
-//                    binding.txtNoTasks.setVisibility(View.VISIBLE);
-//                }
+                if (subjectSchedules.size() > 0) {
+                    binding.recViewSubjects.setVisibility(View.VISIBLE);
+                    binding.txtNoTasks.setVisibility(View.GONE);
+                    subjectAdapter.updateData(subjectSchedules);
+                } else {
+                    binding.recViewSubjects.setVisibility(View.GONE);
+                    binding.txtNoTasks.setVisibility(View.VISIBLE);
+                }
                 subjectAdapter.updateData(subjectSchedules);
             }
         });
@@ -109,7 +109,9 @@ public class DayFragment extends Fragment implements SubjectAdapter.SubjectHolde
         /* ends after 1 month from now */
 //        Calendar today;
         today = Calendar.getInstance();
-        today.add(Calendar.DAY_OF_YEAR, 1);
+//        today.add(Calendar.DAY_OF_YEAR, 1);
+        today.setTime(new Date());
+
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
         horizontalCalendar = new HorizontalCalendar.Builder(view.getRootView(), R.id.calendarView)
