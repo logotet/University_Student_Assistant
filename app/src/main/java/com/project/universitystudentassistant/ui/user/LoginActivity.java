@@ -4,7 +4,9 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 import com.project.universitystudentassistant.R;
 import com.project.universitystudentassistant.data.Repository;
@@ -26,8 +28,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         repository = new Repository(this);
-//        email = AppConstants.DUMMY_EMAIL;
-//        password = AppConstants.DUMMY_PASSWORD;
+
 
         binding.txtRegister.setOnClickListener(view ->
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class)));
@@ -35,9 +36,13 @@ public class LoginActivity extends BaseActivity {
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                email = binding.edtEmail.getText().toString().trim();
-                password = binding.edtPassword.getText().toString().trim();
-                repository.signIn(email, password, LoginActivity.this);
+                if(validateEmail() && validateEmail()) {
+                    email = binding.edtEmail.getText().toString().trim();
+                    password = binding.edtPassword.getText().toString().trim();
+                    repository.signIn(email, password, LoginActivity.this);
+                }else {
+                    Toast.makeText(LoginActivity.this, "The fields should not be empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -51,4 +56,11 @@ public class LoginActivity extends BaseActivity {
     }
 
 
+    private boolean validateEmail() {
+        return !TextUtils.isEmpty(binding.edtEmail.getText().toString().trim());
+    }
+
+    private boolean validatePassword() {
+        return !TextUtils.isEmpty(binding.edtPassword.getText().toString().trim());
+    }
 }

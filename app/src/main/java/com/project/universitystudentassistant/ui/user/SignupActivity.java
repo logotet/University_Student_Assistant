@@ -42,7 +42,7 @@ public class SignupActivity extends BaseActivity {
                         password
                 );
                 repository.createAccount(email, password, this, user);
-                repository.insertUserToRoomDb(user);
+//                repository.insertUserToRoomDb(user);
                 startActivity(new Intent(SignupActivity.this, MainActivity.class));
                 finish();
 //            }
