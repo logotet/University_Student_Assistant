@@ -1,7 +1,7 @@
 # University_Student_Assistant
 
 An Android mobile application that serves as a helper for a student to choose among 500 U.S. universities and 
-at the same time has a built-in schedule calendar with daily and weekly view. 
+at the same time has a built-in schedule calendar with daily and weekly view. The app uses Firebase as an authentication function.
 
 1) The user can scroll around the list of 500 universities in the U.S. choosing specific criteria like average cost, acceptance and graduation
 rate, name and state and sort them accordingly;
